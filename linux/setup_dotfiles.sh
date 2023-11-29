@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the dotfiles directory path
-DOTFILES_DIR="/path/to/dotfiles"
+DOTFILES_DIR="/tmp/dotfiles/linux"
 
 # Function to create backups
 backup_file() {
@@ -14,12 +14,12 @@ backup_file() {
 # Create backups for existing dotfiles
 backup_file ~/.bashrc
 backup_file ~/.vimrc
-# backup_file ~/.gitconfig
+backup_file ~/.gitconfig
 
 # Create symbolic links for dotfiles
 ln -sf "$DOTFILES_DIR/.bashrc" ~/.bashrc
 ln -sf "$DOTFILES_DIR/.vimrc" ~/.vimrc
-# ln -sf "$DOTFILES_DIR/.gitconfig" ~/.gitconfig
+ln -sf "$DOTFILES_DIR/.gitconfig" ~/.gitconfig
 
 echo "Dotfiles setup complete!"
 
