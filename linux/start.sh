@@ -3,10 +3,14 @@
 # Array of programs to check/install
 echo "Installing tools:"
 programs=(
+        # pop os doesnt have it by default
         # "vim-gtk3", # supports clipboard
-        "alacritty"
-)
+        # "python3-pip"
 
+
+        "alacritty",
+        "fzf",
+)
 # Update package list
 sudo apt-get update
 
@@ -26,3 +30,6 @@ done
 chmod +x setup_dotfiles.sh
 ./setup_dotfiles.sh
 
+# if not installed:
+# sudo dnf install libnotify
+notify-send dotfiles done!
