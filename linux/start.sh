@@ -5,7 +5,8 @@ echo "Installing tools:"
 programs=(
         # pop os doesnt have it by default
         # "vim-gtk3", # supports clipboard
-        # "python3-pip"
+        # "python3-pip",
+        # "cmake",
 
 
         "alacritty",
