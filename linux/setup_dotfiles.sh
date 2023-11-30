@@ -19,14 +19,18 @@ backup_file() {
 mkdir -p "$BACKUP_DIR"
 
 # Create backups for existing dotfiles
-backup_file ~/.bashrc
-backup_file ~/.vimrc
-backup_file ~/.gitconfig
+backup_file "$HOME/.bashrc"
+backup_file "$HOME/.vimrc"
+backup_file "$HOME/.gitconfig"
+backup_file "$HOME/.bash_aliases"
+
+backup_file "$HOME/.config/alacritty/alacritty.yml"
 
 # Create symbolic links for dotfiles
-ln -sf "$DOTFILES_DIR/.bashrc" ~/.bashrc
-ln -sf "$DOTFILES_DIR/.vimrc" ~/.vimrc
-ln -sf "$DOTFILES_DIR/.gitconfig" ~/.gitconfig
+ln -sf "$DOTFILES_DIR/.bashrc" "$HOME/.bashrc"
+ln -sf "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
+ln -sf "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
+ln -sf "$DOTFILES_DIR/.bash_aliases" "$HOME/.bash_aliases"
 
 echo "Dotfiles setup complete!"
 echo "Backup directory: $BACKUP_DIR"

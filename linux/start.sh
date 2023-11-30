@@ -2,7 +2,10 @@
 
 # Array of programs to check/install
 echo "Installing tools:"
-programs=("vim")
+programs=(
+        # "vim-gtk3", # supports clipboard
+        "alacritty"
+)
 
 # Update package list
 sudo apt-get update

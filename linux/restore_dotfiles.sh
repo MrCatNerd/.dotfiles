@@ -17,9 +17,12 @@ restore_file() {
 }
 
 # Restore dotfiles from backups
-restore_file ~/.bashrc
-restore_file ~/.vimrc
-restore_file ~/.gitconfig
+restore_file "$HOME/.bashrc"
+restore_file "$HOME/.vimrc"
+restore_file "$HOME/.gitconfig"
+restore_file "$HOME/.bash_aliases"
+
+restore_file "$HOME/.config/alacritty/alacritty.yml"
 
 echo "Dotfiles restored!"
 
