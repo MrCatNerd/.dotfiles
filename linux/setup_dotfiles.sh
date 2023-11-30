@@ -32,6 +32,8 @@ ln -sf "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
 ln -sf "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 ln -sf "$DOTFILES_DIR/.bash_aliases" "$HOME/.bash_aliases"
 
+ln -sf "$DOTFILES_DIR/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
+
 echo "Dotfiles setup complete!"
 echo "Backup directory: $BACKUP_DIR"
 
