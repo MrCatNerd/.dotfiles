@@ -41,5 +41,5 @@ echo "autoremoving unnecessary packages (apt-get autoremove)"
 sudo apt-get autoremove
 
 # if not installed:
-# sudo dnf install libnotify
+# sudo apt install libnotify
 notify-send dotfiles done!
