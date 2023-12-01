@@ -24,7 +24,7 @@ backup_file "$HOME/.vimrc"
 backup_file "$HOME/.gitconfig"
 backup_file "$HOME/.bash_aliases"
 
-backup_file "$HOME/.config/alacritty/"
+backup_file "$HOME/.config/alacritty"
 
 # Create symbolic links for dotfiles
 ln -sf "$DOTFILES_DIR/.bashrc" "$HOME/.bashrc"
@@ -32,7 +32,9 @@ ln -sf "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
 ln -sf "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 ln -sf "$DOTFILES_DIR/.bash_aliases" "$HOME/.bash_aliases"
 
-ln -sf "$DOTFILES_DIR/alacritty" "$HOME/.config/alacritty"
+# ln -sf "$DOTFILES_DIR/alacritty" "$HOME/.config/alacritty"
+ln -sf "$DOTFILES_DIR/alacritty" "$HOME/.config/"
+
 
 echo "Dotfiles setup complete!"
 

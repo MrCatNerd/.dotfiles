@@ -36,6 +36,9 @@ done
 chmod +x setup_dotfiles.sh
 ./setup_dotfiles.sh
 
+echo "autoremoving unnecessary packages (apt-get autoremove)"
+sudo apt-get autoremove
+
 # if not installed:
 # sudo dnf install libnotify
 notify-send dotfiles done!
