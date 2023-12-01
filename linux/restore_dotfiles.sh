@@ -22,7 +22,7 @@ restore_file "$HOME/.vimrc"
 restore_file "$HOME/.gitconfig"
 restore_file "$HOME/.bash_aliases"
 
-restore_file "$HOME/.config/alacritty/alacritty.yml"
+restore_file "$HOME/.config/alacritty/"
 
 echo "Dotfiles restored!"
 

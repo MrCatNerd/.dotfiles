@@ -9,8 +9,13 @@ programs=(
         # "cmake",
 
 
-        "alacritty",
+        # "alacritty",
         "fzf",
+
+        # extras
+        # "ripgrep",
+        # "nodejs",
+        # "npm"
 )
 # Update package list
 sudo apt-get update

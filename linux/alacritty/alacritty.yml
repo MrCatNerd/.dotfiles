@@ -1,4 +1,4 @@
-# Configuration for Alacritty, the GPU enhanced terminal emulator.
+#  Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 # Import additional configuration files
 #
@@ -23,6 +23,11 @@
   # available, otherwise `xterm-256color` is used.
   #TERM: alacritty
 
+
+import: # themes and stuff
+ - ~/.config/alacritty/themes/rose-pine.yaml
+ # - ~/.config/alacritty/themes/Cobalt2.yaml
+
 window:
   # Window dimensions (changes require restart)
   #
@@ -33,6 +38,8 @@ window:
   dimensions:
     columns: 0
     lines: 0
+
+  background_image: /home/mrcat/Pictures/background.png
 
   # Window position (changes require restart)
   #
@@ -68,7 +75,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 1.0
+  opacity: 0.8
 
   # Startup Mode (changes require restart)
   #
@@ -79,13 +86,13 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Windowed
+  startup_mode: Maximized
 
   # Window title
   title: MrCatNerd's Alacritty Terminal
 
   # Allow terminal applications to change Alacritty's window title.
-  dynamic_title: true
+  dynamic_title: false
 
   # Window class (Linux/BSD only):
   class:
@@ -453,6 +460,7 @@ shell:
   program: /bin/bash
   args:
     - --login
+    # - -u # force UTF-8 in tmux
 
 # Startup directory
 #
