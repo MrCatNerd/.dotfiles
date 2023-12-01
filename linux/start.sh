@@ -1,23 +1,26 @@
 #!/bin/bash
 
+echo WARNING: this script was created mainly for PopOS and might not be suited for your system
+
 # Array of programs to check/install
 echo "Installing tools:"
 programs=(
-        # pop os doesnt have it by default
-        # "vim-gtk3", # supports clipboard
-        # "python3-pip",
-        # "cmake",
+        # pop os dont have it by default
+        "vim-gtk3", # supports clipboard
+        "python3-pip",
 
 
+        # work env
         "alacritty",
         "fzf",
         "tmux",
 
         # extras
-        # "ripgrep",
-        # "nodejs",
-        # "npm"
-)
+        "ripgrep",
+        "nodejs",
+        "npm"
+        "cmake",
+    )
 # Update package list
 sudo apt-get update
 
@@ -41,5 +44,5 @@ echo "autoremoving unnecessary packages (apt-get autoremove)"
 sudo apt-get autoremove
 
 # if not installed:
-# sudo apt install libnotify
+# sudo apt-get install libnotify
 notify-send dotfiles done!
