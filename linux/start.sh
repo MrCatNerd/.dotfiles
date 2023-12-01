@@ -9,8 +9,9 @@ programs=(
         # "cmake",
 
 
-        # "alacritty",
+        "alacritty",
         "fzf",
+        "tmux",
 
         # extras
         # "ripgrep",
