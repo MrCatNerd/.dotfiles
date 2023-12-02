@@ -4,6 +4,6 @@ note: neovim config at https://github.com/MrCatNerd/MyNeovimConfig
 
 change in script dotfiles location before (TODO: make this automatic)
 ```sh
-chmod +x run.sh
-./run.sh
+chmod +x start.sh
+./start.sh
 ```
