@@ -25,8 +25,8 @@
 
 
 import: # themes and stuff
- - ~/.config/alacritty/themes/rose-pine.yaml
- # - ~/.config/alacritty/themes/Cobalt2.yaml
+ - ~/.config/alacritty/themes/themes/rose-pine.yaml
+ # - ~/.config/alacritty/themes/themes/Cobalt2.yaml
 
 window:
   # Window dimensions (changes require restart)
@@ -38,8 +38,6 @@ window:
   dimensions:
     columns: 0
     lines: 0
-
-  background_image: /home/mrcat/Pictures/background.png
 
   # Window position (changes require restart)
   #
@@ -77,6 +75,9 @@ window:
   # The value `0.0` is completely transparent and `1.0` is opaque.
   opacity: 0.8
 
+  background_image: /home/mrcat/Pictures/background.png # idk why this ain't work
+
+
   # Startup Mode (changes require restart)
   #
   # Values for `startup_mode`:
@@ -86,7 +87,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Maximized
+  startup_mode: Windowed
 
   # Window title
   title: MrCatNerd's Alacritty Terminal
@@ -395,7 +396,7 @@ draw_bold_text_with_bright_colors: true
 selection:
   # This string contains all characters that are used as separators for
   # "semantic words" in Alacritty.
-  # semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
   # When set to `true`, selected text will be copied to the primary clipboard.
   save_to_clipboard: false
@@ -561,10 +562,11 @@ mouse:
 # And optionally:
 #
 # - `mods` (see key bindings)
-#mouse_bindings:
+mouse_bindings:
 #  - { mouse: Right,                 action: ExpandSelection }
 #  - { mouse: Right,  mods: Control, action: ExpandSelection }
 #  - { mouse: Middle, mode: ~Vi,     action: PasteSelection  }
+  - { mouse: Middle,      action: PasteSelection  }
 
 # Key bindings
 #
@@ -887,7 +889,7 @@ mouse:
   #- { key: F,              mods: Command, mode: ~Search,     action: SearchForward         }
   #- { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }
 
-#debug:
+debug:
   # Display the time it takes to redraw each frame.
   #render_timer: false
 
@@ -903,7 +905,7 @@ mouse:
   #   - Info
   #   - Debug
   #   - Trace
-  #log_level: Warn
+  log_level: Warn
 
   # Renderer override.
   #   - glsl3
