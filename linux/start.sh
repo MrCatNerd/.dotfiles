@@ -5,9 +5,10 @@ echo WARNING: this script was created mainly for PopOS and might not be suited f
 # Array of programs to check/install
 echo "Installing tools:"
 programs=(
-        # pop os dont have it by default
+        # pop os may not have it by default
         "vim-gtk3", # supports clipboard
         "python3-pip",
+        "build-essential",
 
 
         # work env
@@ -21,6 +22,7 @@ programs=(
         "npm"
         "cmake",
     )
+
 # Update package list
 sudo apt-get update
 
