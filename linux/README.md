@@ -1,5 +1,5 @@
-# Installation Guide
- 
+# Linux
+
   - note: neovim config is [here](https://github.com/MrCatNerd/MyNeovimConfig)
 
 ```sh

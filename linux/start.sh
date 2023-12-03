@@ -1,30 +1,29 @@
 #!/bin/bash
 
-echo WARNING: this script was created mainly for PopOS and might not be suited for your system
+echo WARNING: this script was created mainly for PopOS and might not work for your system
 
 # Array of programs to check/install
 echo "Installing tools:"
 programs=(
         # pop os may not have it by default
-        "vim-gtk3", # supports clipboard
-        "python3-pip",
-        "build-essential",
+        # "vim-gtk3" # supports clipboard
+        "python3-pip"
 
+        # just to make sure
+        "gcc",
+        "build-essential"
 
         # work env
-        "alacritty",
-        "fzf",
-        "tmux",
+        "alacritty"
+        "fzf"
+        "tmux"
 
-        # extras
-        "ripgrep",
-        "nodejs",
+        # coding extras
+        "ripgrep"
+        "nodejs"
         "npm"
-        "cmake",
+        "cmake"
     )
-
-# Update package list
-sudo apt-get update
 
 # Loop through each program in the array
 for name in "${programs[@]}"; do
@@ -38,13 +37,28 @@ for name in "${programs[@]}"; do
     fi
 done
 
+# Update package list
+sudo apt-get update
+
 # Additional commands
 chmod +x setup_dotfiles.sh
 ./setup_dotfiles.sh
 
-echo "autoremoving unnecessary packages (apt-get autoremove)"
+chmod +x others.sh
+./others.sh
+
+echo "cleaning stuff"
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get --fix-broken install
 sudo apt-get autoremove
+sudo apt-get clean
+sudo apt-get autoclean
+sudo dpkg --configure -a
+
 
 # if not installed:
 # sudo apt-get install libnotify
 notify-send dotfiles done!
+
+# note: sudo apt-get install build-essential linux-headers-`uname -r` alsa-base alsa-firmware-loaders alsa-oss alsa-source alsa-tools alsa-tools-gui alsa-utils alsamixergui
