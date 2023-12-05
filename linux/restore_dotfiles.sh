@@ -21,8 +21,10 @@ restore_file "$HOME/.bashrc"
 restore_file "$HOME/.vimrc"
 restore_file "$HOME/.gitconfig"
 restore_file "$HOME/.bash_aliases"
+restore_file "$HOME/.profile"
+restore_file "$HOME/.bash_logout"
 
-restore_file "$HOME/.config/alacritty/"
+restore_file "$HOME/.config/alacritty"
 
 echo "Dotfiles restored!"
 

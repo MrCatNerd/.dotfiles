@@ -1,14 +1,19 @@
 #!/bin/bash
 
 echo "WARNING: this script was created mainly for PopOS and my personal headphones and might not work for your system"
-echo "WARNING: this script is still experimental wont fix ur problems"
+echo "WARNING: this script is still baking and it wont fix ur problems its just a mess for now"
+
+echo "do: sudo apt remove pulseaudio if you want this thingy to work, at least i think so."
 
 # Array of programs to check/install
 echo "Installing tools for headphones:"
-programs=(
+programs=( # TODO: reimplement check install thingy with apt
     "pavucontrol"
     "alsa-base",
     "alsa-utils",
+    "wireplumber",
+    "pipewire-pulse",
+    # "pipewire-media-session", might need it if not on pop: https://www.maketecheasier.com/install-configure-pipewire-linux/
 )
 
 # Loop through each program in the array
@@ -43,7 +48,7 @@ echo "Starting configuration for JBL Quantum 100"
 # systemctl --user start pipewire-pulse.socket && systemctl --user start pipewire-pulse.service
 
 echo reinstalling pipewire
-sudo apt reinstall libpipewire-0.3-0 libpipewire-0.3-common libpipewire-0.3-modules pipewire pipewire-audio-client-libraries pipewire-bin pipewire-pulse
+sudo apt-get reinstall libpipewire-0.3-0 libpipewire-0.3-common libpipewire-0.3-modules pipewire pipewire-audio-client-libraries pipewire-bin pipewire-pulse
 
 
 # This command will check the status of PipeWire and show any errors if automatic restarts raised any errors
@@ -71,4 +76,6 @@ echo "blacklist snd_soc_skl" | sudo tee -a /etc/modprobe.d/blacklist.conf
 echo "Configuration completed for JBL Quantum 100"
 
 
-# sudo apt install --reinstall pipewire pipewire-pulse
+# sudo apt-get install --reinstall pipewire pipewire-pulse
+#
+# idk why but putting on of the left / right balnacing thingy on higher power makes it sound good
