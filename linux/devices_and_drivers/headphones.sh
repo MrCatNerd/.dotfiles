@@ -7,12 +7,20 @@ echo "do: sudo apt remove pulseaudio if you want this thingy to work, at least i
 
 # Array of programs to check/install
 echo "Installing tools for headphones:"
+
+echo reinstalling pipewire
+sudo apt-get reinstall -y libpipewire-0.3-0 libpipewire-0.3-common libpipewire-0.3-modules pipewire pipewire-audio-client-libraries pipewire-bin pipewire-pulse
+
 programs=( # TODO: reimplement check install thingy with apt
     "pavucontrol"
     "alsa-base",
     "alsa-utils",
     "wireplumber",
+    "pipewire-alsa",
     "pipewire-pulse",
+    "pipewire-jack",
+    "jackd2",
+    # "qjackctl",
     # "pipewire-media-session", might need it if not on pop: https://www.maketecheasier.com/install-configure-pipewire-linux/
 )
 
@@ -46,19 +54,15 @@ echo "Starting configuration for JBL Quantum 100"
 # sudo cp /usr/share/pipewire/pipewire-pulse.conf /etc/pipewire/
 # systemctl --user stop pipewire-pulse.socket && systemctl --user stop pipewire-pulse.service
 # systemctl --user start pipewire-pulse.socket && systemctl --user start pipewire-pulse.service
-
-echo reinstalling pipewire
-sudo apt-get reinstall libpipewire-0.3-0 libpipewire-0.3-common libpipewire-0.3-modules pipewire pipewire-audio-client-libraries pipewire-bin pipewire-pulse
-
-
-# This command will check the status of PipeWire and show any errors if automatic restarts raised any errors
-systemctl --user status pipewire
-
 # If you would like to monitor PipeWire, run:
 #pw-top
 
 # This command will force reload the kernel sound driver modules
-sudo alsa force-reload
+# sudo alsa force-reload
+# sudo alsa reload # not forcing
+
+# This command will check the status of PipeWire and show any errors if automatic restarts raised any errors
+systemctl --user status pipewire
 
 # echo removing pulseaudio and pipewire configs
 # rm -r ~/.config/pulse/*
@@ -70,8 +74,11 @@ sudo alsa force-reload
 
 # With hardware that uses the snd_hda_intel kernel module, rare bugs can cause the sound card to not be detected.
 # If you're having this issue, try running these commands to force the usage of a specific audio driver (system76 article)
+
 echo "options snd-hda-intel dmic_detect=0" | sudo tee -a /etc/modprobe.d/alsa-base.conf
 echo "blacklist snd_soc_skl" | sudo tee -a /etc/modprobe.d/blacklist.conf
+
+alsactl init # read here: https://www.maketecheasier.com/install-configure-pipewire-linux/
 
 echo "Configuration completed for JBL Quantum 100"
 
@@ -79,3 +86,4 @@ echo "Configuration completed for JBL Quantum 100"
 # sudo apt-get install --reinstall pipewire pipewire-pulse
 #
 # idk why but putting on of the left / right balnacing thingy on higher power makes it sound good
+# jackdbus-detect = false
