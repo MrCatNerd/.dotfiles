@@ -1,35 +1,13 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # export LC_CTYPE=en_US.UTF-8
 # export RANGER_LOAD_DEFAULT_RC=FALSE
 export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
-
-
-# alias bt=bluetoothctl
-# alias update='yaourt -Syyu --aur --noconfirm'
-# alias tt='tmux a -t main||tmux new -s main'
-# alias sharebox='cd /mnt/sharebox'
-# alias com='cd /mnt/sharebox/computers_engineering'
-# alias transfer='cd /mnt/transfer'
-
-
-# function pdf(){
-# 	zathura "$1" &disown
-# }
-#
-# function pdfe(){
-# 	zathura "$1" &disown;exit
-# }
-#
-# function copy(){
-# 	rsync -P $@
-# }
-
-function acp() {
-  git add .
-  git commit -m "$1"
-  git push
-}
-
-#################
 
 # If you come from bash you might have to change your $PATH.
 export PATH="/usr/local/bin:$PATH"
@@ -42,6 +20,11 @@ fi
 # Include ~/bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
+fi
+
+# Run ~/.zsh_aliases if it exists as a file
+if [ -f "$HOME/.zsh_aliases" ]; then
+    source "$HOME/.zsh_aliases"
 fi
 
 # Remove duplicate paths using awk
@@ -58,14 +41,13 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME = "agnoster"
-echo $RANDOM_THEME
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
-ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" "avit")
+ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" "avit" "powerlevel10k/powerlevel10k")
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
@@ -124,7 +106,7 @@ DISABLE_AUTO_TITLE="true"
 plugins=(
     git
     bundler
-    zsh-autosuggestions
+    # zsh-autosuggestions
     # z
 )
 
@@ -157,3 +139,23 @@ export ARCHFLAGS="-arch x86_64"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
+###############################33
+# function pdf(){
+# 	zathura "$1" &disown
+# } function pdfe(){
+# 	zathura "$1" &disown;exit
+# }
+#
+# function copy(){
+# 	rsync -P $@
+# }
+
+function acp() {
+  git add .
+  git commit -m "$1"
+  git push
+}
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

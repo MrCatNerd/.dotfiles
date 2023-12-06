@@ -4,19 +4,7 @@
 DOTFILES_DIR="$PWD"
 BACKUP_DIR="$HOME/backup"
 
-# Function to create backups
-backup_file() {
-    local file="$1"
-    local backup_file="$BACKUP_DIR/$(basename "$file").backup"
-
-    if [ -f "$file" ] || [ -L "$file" ]; then
-        echo "Backing up $file to $backup_file"
-        cp -R "$file" "$backup_file"
-    fi
-}
-
-# Create backup directory if it doesn't exist
-mkdir -p "$BACKUP_DIR"
+source $DOTFILES_DIR/common_bash/backup.sh
 
 # Create backups for existing dotfiles
 backup_file "$HOME/.bashrc"

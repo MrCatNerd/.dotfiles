@@ -12,6 +12,7 @@ programs=(
         # just to make sure
         "gcc"
         "build-essential"
+        "curl"
 
         # work env
         "alacritty"
@@ -58,7 +59,7 @@ sudo apt-get --fix-broken install
 sudo apt-get autoremove
 sudo apt-get clean
 sudo apt-get autoclean
-sudo dpkg --configure -a
+# sudo dpkg --configure -a
 
 
 # if not installed:

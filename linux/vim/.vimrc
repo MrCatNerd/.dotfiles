@@ -3,7 +3,7 @@ let g:mapleader = " "
 
 " set colorscheme
 set termguicolors
-colorscheme habamax
+colorscheme desert
 
 " sets
 " set number
