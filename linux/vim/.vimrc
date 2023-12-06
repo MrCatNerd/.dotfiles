@@ -2,13 +2,13 @@
 let g:mapleader = " "
 
 " set colorscheme
-colorscheme elflord
+set termguicolors
+colorscheme habamax
 
 " sets
 " set number
 set relativenumber
 set nu
-set notermguicolors
 
 set shiftwidth=4
 set softtabstop=4

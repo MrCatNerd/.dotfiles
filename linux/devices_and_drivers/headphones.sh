@@ -13,15 +13,16 @@ sudo apt-get reinstall -y libpipewire-0.3-0 libpipewire-0.3-common libpipewire-0
 
 programs=( # TODO: reimplement check install thingy with apt
     "pavucontrol"
-    "alsa-base",
-    "alsa-utils",
-    "wireplumber",
-    "pipewire-alsa",
-    "pipewire-pulse",
-    "pipewire-jack",
-    "jackd2",
-    # "qjackctl",
-    # "pipewire-media-session", might need it if not on pop: https://www.maketecheasier.com/install-configure-pipewire-linux/
+    "alsa-base"
+    "alsa-utils"
+    "wireplumber"
+    "pipewire-alsa"
+    "pipewire-pulse"
+    "pipewire-jack"
+    "jackd2"
+    "alsa-firmware-loaders"
+    # "qjackctl"
+    # "pipewire-media-session" might need it if not on pop: https://www.maketecheasier.com/install-configure-pipewire-linux/
 )
 
 # Loop through each program in the array

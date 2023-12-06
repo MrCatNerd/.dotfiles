@@ -28,15 +28,25 @@ backup_file "$HOME/.profile"
 backup_file "$HOME/.config/alacritty/"
 
 # Create symbolic links for dotfiles
-ln -srf "$DOTFILES_DIR/.bashrc" "$HOME/.bashrc"
-ln -srf "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
-ln -srf "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
-ln -srf "$DOTFILES_DIR/.bash_aliases" "$HOME/.bash_aliases"
-ln -srf "$DOTFILES_DIR/.profile" "$HOME/.profile"
-ln -srf "$DOTFILES_DIR/.bash_logout" "$HOME/.bash_logout"
 
+# bash
+ln -srf "$DOTFILES_DIR/bash/.bashrc" "$HOME/.bashrc"
+ln -srf "$DOTFILES_DIR/bash/.profile" "$HOME/.profile"
+ln -srf "$DOTFILES_DIR/bash/.bash_aliases" "$HOME/.bash_aliases"
+ln -srf "$DOTFILES_DIR/bash/.bash_logout" "$HOME/.bash_logout"
+
+# vim
+ln -srf "$DOTFILES_DIR/vim/.vimrc" "$HOME/.vimrc"
+
+# git
+ln -srf "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
+
+# alacritty
 # ln -srf "$DOTFILES_DIR/alacritty" "$HOME/.config/alacritty"
 ln -srf "$DOTFILES_DIR/alacritty/" "$HOME/.config/"
+
+# zsh
+ln -srf "$DOTFILES_DIR/zsh/" "$HOME/.config/"
 
 
 echo "Dotfiles setup complete!"

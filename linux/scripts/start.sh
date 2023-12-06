@@ -10,20 +10,28 @@ programs=(
         "python3-pip"
 
         # just to make sure
-        "gcc",
+        "gcc"
         "build-essential"
 
         # work env
         "alacritty"
         "fzf"
         "tmux"
+        "zsh"
 
         # coding extras
         "ripgrep"
         "nodejs"
         "npm"
         "cmake"
+
+        # others
+        "tree"
     )
+
+# Update package list
+sudo apt-get update
+sudo apt-get upgrade
 
 # Loop through each program in the array
 for name in "${programs[@]}"; do
@@ -37,19 +45,15 @@ for name in "${programs[@]}"; do
     fi
 done
 
-# Update package list
-sudo apt-get update
-
 # Additional commands
+
 chmod +x setup_dotfiles.sh
-./setup_dotfiles.sh
+source ./setup_dotfiles.sh
 
 chmod +x others.sh
-./others.sh
+source ./others.sh
 
 echo "cleaning stuff"
-sudo apt-get update
-sudo apt-get upgrade
 sudo apt-get --fix-broken install
 sudo apt-get autoremove
 sudo apt-get clean
