@@ -8,6 +8,7 @@ programs=(
         # pop os may not have it by default
         # "vim-gtk3" # supports clipboard
         "python3-pip"
+        "python3-venv"
 
         # just to make sure
         "gcc"
