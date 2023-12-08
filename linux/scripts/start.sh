@@ -17,6 +17,8 @@ programs=(
 
         # work env
         "alacritty"
+        # or
+        #"kitty"
         "fzf"
         "tmux"
         "zsh"
