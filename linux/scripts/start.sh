@@ -18,7 +18,11 @@ programs=(
         # work env
         "alacritty"
         # or
+        #kitty:
         #"kitty"
+        #"kitten"
+        #"imagemagick"
+        # ---
         "fzf"
         "tmux"
         "zsh"
