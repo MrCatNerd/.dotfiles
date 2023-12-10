@@ -7,3 +7,5 @@ chmod +x start.sh
 ./start.sh
 ```
 
+on every dir:
+    setup.sh

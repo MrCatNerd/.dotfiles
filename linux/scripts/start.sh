@@ -20,7 +20,6 @@ programs=(
         # or
         #kitty:
         #"kitty"
-        #"kitten"
         #"imagemagick"
         # ---
         "fzf"
