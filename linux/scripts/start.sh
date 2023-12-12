@@ -65,6 +65,9 @@ source scripts/setup_dotfiles.sh
 chmod +x scripts/others.sh
 source scripts/others.sh
 
+chmod +x scripts/fonts.sh
+source scripts/fonts.sh
+
 echo "cleaning stuff"
 sudo apt-get --fix-broken install
 sudo apt-get autoremove -y
