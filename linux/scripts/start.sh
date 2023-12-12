@@ -20,7 +20,7 @@ programs=(
         # or
         #kitty:
         #"kitty"
-        #"imagemagick"
+        #"imagemagick" # kitten +icat <image-path.png>
         # ---
         "fzf"
         "tmux"
@@ -31,9 +31,13 @@ programs=(
         "nodejs"
         "npm"
         "cmake"
+        "sqlite3"
 
         # others
         "tree"
+        "netcat"
+        "neofetch"
+        "nmap"
     )
 
 # Update package list
@@ -54,17 +58,18 @@ done
 
 # Additional commands
 
-chmod +x setup_dotfiles.sh
-source ./setup_dotfiles.sh
+echo OH BOI
+chmod +x scripts/setup_dotfiles.sh
+source scripts/setup_dotfiles.sh
 
-chmod +x others.sh
-source ./others.sh
+chmod +x scripts/others.sh
+source scripts/others.sh
 
 echo "cleaning stuff"
 sudo apt-get --fix-broken install
-sudo apt-get autoremove
-sudo apt-get clean
-sudo apt-get autoclean
+sudo apt-get autoremove -y
+sudo apt-get clean -y
+sudo apt-get autoclean -y
 # sudo dpkg --configure -a
 
 
