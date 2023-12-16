@@ -38,6 +38,9 @@ programs=(
         "netcat"
         "neofetch"
         "nmap"
+
+        # maliciousness
+        # "lolcat"
     )
 
 # Update package list
@@ -48,32 +51,25 @@ sudo apt-get upgrade
 for name in "${programs[@]}"; do
     # Check if the program is installed
     if ! command -v "$name" &> /dev/null; then
-        echo "$name not installed"
-        # Install the program
-        sudo apt-get install -y "$name"
+        echo "$name is not installed"
+        sudo apt-get install "$name" -y
     else
-        echo "$name already installed"
+        echo "$name is already installed"
     fi
 done
 
 # Additional commands
 
-echo OH BOI
 chmod +x scripts/setup_dotfiles.sh
 source scripts/setup_dotfiles.sh
 
-chmod +x scripts/others.sh
-source scripts/others.sh
-
-chmod +x scripts/fonts.sh
-source scripts/fonts.sh
-
-echo "cleaning stuff"
-sudo apt-get --fix-broken install
+echo "Cleaning stuff apt stuff up"
+sudo apt-get --fix-broken install -y
 sudo apt-get autoremove -y
 sudo apt-get clean -y
 sudo apt-get autoclean -y
 # sudo dpkg --configure -a
+echo "Finished cleaning stuff apt stuff up"
 
 
 # if not installed:

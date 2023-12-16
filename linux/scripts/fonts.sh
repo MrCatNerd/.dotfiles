@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo Setting up nerd fonts
+
 declare -a fonts=(
     # FiraCode
     # FiraMono
@@ -25,4 +27,6 @@ done
 find "$fonts_dir" -name "*Windows Compatible*" -delete
 
 fc-cache -fv
+
+echo Finished setting up nerd fonts
 

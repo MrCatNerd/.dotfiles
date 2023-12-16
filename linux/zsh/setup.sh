@@ -19,6 +19,8 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 # Get backup function
 source $DOTFILES_DIR/common_bash/backup.sh
 
+mkdir -p "$HOME/zsh"
+
 # Backup existing files (assuming your backup function is named backup_file)
 backup_file "$HOME/.zshrc"
 backup_file "$HOME/.zsh_aliases"
