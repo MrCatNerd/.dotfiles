@@ -14,6 +14,8 @@ programs=(
         "gcc"
         "build-essential"
         "curl"
+        "make"
+        "cmake"
 
         # work env
         "alacritty"

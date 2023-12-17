@@ -17,11 +17,11 @@ sudo apt-get install -y libglew-dev libglfw3-dev libglm-dev
 sudo apt-get install -y libao-dev libmpg123-dev
 
 echo Installing GLFW
-cd /usr/local/lib/
-git clone https://github.com/glfw/glfw.git
-cd glfw
-cmake .
-make
+cd /usr/local/lib/ -s
+sudo git clone https://github.com/glfw/glfw.git
+cd glfw -s
+sudo cmake .
+sudo make
 sudo make install
 
 # Printing formatted clickable links with colored text in Kitty terminal
