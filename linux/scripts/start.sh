@@ -37,12 +37,11 @@ programs=(
 
         # others
         "tree"
-        "netcat"
-        "neofetch"
         "nmap"
 
         # maliciousness
         # "lolcat"
+        "neofetch"
     )
 
 # Update package list
