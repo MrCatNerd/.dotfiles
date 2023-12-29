@@ -36,11 +36,12 @@ programs=(
         "sqlite3"
 
         # others
-        "tree"
         "nmap"
+        "hydra"
 
         # maliciousness
         # "lolcat"
+        "tree"
         "neofetch"
     )
 
