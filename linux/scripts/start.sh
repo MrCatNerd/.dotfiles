@@ -43,6 +43,7 @@ programs=(
         # "lolcat"
         "tree"
         "neofetch"
+        "htop"
     )
 
 # Update package list

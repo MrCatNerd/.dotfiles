@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: make this work for everything :(
+
 # Define the backup directory path
 BACKUP_DIR="$HOME/backup"
 

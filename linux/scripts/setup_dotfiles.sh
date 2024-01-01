@@ -4,10 +4,13 @@
 DOTFILES_DIR="$PWD"
 
 programs_setups=(
-    "vim"
+    "tmux"
+    "bash"
     "zsh"
     "git"
-    "alacritty"
+    "kitty"
+    "vim" # neovim btw
+    # "alacritty" # i already use kitty
 )
 
 # Loop through programs_setups
