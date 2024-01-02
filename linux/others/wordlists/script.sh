@@ -14,6 +14,7 @@ fi
 cd wpa2-wordlists/Wordlists/$WORDLIST_NAME
 
 # Concatenate .txt files into a single file and save in wordlists directory
+sudo mkdir -p /usr/share/wordlists/
 sudo cat *.txt >> /usr/share/wordlists/$WORDLIST_NAME.txt
 
 # Change back to the original working directory
