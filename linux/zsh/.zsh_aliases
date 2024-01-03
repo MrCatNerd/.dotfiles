@@ -1,8 +1,11 @@
+# jokes:
+alias dog='cat'
+alias meow='echo meow # $*'
+
 alias explorer='xdg-open'
 alias vim='nvim'
 alias gitree='git log --graph --pretty=oneline --abbrev-commit'
 alias gits='git status'
-alias meow='echo meow # $*'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'

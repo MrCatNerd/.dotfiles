@@ -9,7 +9,7 @@ sudo ubuntu-drivers autoinstall
 echo Finished installing drivers
 
 echo Linking nvidia settings to ~
-ln -srf .nvidia-settings-rc ~/.nvidia-settings-rc
+ln -srf .nvidia-settings-rc $HOME/.nvidia-settings-rc
 echo Finished linking nvidia settings to ~
 
 echo "https://youtu.be/v9tb1gTTbJE"
