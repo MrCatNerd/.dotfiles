@@ -3,7 +3,7 @@
   - note: neovim config [here](https://github.com/MrCatNerd/MyNeovimConfig)
 
 ```sh
-chmod +x scripts/start.sh
+(export DOTFILES_DIR="your dotfiles dir"&& chmod +x scripts/start.sh)
 ./scripts/start.sh
 ```
 

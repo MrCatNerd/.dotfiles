@@ -20,11 +20,11 @@ for PROGRAM in "${programs_setups[@]}"; do
     echo Finished setting up "$PROGRAM"
 done
 
-chmod +x scripts/others.sh
-source scripts/others.sh
-
-chmod +x scripts/fonts.sh
-source scripts/fonts.sh
+# chmod +x scripts/others.sh
+# source scripts/others.sh
+#
+# chmod +x scripts/fonts.sh
+# source scripts/fonts.sh
 
 echo "Dotfiles setup complete!"
 

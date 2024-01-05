@@ -2,6 +2,15 @@
 
 echo WARNING: this script was created mainly for PopOS and might not work for your system
 
+find . -type f -name "*.sh" -exec chmod +x {} \; # i Am SuRe ThAtS sAfE
+
+DOTFILES_DIR="$PWD"
+source $DOTFILES_DIR/common_bash/install.sh
+
+# Update package list
+sudo apt-get update -y
+sudo apt-get upgrade -y
+
 # Array of programs to check/install
 echo "Installing tools:"
 programs=(
@@ -44,27 +53,14 @@ programs=(
         "tree"
         "neofetch"
         "htop"
+        "screenkey"
     )
 
-# Update package list
-sudo apt-get update
-sudo apt-get upgrade
-
-# Loop through each program in the array
-for name in "${programs[@]}"; do
-    # Check if the program is installed
-    if ! command -v "$name" &> /dev/null; then
-        echo "$name is not installed"
-        sudo apt-get install "$name" -y
-    else
-        echo "$name is already installed"
-    fi
-done
+install_programs "${programs[@]}"
 
 # Additional commands
 
-chmod +x scripts/setup_dotfiles.sh
-source scripts/setup_dotfiles.sh
+# source scripts/setup_dotfiles.sh
 
 echo "Cleaning stuff apt stuff up"
 sudo apt-get --fix-broken install -y
