@@ -6,6 +6,8 @@ if [[ ! "$PWD" = *"dotfiles/linux" ]]; then
     exit 1
 fi
 
+sudo apt install tmux -y
+
 # Define variables
 TMUX_DOTFILES_DIR="$PWD/tmux"
 DOTFILES_DIR="$PWD"

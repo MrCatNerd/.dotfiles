@@ -13,7 +13,7 @@ sudo apt-get upgrade -y
 
 # Array of programs to check/install
 echo "Installing tools:"
-programs=(
+programs=( # all of the programs that are here will not be installed by a different script
         # pop os may not have it by default
         # "vim-gtk3" # supports clipboard
         "python3-pip"
@@ -27,15 +27,7 @@ programs=(
         "cmake"
 
         # work env
-        "alacritty"
-        # or
-        #kitty:
-        #"kitty"
-        #"imagemagick" # kitten +icat <image-path.png>
-        # ---
         "fzf"
-        "tmux"
-        "zsh"
 
         # coding extras
         "ripgrep"
@@ -50,7 +42,7 @@ programs=(
 
         # maliciousness
         # "lolcat"
-        "tree"
+        # "tree"
         "neofetch"
         "htop"
         "screenkey"

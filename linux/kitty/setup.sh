@@ -10,6 +10,10 @@ fi
 KITTY_DOTFILES_DIR="$PWD/kitty"
 DOTFILES_DIR="$PWD"
 
+sudo apt install kitty -y
+# optional:
+sudo apt install image-magick -y # kitten +icat <image-path.png>
+
 echo Creating backups
 # Get backup function
 source $DOTFILES_DIR/common_bash/backup.sh

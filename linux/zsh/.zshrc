@@ -7,7 +7,11 @@ fi
 
 # export LC_CTYPE=en_US.UTF-8
 # export RANGER_LOAD_DEFAULT_RC=FALSE
+
 export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # If you come from bash you might have to change your $PATH.
 export PATH="/usr/local/bin:$PATH"
@@ -50,12 +54,13 @@ export FZF_DEFAULT_OPTS='--layout=reverse --border --inline-info --prompt="$ " -
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
-ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" "avit" "powerlevel10k/powerlevel10k")
+ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" "powerlevel10k/powerlevel10k")
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
@@ -81,7 +86,7 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Uncomment the following line to disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
 
-# Uncomment the following line to enable command auto-correction.
+ # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
@@ -167,3 +172,6 @@ function acp() {
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/Documents/dotfiles/linux/zsh/.p10k.zsh.
+[[ ! -f ~/Documents/dotfiles/linux/zsh/.p10k.zsh ]] || source ~/Documents/dotfiles/linux/zsh/.p10k.zsh
