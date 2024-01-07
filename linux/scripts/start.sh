@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 echo WARNING: this script was created mainly for PopOS and might not work for your system
 
@@ -27,18 +27,19 @@ programs=( # all of the programs that are here will not be installed by a differ
         "cmake"
 
         # work env
+        # "fzy"
         "fzf"
+        "ripgrep"
 
         # coding extras
-        "ripgrep"
         "nodejs"
         "npm"
-        "cmake"
         "sqlite3"
 
         # others
         "nmap"
         "hydra"
+        # "gimp"
 
         # maliciousness
         # "lolcat"

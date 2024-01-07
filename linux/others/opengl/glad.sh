@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 # Function to check if the previous operation was successful
 check_success() {

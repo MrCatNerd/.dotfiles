@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 # ANSI color escape codes for different colors
 RED='\033[0;31m'       # Red color

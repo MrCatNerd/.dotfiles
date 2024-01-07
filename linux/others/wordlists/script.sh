@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 CURRENT_WORKING_DIR=$PWD
 WORDLIST_NAME="Rockyou"

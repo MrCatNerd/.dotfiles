@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 # Define the dotfiles directory path as the current working directory
 BACKUP_DIR="$HOME/backup"

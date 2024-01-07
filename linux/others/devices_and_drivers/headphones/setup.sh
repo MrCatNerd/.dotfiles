@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 echo "WARNING: this script was created mainly for PopOS and my personal headphones and might not work for your system"
 echo "WARNING: this script is still baking and it wont fix ur problems its just a mess for now"

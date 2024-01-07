@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 # if clangd lsp or clang isnt working for you run this script
 printf https://stackoverflow.com/questions/54521402/locating-iostream-in-clang-fatal-error-iostream-file-not-found\n

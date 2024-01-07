@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 # Check if the current directory ends with 'dotfiles/linux'
 if [[ ! "$PWD" = *"dotfiles/linux" ]]; then

@@ -87,7 +87,10 @@ fi
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# make neovim clangd lsp work
+# change fzf look
+export FZF_DEFAULT_OPTS='--layout=reverse --border --inline-info --prompt="$ " --pointer=">"'
+
+# make clangd work
 export CPLUS_INCLUDE_PATH=/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11
 
 # some more aliases
