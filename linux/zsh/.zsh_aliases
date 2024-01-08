@@ -11,7 +11,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias say='spd-say -p 10 -r -10 -R 50 $*'
-alias f='cd "$(find ~ -type d 2>/dev/null | fzf)"'
+alias f='cd "$(find -O2 ~ -type d 2>/dev/null | fzf)"'
 alias show_screenkeys="screenkey -s large --scr 1 -p bottom --geometry 510x300+1412+850"
 
 # alias tt='tmux a -t main||tmux new -s main'
