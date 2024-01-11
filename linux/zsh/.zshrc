@@ -14,7 +14,7 @@ export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # If you come from bash you might have to change your $PATH.
-export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$HOME/.local/bin/scripts:$PATH"
 
 # Include ~/.local/bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
