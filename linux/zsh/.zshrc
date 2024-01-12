@@ -8,8 +8,6 @@ fi
 # export LC_CTYPE=en_US.UTF-8
 # export RANGER_LOAD_DEFAULT_RC=FALSE
 
-export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -29,6 +27,11 @@ fi
 # Run ~/.zsh_aliases if it exists as a file
 if [ -f "$HOME/.zsh_aliases" ]; then
     source "$HOME/.zsh_aliases"
+fi
+
+# Run ~/.zsh_profile if it exists as a file
+if [ -f "$HOME/.zsh_profile" ]; then
+    source "$HOME/.zsh_profile"
 fi
 
 # Remove duplicate paths using awk
