@@ -1,5 +1,9 @@
 # Linux
 
+---
+
+### WARNING: good luck [uninstalling nix](https://nixos.org/manual/nix/stable/installation/uninstall)
+
   - note: neovim config [here](https://github.com/MrCatNerd/MyNeovimConfig)
 
 ```sh
