@@ -1,5 +1,4 @@
-#!/usr/bin/env zsh
-
+#!/usr/bin/env bash
 sudo apt install stow -y
 if [[ -z $STOW_FOLDERS ]]; then
     STOW_FOLDERS="bin,tmux,zsh,bash,vim,git,kitty"
