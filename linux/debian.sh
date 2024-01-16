@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
-sudo apt install stow -y
 if [[ -z $STOW_FOLDERS ]]; then
-    STOW_FOLDERS="bin,tmux,zsh,bash,vim,git,kitty"
+    STOW_FOLDERS="local_bin,tmux,zsh,bash,vim,git,kitty,nix"
 fi
 
 if [[ -z $DOTFILES ]]; then
-    DOTFILES=$HOME/.dotfiles/linux/
+    DOTFILES=$HOME/.dotfiles
 fi
 
-STOW_FOLDERS=$STOW_FOLDERS DOTFILES=$DOTFILES $DOTFILES/linux/install.zsh
+# install
+STOW_FOLDERS="$STOW_FOLDERS" DOTFILES="$DOTFILES" $DOTFILES/linux/install.sh
+
+# clean
+#STOW_FOLDERS="$STOW_FOLDERS" DOTFILES="$DOTFILES" $DOTFILES/linux/clean-env.sh
+

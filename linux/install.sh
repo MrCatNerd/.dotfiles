@@ -1,5 +1,19 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
-sh <(curl -L https://nixos.org/nix/install) --daemon
+sudo apt install -y stow
 
-ln -srf "nix" "$HOME/.config/nix"
+pushd "$DOTFILES"
+
+dirs
+
+for folder in $(echo "$STOW_FOLDERS" | sed "s/,/ /g")
+do
+    echo "stow $folder"
+    # stow -D "$folder"
+    # stow "$folder"
+done
+
+if [ "$(dirs -c)" ]; then
+    popd
+fi
+
