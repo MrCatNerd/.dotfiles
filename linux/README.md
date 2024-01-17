@@ -4,12 +4,7 @@
 
 ### WARNING: good luck [uninstalling nix](https://nixos.org/manual/nix/stable/installation/uninstall)
 
-  - note: neovim config [here](https://github.com/MrCatNerd/MyNeovimConfig)
-
 ```sh
-(export DOTFILES_DIR="your dotfiles dir"&& chmod +x scripts/start.sh)
-./scripts/start.sh
+git clone https://github.com/MrCatNerd/.dotfiles.git
 ```
 
-structure:
-    every config directory should have a setup.sh script that will be executed by scripts/setup_dotfiles.sh

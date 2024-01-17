@@ -1,0 +1,3 @@
+[submodule "linux/nvim"]
+	path = linux/nvim
+	url = https://github.com/MrCatNerd/MyNeovimConfig.git
