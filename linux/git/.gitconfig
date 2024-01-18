@@ -3,3 +3,5 @@
 	name = MrCatNerd
 [credential]
 	helper = store
+[core]
+    editor = $EDITOR
