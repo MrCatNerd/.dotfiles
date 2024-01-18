@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+
+sudo apt install -y stow
+
 if [[ -z $STOW_FOLDERS ]]; then
     STOW_FOLDERS="zsh,bash,vim,git,local_bin,kitty"
 fi
