@@ -2,6 +2,8 @@
 
 pushd "$DOTFILES"
 
+bash "./install/general.sh"
+
 for folder in $(echo "$STOW_FOLDERS" | sed "s/,/ /g")
 do
     echo "stow $folder"
