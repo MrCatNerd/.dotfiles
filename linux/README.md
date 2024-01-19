@@ -6,5 +6,6 @@
 
 ```sh
 git clone https://github.com/MrCatNerd/.dotfiles.git
+git switch dev
 ```
 
