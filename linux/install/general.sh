@@ -1,19 +1,24 @@
 #!/bin/env bash
 
+sudo apt install -y "build-essential"
+
 programs=( # all of the programs that are here will not be installed by a different script
         # pop os may not have it by default
-        "vim-gtk3" # supports clipboard
-        "python3-pip"
-        "python3-venv"
+        # "vim-gtk3" # supports clipboard
+        # "python3-pip"
+        # "python3-venv"
+        "python3"
 
         # just to make sure
-        "gcc"
-        "clang"
-        "build-essential"
-        "curl"
-        "make"
-        "cmake"
-        "git"
+        # "gcc"
+        # "clang"
+        # "curl"
+        # "make"
+        # "cmake"
+        # "git"
+        "stow"
+        # "neovim" # cuz nix
+        # install packages
 
         # work env
         # "fzy"
@@ -21,13 +26,15 @@ programs=( # all of the programs that are here will not be installed by a differ
         "ripgrep"
 
         # coding extras
-        "nodejs"
-        "npm"
-        "sqlite3"
+        "nodejs_21"
+        # "nodejs"
+        # "npm"
+        "sqlite"
 
         # others
         "nmap"
-        "hydra"
+        # "hydra"
+        "thc-hydra"
         "gimp"
 
         # maliciousness
@@ -42,5 +49,7 @@ programs=( # all of the programs that are here will not be installed by a differ
 
 
 for program in "${programs[@]}"; do
-    sudo apt install -y "$program"
+    # sudo apt install -y "$program"
+    # install packges
+    nix-env -iA nixpkgs."$program"
 done
