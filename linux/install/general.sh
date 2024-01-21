@@ -9,6 +9,7 @@ programs=( # all of the programs that are here will not be installed by a differ
         # "python3-venv"
         "python3"
         "python311Packages.pip"
+        "python311Packages.tkinter"
 
         # just to make sure
         # "gcc"
