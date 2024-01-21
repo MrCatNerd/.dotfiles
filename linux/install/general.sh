@@ -7,9 +7,6 @@ programs=( # all of the programs that are here will not be installed by a differ
         # "vim-gtk3" # supports clipboard
         # "python3-pip"
         # "python3-venv"
-        "python3"
-        "python311Packages.pip"
-        "python311Packages.tkinter"
 
         # just to make sure
         # "gcc"
@@ -46,7 +43,6 @@ programs=( # all of the programs that are here will not be installed by a differ
         # "cava"
         "neofetch"
         "htop"
-        "screenkey"
     )
 
 

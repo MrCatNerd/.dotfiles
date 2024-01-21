@@ -10,6 +10,8 @@ if [ -f "$script_path" ]; then
     bash "./install/nix.sh"
 fi
 
+bash "./install/apt.sh"
+
 bash "./install/general.sh"
 
 for folder in $(echo "$STOW_FOLDERS" | sed "s/,/ /g")
