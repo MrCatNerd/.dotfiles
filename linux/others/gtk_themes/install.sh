@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-echo WARNING: this script may not work on a system that isnt PopOS cause i am using a PopOS theme here
+echo "WARNING: this script may not work on your system (PopOS btw)"
 
 # Install themes
 
