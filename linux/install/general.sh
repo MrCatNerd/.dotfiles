@@ -16,7 +16,6 @@ programs=( # all of the programs that are here will not be installed by a differ
         # "make"
         # "cmake"
         # "git"
-        "stow"
         # "neovim" # cuz nix
         # install packages
 
@@ -32,6 +31,7 @@ programs=( # all of the programs that are here will not be installed by a differ
         "sqlite"
 
         # others
+        "stow"
         "nmap"
         # "hydra"
         "thc-hydra"

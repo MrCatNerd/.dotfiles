@@ -1,8 +1,8 @@
 #!/bin/env bash
 
-sudo apt install kitty -y
-# optional:
-sudo apt install imagemagick -y # kitten +icat <image-path.png>
+nix-env -iA \
+    nixpkgs.kitty \
+    nixpkgs.imagemagick # kitten +icat <image-path.png>
 
 # Dracula
 # THEME=https://raw.githubusercontent.com/dexpota/kitty-themes/master/themes/Dracula.conf
