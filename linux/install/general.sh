@@ -8,6 +8,7 @@ programs=( # all of the programs that are here will not be installed by a differ
         # "python3-pip"
         # "python3-venv"
         "python3"
+        "python311Packages.pip"
 
         # just to make sure
         # "gcc"
