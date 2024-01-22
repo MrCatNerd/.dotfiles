@@ -208,7 +208,7 @@ awful.screen.connect_for_each_screen(function(s)
 	set_wallpaper(s)
 
 	-- Each screen has its own tag table.
-	awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+	-- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 	local names = { "main", "www", "others", "Cat" }
 	local l = awful.layout.suit
 	local layouts = { l.tile, l.tile, l.floating, l.floating }
@@ -592,8 +592,8 @@ client.connect_signal("request::titlebars", function(c)
 			layout = wibox.layout.flex.horizontal,
 		},
 		{ -- Right
-			awful.titlebar.widget.floatingbutton(c),
 			awful.titlebar.widget.maximizedbutton(c),
+			awful.titlebar.widget.floatingbutton(c),
 			awful.titlebar.widget.stickybutton(c),
 			awful.titlebar.widget.ontopbutton(c),
 			awful.titlebar.widget.closebutton(c),
