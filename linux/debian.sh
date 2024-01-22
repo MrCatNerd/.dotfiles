@@ -3,7 +3,7 @@
 sudo apt install -y stow
 
 if [[ -z $STOW_FOLDERS ]]; then
-    STOW_FOLDERS="clangd,zsh,bash,vim,git,local_bin,kitty" # nix is automatically added
+    STOW_FOLDERS="clangd,zsh,bash,vim,git,local_bin,kitty,awesome,wallpapers" # nix is automatically added
 fi
 
 if [[ -z $DOTFILES ]]; then
