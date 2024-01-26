@@ -1,4 +1,4 @@
--- If LuaRocks is installed, make sure that packages installed through it are
+--25 If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
@@ -56,7 +56,10 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "default"))
+-- local theme_name = "default"
+-- local theme_name = "yoru"
+local theme_name = "zenburn"
+beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), theme_name))
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
@@ -75,7 +78,6 @@ modkey = "Mod1"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-	awful.layout.suit.floating,
 	awful.layout.suit.tile,
 	awful.layout.suit.tile.left,
 	awful.layout.suit.tile.bottom,
@@ -85,7 +87,8 @@ awful.layout.layouts = {
 	awful.layout.suit.spiral,
 	awful.layout.suit.spiral.dwindle,
 	awful.layout.suit.max,
-	awful.layout.suit.max.fullscreen,
+	-- awful.layout.suit.max.fullscreen,
+	-- awful.layout.suit.floating,
 	-- awful.layout.suit.magnifier,
 	-- awful.layout.suit.corner.nw,
 	-- awful.layout.suit.corner.ne,
@@ -197,6 +200,8 @@ local function set_wallpaper(s)
 			wallpaper = wallpaper(s)
 		end
 		gears.wallpaper.maximized(wallpaper, s, true)
+		gears.wallpaper.maximized(wallpaper, s, false)
+		-- gears.wallpaper.centered(wallpaper, s, 1)
 	end
 end
 
@@ -209,7 +214,16 @@ awful.screen.connect_for_each_screen(function(s)
 
 	-- Each screen has its own tag table.
 	-- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
-	local names = { "main", "www", "others", "Cat" }
+	local names = {
+		"main",
+		"web",
+		"work",
+		"code",
+		"games",
+		"tools",
+		"miscellaneous",
+	}
+
 	local l = awful.layout.suit
 	local layouts = { l.tile, l.tile, l.floating, l.floating }
 	awful.tag(names, s, layouts)
@@ -248,7 +262,8 @@ awful.screen.connect_for_each_screen(function(s)
 	})
 
 	-- Create the wibox
-	s.mywibox = awful.wibar({ position = "top", screen = s })
+	local dpi = require("beautiful.xresources").apply_dpi
+	s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(40) })
 
 	-- Add widgets to the wibox
 	s.mywibox:setup({
@@ -615,6 +630,8 @@ client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
 -- }}}
+
+beautiful.useless_gaps = 20
 
 -- Autostart Application
 -- awful.spawn.with_shell("~/.config/awesome/autostart.sh")

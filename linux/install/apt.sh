@@ -7,6 +7,9 @@ programs=( # all of the programs that are here will not be installed by a differ
         # "vim-gtk3" # supports clipboard
         "python3-pip"
         "python3-venv"
+        "nmap"
+        "hydra"
+        "polybar"
 
         "screenkey"
     )

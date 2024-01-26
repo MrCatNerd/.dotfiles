@@ -31,9 +31,6 @@ programs=( # all of the programs that are here will not be installed by a differ
 
         # others
         "stow"
-        "nmap"
-        # "hydra"
-        "thc-hydra"
         "gimp"
 
         # maliciousness
