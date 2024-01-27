@@ -18,5 +18,5 @@ programs=( # all of the programs that are here will not be installed by a differ
 for program in "${programs[@]}"; do
     # sudo apt install -y "$program"
     # install packges
-    sudo apt install -y "$program"
+    sudo apt-get install -y "$program"
 done

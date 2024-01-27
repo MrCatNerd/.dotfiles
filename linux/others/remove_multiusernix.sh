@@ -11,6 +11,12 @@ for i in $(seq 1 32); do
 done
 sudo groupdel nixbld
 
+sudo mv /etc/bashrc.backup-before-nix /etc/bashrc
+sudo mv /etc/bash.bashrc.backup-before-nix /etc/bash.bashrc
+sudo mv /etc/zshrc.backup-before-nix /etc/zshrc
+sudo mv /etc/zsh/zshrc.backup-before-nix /etc/zsh/zshrc
+
+
 printf "There may also be references to Nix in
     /etc/bash.bashrc
     /etc/bashrc
