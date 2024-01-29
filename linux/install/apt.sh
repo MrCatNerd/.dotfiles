@@ -10,6 +10,7 @@ programs=( # all of the programs that are here will not be installed by a differ
         "nmap"
         "hydra"
         "polybar"
+        "valgrind"
 
         "screenkey"
     )

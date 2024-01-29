@@ -14,6 +14,7 @@ alias say='spd-say -p 10 -r -10 -R 50 $*'
 alias f='cd "$(find -O2 ~ -type d 2>/dev/null | fzf)"'
 alias show_screenkeys="screenkey -s large --scr 1 -p bottom --geometry 510x300+1412+850"
 alias tls='tmux ls'
+alias vg='valgrind --leak-check=full --show-reachable=yes --track-origins=yes'
 
 # alias search_path='echo $PATH | sed "s/:/\\n/g" | fzf' # to cd into it do cd "$(search_path)"
 # alias tt='tmux a -t main||tmux new -s main'
