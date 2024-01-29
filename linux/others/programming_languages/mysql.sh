@@ -29,7 +29,7 @@ echo "--------------------------------"
 mysql --version
 echo "--------------------------------"
 
-printf "TO SET PASSWORD FOR ROOT USER:\nCREATE USER \"mrcat\"@\"localhost\" IDENTIFIED BY \"supersecretpassword\";\nTHIS MAY NOT BE REQUIRED"
+printf "TO SET PASSWORD FOR ROOT USER:\nCREATE USER \"mrcat\"@\"localhost\" IDENTIFIED BY \"supersecretpassword\";\nTHIS MAY NOT BE REQUIRED\n"
 echo "type \"exit\" to quit MySQL shell"
 sudo mysql -u root -p
 
