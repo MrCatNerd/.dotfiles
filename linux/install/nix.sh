@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-#TODO: singleuser mode cause multiuser mode sucks
-sh <(curl -L https://nixos.org/nix/install) --daemon
+# TODO: decide if i wanna use multi user mode or is single user mode
+# sh <(curl -L https://nixos.org/nix/install) --daemon
 # curl -L https://nixos.org/nix/install | sh
 

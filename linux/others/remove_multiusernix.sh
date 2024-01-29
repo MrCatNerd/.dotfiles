@@ -1,5 +1,7 @@
 #!/bin/env bash
 
+nix-channel --remove nixos
+
 sudo systemctl stop nix-daemon.service
 sudo systemctl disable nix-daemon.socket nix-daemon.service
 sudo systemctl daemon-reload
@@ -25,3 +27,4 @@ printf "There may also be references to Nix in
     /etc/zshrc
 "
 
+echo "If you are having root symlinks of nix or smh look at this: https://discourse.nixos.org/t/warning-name-collision-in-input-nix-expressions-skipping/1831" # nix is not fun to handle
