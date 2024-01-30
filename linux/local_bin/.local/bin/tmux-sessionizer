@@ -1,30 +1,49 @@
 #!/usr/bin/env bash
 # Shamelessly stolen from ThePrimeagen (https://raw.githubusercontent.com/ThePrimeagen/.dotfiles/master/bin/.local/scripts/tmux-sessionizer)
 
+# Function to gracefully handle errors
+handle_error() {
+    echo "An error occurred: $1" >&2
+    exit 1
+}
+
+# Check if a directory was provided as an argument
 if [[ $# -eq 1 ]]; then
-    selected=$1
+    selected="$1"
 else
-    # selected=$(find ~/work/builds ~/projects ~/ ~/work ~/personal ~/personal/yt -mindepth 1 -maxdepth 1 -type d | fzf)
-    selected=$(find -O2 ~ -type d 2>/dev/null | fzf)
+    # Select a directory interactively using fzf
+    selected=$(find -O2 ~ -type d 2>/dev/null | fzf) || handle_error "No directory selected"
 fi
 
-if [[ -z $selected ]]; then
+# Exit if no directory was selected
+if [[ -z "$selected" ]]; then
     exit 0
 fi
 
+# Extract the name of the selected directory
 selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
-echo $selected_name
-echo $tmux_running
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then # only happens if session does not exist
-    echo "Creating new session $selected_name"
-    tmux new-session -ds $selected_name -c $selected
-    # if in tmux, switch client to session
-    if [[ -z $TMUX ]]; then
-        tmux new-session -A -s "$selected_name" -c "$selected"
-        exit 0
-    fi
-else
-    tmux switch-client -t "$selected_name"
+# Check if tmux is running
+tmux_running=$(pgrep tmux)
+
+echo "Selected directory: $selected_name"
+echo "Tmux running: $tmux_running"
+
+# Check if a tmux session with the same name already exists
+if ! tmux has-session -t="$selected_name" 2>/dev/null; then
+    echo "Creating new session: $selected_name"
+    # Start a new tmux session
+    tmux new-session -ds "$selected_name" -c "$selected" || handle_error "Failed to create session"
 fi
+
+# If not already in tmux, switch to the new session
+if [[ -z $TMUX ]]; then
+    tmux new-session -A -s "$selected_name" -c "$selected" || handle_error "Failed to switch to session"
+    exit 0
+fi
+
+# Switch to the existing tmux session
+tmux switch-client -t "$selected_name" || handle_error "Failed to switch to session"
+
+exit 0
+
