@@ -12,7 +12,7 @@ if [[ $# -eq 1 ]]; then
     selected="$1"
 else
     # Select a directory interactively using fzf
-    selected=$(find -O2 ~ -type d 2>/dev/null | fzf) || handle_error "No directory selected"
+    selected=$(find -O2 ~ -mindepth 1 -maxdepth 8 -type d 2>/dev/null | fzf) || handle_error "No directory selected"
 fi
 
 # Exit if no directory was selected
