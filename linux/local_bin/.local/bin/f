@@ -1,0 +1,13 @@
+#!/bin/env bash
+
+# Define the directory to search in
+search_dir=${1:-$HOME}
+
+# Use find and fzf to select a directory
+selected_dir=$(find "$search_dir" -type d 2>/dev/null | fzf)
+
+# Change directory if a selection was made
+if [ -n "$selected_dir" ]; then
+    cd "$selected_dir" || exit 1
+fi
+
