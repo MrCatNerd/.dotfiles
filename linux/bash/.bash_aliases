@@ -17,3 +17,18 @@ alias say='spd-say -p 10 -r -10 -R 50 $*'
 alias show_screenkeys="screenkey -s large --scr 1 -p bottom --geometry 510x300+1412+850"
 alias tls='tmux ls'
 alias vg='valgrind --leak-check=full --show-reachable=yes --track-origins=yes'
+
+f() { # ik its not an alias
+    # Define the directory to search in
+    local search_dir=${1:-$HOME}
+
+    # Use find and fzf to select a directory
+    local selected_dir=$(find "$search_dir" -type d 2>/dev/null | fzf)
+
+    # Change directory if a selection was made
+    if [ -n "$selected_dir" ]; then
+        cd "$selected_dir"
+    fi
+}
+
+

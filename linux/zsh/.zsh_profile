@@ -3,3 +3,19 @@ export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
 
 # Where should I put you?
 bindkey -s ^f "tmux-sessionizer\n"
+
+f() {
+    # Define the directory to search in
+    local search_dir=${1:-$HOME}
+
+    # Use find and fzf to select a directory
+    local selected_dir=$(find "$search_dir" -type d 2>/dev/null | fzf)
+
+    # Change directory if a selection was made
+    if [ -n "$selected_dir" ]; then
+        cd "$selected_dir"
+    fi
+}
+
+
+
