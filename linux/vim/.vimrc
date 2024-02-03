@@ -6,7 +6,7 @@ set termguicolors
 colorscheme desert
 
 " sets
-" set number
+"set number
 set relativenumber
 set nu
 
@@ -32,7 +32,7 @@ set colorcolumn="80"
 
 set mouse=a
 
-"remaps
+" remaps
 
 vmap J :m '>+1<CR>gv=gv
 vmap K :m '<-2<CR>gv=gv
@@ -64,7 +64,6 @@ nnoremap <leader>e <C-^>
 
 nnoremap <leader><leader> <cmd>so %<CR>
 nnoremap <leader>xx <cmd>!chmod +x %<CR>
-nnoremap <C-f> <cmd>silent !tmux neww tmux-sessionizer<CR>
 
 nnoremap n nzzzv
 nnoremap N Nzzzv
