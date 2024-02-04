@@ -48,3 +48,6 @@ for program in "${programs[@]}"; do
     # install packges
     nix-env -iA nixpkgs."$program"
 done
+
+sudo locale-gen en_US.UTF-8
+
