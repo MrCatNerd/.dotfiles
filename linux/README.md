@@ -44,3 +44,5 @@ then run the script to use my config
 - Test this mess and fix small bugs
 - Create a stable branch ^
 
+"Dotfiles, a whirlwind of chaos, where hours vanish into a vortex of broken dreams" - Alfred Einstein 1995
+
