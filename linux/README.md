@@ -35,6 +35,8 @@ then run the script to use my config
 # TODO: arch
 ```
 
+if there are any errors, just remember that i am a bad programmer
+
 ---
 
 ## TODO
