@@ -12,7 +12,7 @@ fi
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # If you come from bash you might have to change your $PATH.
-export PATH="/usr/local/bin:$HOME/.local/bin/scripts:$PATH"
+export PATH="$PATH:/usr/local/bin"
 
 # Include ~/.local/bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
@@ -23,6 +23,12 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+# Include /usr/local/go/bin if it exists
+if [ -d "/usr/local/go/bin" ] ; then
+    PATH="/usr/local/go/bin:$PATH"
+fi
+
 
 # Run ~/.zsh_aliases if it exists as a file
 if [ -f "$HOME/.zsh_aliases" ]; then
