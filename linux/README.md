@@ -46,5 +46,5 @@ if there are any errors, just remember that i am a bad programmer
 - Test this mess and fix small bugs
 - Create a stable branch ^
 
-"Dotfiles, a whirlwind of chaos, where hours vanish into a vortex of broken dreams" - Alfred Einstein 1995
+"Dotfiles, a whirlwind of chaos, where hours vanish into a vortex of broken dreams" - Alfred Einstein 1995, totally not ChatGPT
 
