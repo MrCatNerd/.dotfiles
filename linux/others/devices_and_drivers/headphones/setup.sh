@@ -2,8 +2,11 @@
 
 echo "WARNING: this script was created mainly for PopOS and my personal headphones and might not work for your system"
 echo "WARNING: this script is still baking and it wont fix ur problems its just a mess for now"
+echo "WARNING: this is a bad script"
+echo "WARNING: if you are not sure about what you are doing, please do not run this script, but you already ran this script or else you wouldn't have seen this message so its your problem"
+echo "WARNING: there are too many warnings"
 
-echo "do: sudo apt remove pulseaudio if you want this thingy to work, at least i think so."
+echo "do: sudo apt remove pulseaudio if you want this thingy to work, at least i think so. idk do your own research before listening to me..."
 
 # Array of programs to check/install
 echo "Installing tools for headphones:"

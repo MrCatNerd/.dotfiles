@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-echo Setting up nerd fonts
+echo "Setting up nerd fonts"
 
 declare -a fonts=(
     # FiraCode
