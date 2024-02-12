@@ -5,5 +5,15 @@
 	helper = store
 [core]
     editor = $EDITOR
+	untrackedcache = true
+	fsmonitor = true
 [init]
 	defaultBranch = main
+[rerere]
+	enable = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[fetch]
+	writeCommitGraph = true
