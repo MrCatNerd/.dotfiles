@@ -15,7 +15,7 @@ programs=( # all of the programs that are here will not be installed by a differ
         # "make"
         # "cmake"
         # "git"
-        "neovim" # cuz nix
+        # "neovim" # cuz nix
         # install packages
 
         # work env

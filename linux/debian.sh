@@ -3,7 +3,7 @@
 sudo apt install -y stow
 
 if [[ -z $STOW_FOLDERS ]]; then
-    STOW_FOLDERS="clangd,zsh,bash,vim,git,local_bin,kitty,i3,wallpapers" # nix is automatically added
+    STOW_FOLDERS="clangd,zsh,bash,vim,git,local_bin,kitty,i3,wallpapers,neovim" # nix is automatically added
 fi
 
 if [[ -z $DOTFILES ]]; then
@@ -12,6 +12,10 @@ fi
 
 # install
 STOW_FOLDERS="$STOW_FOLDERS" DOTFILES="$DOTFILES" $DOTFILES/install.sh
+
+pushd others
+./autorun.sh
+popd
 
 # clean
 # STOW_FOLDERS="$STOW_FOLDERS" DOTFILES="$DOTFILES" $DOTFILES/clean-env.sh

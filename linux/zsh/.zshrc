@@ -52,6 +52,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 # make clangd work
 export CPLUS_INCLUDE_PATH=/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11
+export CLANGD_FLAGS="-I." # :(
 
 # change fzf look
 export FZF_DEFAULT_OPTS='--layout=reverse --border --inline-info --prompt="$ " --pointer=">"'
