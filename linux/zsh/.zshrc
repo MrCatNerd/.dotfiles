@@ -14,6 +14,10 @@ fi
 # If you come from bash you might have to change your $PATH.
 export PATH="$PATH:/usr/local/bin"
 
+if [ -d "/usr/local/go/bin" ] ; then
+    PATH="/usr/local/go/bin:$PATH"
+fi
+
 # Include ~/.local/bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
@@ -51,8 +55,9 @@ export ZSH="$HOME/.oh-my-zsh"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # make clangd work
-export CPLUS_INCLUDE_PATH=/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11
-export CLANGD_FLAGS="-I." # :(
+export CPLUS_INCLUDE_PATH=/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11:.
+# why the hell unset is temporary but export is permanent
+unset CLANGD_FLAGS # :(
 
 # change fzf look
 export FZF_DEFAULT_OPTS='--layout=reverse --border --inline-info --prompt="$ " --pointer=">"'

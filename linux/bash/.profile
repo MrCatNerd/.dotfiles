@@ -29,6 +29,5 @@ fi
 
 # make clangd work
 export CPLUS_INCLUDE_PATH=/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11
-export CLANGD_FLAGS="-I." # :(
 
 if [ -e /home/mrcat/.nix-profile/etc/profile.d/nix.sh ]; then . /home/mrcat/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
