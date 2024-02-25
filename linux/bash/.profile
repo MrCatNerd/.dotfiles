@@ -1,3 +1,4 @@
+
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
@@ -31,3 +32,4 @@ fi
 export CPLUS_INCLUDE_PATH=/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11
 
 if [ -e /home/mrcat/.nix-profile/etc/profile.d/nix.sh ]; then . /home/mrcat/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
