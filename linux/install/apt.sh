@@ -11,8 +11,9 @@ programs=( # all of the programs that are here will not be installed by a differ
         "hydra"
         "polybar"
         "valgrind"
+        "cloc"
+        "wine"
         "bear"
-
         "screenkey"
     )
 
