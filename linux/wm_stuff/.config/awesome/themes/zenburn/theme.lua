@@ -10,7 +10,7 @@ local dpi = require("beautiful.xresources").apply_dpi
 local theme = {}
 -- theme.wallpaper = themes_path .. "zenburn/zenburn-background.png"
 theme.wallpaper =
-	require("gears").surface.load_uncached(string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "paper.png"))
+	require("gears").surface.load_uncached(string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "ground.png"))
 theme.hotkeys_modifiers_fg = "#FFFFFF"
 -- }}}
 
