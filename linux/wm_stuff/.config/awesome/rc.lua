@@ -57,8 +57,7 @@ end
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 -- local theme_name = "default"
--- local theme_name = "yoru"
-local theme_name = "zenburn"
+local theme_name = "catburn"
 beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), theme_name))
 
 -- This is used later as the default terminal and editor to run.
@@ -190,6 +189,54 @@ local tasklist_buttons = gears.table.join(
 		awful.client.focus.byidx(-1)
 	end)
 )
+-- }}}
+
+-- {{{ Wallpaper
+
+-- Wallpaper slideshow
+-- in stable version  fhttps://github.com/awesomeWM/awesome/issues/3528
+--[[ local function get_random_file_from_dir(path, exts, absolute_path)
+	local files, valid_exts = {}, {}
+	local Gio = require("lgi")
+
+	-- Transforms { "jpg", ... } into { [jpg] = #, ... }
+	if exts then
+		for i, j in ipairs(exts) do
+			valid_exts[j:lower():gsub("^[.]", "")] = i
+		end
+	end
+
+	-- Build a table of files from the path with the required extensions
+	local file_list = Gio.File.new_for_path(path):enumerate_children("standard::*", 0)
+
+	-- This will happen when the directory doesn't exist.
+	if not file_list then
+		return nil
+	end
+
+	for file in
+		function()
+			return file_list:next_file()
+		end
+	do
+		if file:get_file_type() == "REGULAR" then
+			local file_name = file:get_display_name()
+
+			if not exts or valid_exts[file_name:lower():match(".+%.(.*)$") or ""] then
+				table.insert(files, file_name)
+			end
+		end
+	end
+
+	if #files == 0 then
+		return nil
+	end
+
+	-- Return a randomly selected filename from the file table
+	local file = files[math.random(#files)]
+
+	return absolute_path and (path:gsub("[/]*$", "") .. "/" .. file) or file
+end ]]
 
 local function set_wallpaper(s)
 	-- Wallpaper
@@ -200,10 +247,21 @@ local function set_wallpaper(s)
 			wallpaper = wallpaper(s)
 		end
 		gears.wallpaper.maximized(wallpaper, s, true)
-		gears.wallpaper.maximized(wallpaper, s, false)
+		-- gears.wallpaper.maximized(wallpaper, s, false)
 		-- gears.wallpaper.centered(wallpaper, s, 1)
 	end
 end
+
+--[[ gears.timer({
+	timeout = 10 * 60, -- in seconds
+	autostart = true,
+	callback = function()
+		for s in screen do
+			-- I got no idea what to do here
+			-- maybe run a bash script to switch wallpapers or smh
+		end
+	end,
+}) ]]
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
@@ -324,16 +382,21 @@ globalkeys = gears.table.join(
 	awful.key({ modkey, "Shift" }, "j", function()
 		awful.client.swap.byidx(1)
 	end, { description = "swap with next client by index", group = "client" }),
+
 	awful.key({ modkey, "Shift" }, "k", function()
 		awful.client.swap.byidx(-1)
 	end, { description = "swap with previous client by index", group = "client" }),
+
 	awful.key({ modkey, "Control" }, "j", function()
 		awful.screen.focus_relative(1)
 	end, { description = "focus the next screen", group = "screen" }),
+
 	awful.key({ modkey, "Control" }, "k", function()
 		awful.screen.focus_relative(-1)
 	end, { description = "focus the previous screen", group = "screen" }),
+
 	awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
+
 	awful.key({ modkey }, "Tab", function()
 		awful.client.focus.history.previous()
 		if client.focus then
@@ -382,8 +445,12 @@ globalkeys = gears.table.join(
 	end, { description = "restore minimized", group = "client" }),
 
 	-- Prompt
+	-- Uses rofi
+	-- awful.key({ modkey }, "r", function()
+	--     awful.screen.focused().mypromptbox:run()
+	-- end, { description = "run prompt", group = "launcher" }),
 	awful.key({ modkey }, "r", function()
-		awful.screen.focused().mypromptbox:run()
+		awful.spawn("rofi -show drun")
 	end, { description = "run prompt", group = "launcher" }),
 
 	awful.key({ modkey }, "x", function()
@@ -626,6 +693,7 @@ end)
 client.connect_signal("focus", function(c)
 	c.border_color = beautiful.border_focus
 end)
+
 client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
@@ -635,7 +703,6 @@ beautiful.useless_gaps = 30
 beautiful.gap_single_client = true
 
 -- Autostart Application
--- awful.spawn.with_shell("~/.config/awesome/autostart.sh")
--- awful.spawn.with_shell("kitty")
-awful.spawn.with_shell("setxkbmap dvorak")
-awful.spawn.with_shell("picom --experimental-backends -b")
+-- awful.spawn.with_shell("$HOME/.config/awesome/autostart.sh")
+awful.spawn.with_shell("setxkbmap dvorak") -- dvorak btw
+awful.spawn.with_shell("picom --experimental-backends -b --config=$HOME/.config/picom/picom.ini") -- picom

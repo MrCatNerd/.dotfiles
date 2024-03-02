@@ -9,12 +9,10 @@ programs=( # all of the programs that are here will not be installed by a differ
         "python3-venv"
         "nmap"
         "hydra"
-        "polybar"
         "valgrind"
         "cloc"
         "wine"
         "bear"
-        "picom"
         "screenkey"
     )
 
