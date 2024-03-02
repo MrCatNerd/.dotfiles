@@ -14,6 +14,8 @@ programs=( # all of the programs that are here will not be installed by a differ
         "wine"
         "bear"
         "screenkey"
+        "git"
+        "git-lfs"
     )
 
 
