@@ -378,6 +378,14 @@ globalkeys = gears.table.join(
 		mymainmenu:show()
 	end, { description = "show main menu", group = "awesome" }),
 
+	awful.key({ modkey, "Shift" }, "s", function() -- screenshots
+		awful.spawn("flameshot gui")
+	end, { description = "Spawn Flameshot", group = "xx" }),
+
+	awful.key({ modkey }, "space", function()
+		print("meow")
+	end, { description = "Switch Layout", group = "Keyboard" }),
+
 	-- Layout manipulation
 	awful.key({ modkey, "Shift" }, "j", function()
 		awful.client.swap.byidx(1)

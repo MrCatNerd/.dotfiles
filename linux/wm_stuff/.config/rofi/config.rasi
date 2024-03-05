@@ -9,7 +9,7 @@ terminal: "kitty";
           /* Behavior Settings */
     case-sensitive: false;
 cycle: true;
-                    dpi: 250;
+                    dpi: -1; /* 250 is quite large */
                     auto-select: false;
                     sidebar-mode: true; // TODO: check this out
                     hover-select: false;

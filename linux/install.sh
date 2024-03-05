@@ -2,9 +2,6 @@
 
 pushd "$DOTFILES"
 
-sudo apt update -y
-sudo apt upgrade -y
-
 if [ -f "$script_path" ]; then
     echo "Executing ./install/nix.sh"
     bash "./install/nix.sh"
@@ -16,8 +13,9 @@ bash "./install/general.sh"
 
 for folder in $(echo "$STOW_FOLDERS" | sed "s/,/ /g")
 do
+    # TODO: find out why stow is erroring but it still works and i got no idea why
     echo "stow $folder"
-    stow -D "$folder" # TODO: find out why this is erroring but it still works and i got no idea why
+    stow -D "$folder"
     stow "$folder"
 
     script_path="./install/$folder.sh"
@@ -27,7 +25,5 @@ do
         bash "$script_path"
     fi
 done
-
-sudo apt autoremove -y
 
 popd

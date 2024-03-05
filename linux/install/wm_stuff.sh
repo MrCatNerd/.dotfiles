@@ -1,7 +1,8 @@
 #!/bin/env bash
 
 
-sudo apt-get install awesome picom rofi -y
+sudo apt-get -y install awesome picom rofi flameshot x11-xkb-utils
+
 
 # Rofi themes stuff
 mkdir -p "/usr/share/rofi/themes"
