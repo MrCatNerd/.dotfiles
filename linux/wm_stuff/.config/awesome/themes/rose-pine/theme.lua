@@ -1,27 +1,35 @@
 -------------------------------
---  "CatBurn" awesome theme  --
---    It's ZenBurn but cat   --
+--  Rose Pine awesome theme  --
+--  Made By MrCatNerd         --
 -------------------------------
+--
+-- RIP 30 minutes of my life :(
 
 local themes_path = require("gears.filesystem").get_themes_dir()
 local dpi = require("beautiful.xresources").apply_dpi
 
-local black = "#3f3f3f"
-local dblue = "#00ccff"
-local dgrey = "#333333"
-local green = "#7fb219"
-local white = "#ffffff"
--- they arent used in this moment
--- local cyan = "#7f4de6"
--- local lblue = "#6c9eab"
--- local lgrey = "#d2d2d2"
--- local red = "#e04613"
+local base = "#191724"
+local surface = "#1f1d2e"
+local overlay = "#26233a"
+local muted = "#6e6a86"
+local subtle = "#908caa"
+local text = "#e0def4"
+local love = "#eb6f92"
+local gold = "#f6c177"
+local rose = "#ebbcba"
+local pine = "#31748f"
+local foam = "#9ccfd8"
+local iris = "#c4a7e7"
+local highlightlow = "#21202e"
+local highlightmed = "#403d52"
+local highlighthigh = "#524f67"
 
 -- {{{ Main
 local theme = {}
 -- theme.wallpaper = themes_path .. "zenburn/zenburn-background.png"
-theme.wallpaper =
+theme.wallpaper = require("gears").surface.load_uncached(
 	require("gears").surface.load_uncached(string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "ground.png"))
+)
 theme.hotkeys_modifiers_fg = "#FFFFFF"
 -- }}}
 
@@ -29,12 +37,13 @@ theme.hotkeys_modifiers_fg = "#FFFFFF"
 theme.font = "Hack Nerd Font 10"
 
 -- {{{ Colors
-theme.fg_normal = "#AAAAAA"
-theme.fg_focus = "#F0DFAF"
-theme.fg_urgent = "#CC9393"
-theme.bg_normal = "#222222"
-theme.bg_focus = "#1E2320"
-theme.bg_urgent = "#3F3F3F"
+theme.fg_focus = text
+theme.fg_normal = text
+theme.fg_urgent = text
+
+theme.bg_focus = pine
+theme.bg_normal = base
+theme.bg_urgent = gold
 
 theme.bg_systray = theme.bg_normal
 -- }}}
@@ -42,14 +51,14 @@ theme.bg_systray = theme.bg_normal
 -- {{{ Borders
 theme.useless_gap = dpi(5)
 theme.border_width = dpi(2)
-theme.border_normal = "#3F3F3F"
-theme.border_focus = "#6F6F6F"
-theme.border_marked = "#CC9393"
+theme.border_normal = muted
+theme.border_focus = rose
+theme.border_marked = love
 -- }}}
 
 -- {{{ Titlebars
-theme.titlebar_bg_focus = "#3F3F3F"
-theme.titlebar_bg_normal = "#3F3F3F"
+theme.titlebar_bg_focus = surface
+theme.titlebar_bg_normal = surface
 -- }}}
 
 -- There are other variable sets
@@ -74,7 +83,7 @@ theme.titlebar_bg_normal = "#3F3F3F"
 -- }}}
 
 -- {{{ Mouse finder
-theme.mouse_finder_color = "#CC9393"
+theme.mouse_finder_color = rose
 -- mouse_finder_[timeout|animate_timeout|radius|factor]
 -- }}}
 
@@ -90,33 +99,28 @@ theme.awesome_icon = themes_path .. "zenburn/awesome-icon.png"
 theme.menu_submenu_icon = themes_path .. "default/submenu.png"
 -- }}}
 
--- {{{ Stolen from powerarrow
-theme.binclock_bg = "#777e76"
-theme.binclock_fga = "#CCCCCC"
-theme.binclock_fgi = "#444444"
--- theme.taglist_bg_focus                      = black
-theme.taglist_fg_focus = dblue
-theme.tasklist_bg_focus = "#222222"
-theme.tasklist_fg_focus = dblue
-theme.textbox_widget_as_label_font_color = white
+theme.taglist_fg_focus = rose
+theme.tasklist_bg_focus = base
+theme.tasklist_fg_focus = rose
+theme.textbox_widget_as_label_font_color = subtle
 theme.textbox_widget_margin_top = 1
-theme.text_font_color_1 = green
-theme.text_font_color_2 = dblue
-theme.text_font_color_3 = white
-theme.notify_font_color_1 = green
-theme.notify_font_color_2 = dblue
-theme.notify_font_color_3 = black
-theme.notify_font_color_4 = white
+theme.text_font_color_1 = foam
+theme.text_font_color_2 = rose
+theme.text_font_color_3 = subtle
+theme.notify_font_color_1 = foam
+theme.notify_font_color_2 = pine
+theme.notify_font_color_3 = surface
+theme.notify_font_color_4 = subtle
 theme.notify_font = "Monaco 7"
 theme.notify_fg = theme.fg_normal
 theme.notify_bg = theme.bg_normal
 theme.notify_border = theme.border_focus
-theme.awful_widget_bckgrd_color = dgrey
-theme.awful_widget_border_color = dgrey
-theme.awful_widget_color = dblue
-theme.awful_widget_gradien_color_1 = orange
-theme.awful_widget_gradien_color_2 = orange
-theme.awful_widget_gradien_color_3 = orange
+theme.awful_widget_bckgrd_color = overlay
+theme.awful_widget_border_color = overlay
+theme.awful_widget_color = foam
+theme.awful_widget_gradien_color_1 = iris
+theme.awful_widget_gradien_color_2 = iris
+theme.awful_widget_gradien_color_3 = iris
 theme.awful_widget_height = 14
 theme.awful_widget_margin_top = 2
 -- }}}

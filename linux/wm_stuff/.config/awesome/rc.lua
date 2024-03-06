@@ -57,7 +57,7 @@ end
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 -- local theme_name = "default"
-local theme_name = "catburn"
+local theme_name = "rose-pine"
 beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), theme_name))
 
 -- This is used later as the default terminal and editor to run.
