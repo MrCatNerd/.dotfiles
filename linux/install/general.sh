@@ -24,9 +24,6 @@ programs=( # all of the programs that are here will not be installed by a differ
         "ripgrep"
 
         # coding extras
-        "nodejs_21"
-        # "nodejs"
-        # "npm"
         "sqlite"
 
         # others

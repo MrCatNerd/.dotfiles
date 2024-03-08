@@ -43,7 +43,7 @@ theme.fg_urgent = text
 
 theme.bg_focus = pine
 theme.bg_normal = base
-theme.bg_urgent = gold
+theme.bg_urgent = iris
 
 theme.bg_systray = theme.bg_normal
 -- }}}

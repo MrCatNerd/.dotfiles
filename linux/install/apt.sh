@@ -3,21 +3,23 @@
 sudo apt install -y "build-essential"
 
 programs=( # all of the programs that are here will not be installed by a different script
-        # pop os may not have it by default
-        # "vim-gtk3" # supports clipboard
-        "python3-pip"
-        "python3-venv"
-        "nmap"
-        "hydra"
-        "valgrind"
-        "cloc"
-        "wine"
-        "bear"
-        "screenkey"
-        "git"
-        "git-lfs"
-        "openvpn"
-    )
+    # pop os may not have it by default
+    # "vim-gtk3" # supports clipboard
+    "python3-pip"
+    "python3-venv"
+    "nmap"
+    "hydra"
+    "valgrind"
+    "cloc"
+    "wine"
+    "bear"
+    "screenkey"
+    "git"
+    "git-lfs"
+    "openvpn"
+    "nodejs"
+    "npm"
+)
 
 
 for program in "${programs[@]}"; do
