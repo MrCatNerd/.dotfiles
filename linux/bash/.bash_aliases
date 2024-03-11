@@ -4,6 +4,7 @@
 # jokes:
 alias dog='cat'
 alias meow='echo meow # $*'
+alias bake='make'
 
 alias explorer='xdg-open'
 alias vim='nvim'

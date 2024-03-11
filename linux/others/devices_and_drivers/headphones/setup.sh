@@ -49,7 +49,7 @@ done
 # https://www.reddit.com/r/pop_os/comments/uix809/guide_to_improve_audio_quality_on_pop_os_2204/
 # https://support.system76.com/articles/audio/
 
-echo "Starting configuration for JBL Quantum 100"
+# echo "Starting configuration for JBL Quantum 100"
 
 # Add your specific configurations for JBL Quantum 100 here if needed
 # This may involve adjusting sound settings, configuring ALSA, etc.
@@ -67,7 +67,7 @@ echo "Starting configuration for JBL Quantum 100"
 #sudo alsa reload # not forcing
 
 # This command will check the status of PipeWire and show any errors if automatic restarts raised any errors
-systemctl --user status pipewire
+# systemctl --user status pipewire
 
 # echo removing pulseaudio and pipewire configs
 #rm -r ~/.config/pulse/*
@@ -75,7 +75,7 @@ systemctl --user status pipewire
 
 # read in the article about this:
 #sudo sed -i 's/--\["session.suspend-timeout-seconds"\] = 5/\["session.suspend-timeout-seconds"\] = 0/' /usr/share/wireplumber/main.lua.d/50-alsa-config.lua
-#systemctl restart --user pipewire.service
+# systemctl restart --user pipewire.service
 
 # With hardware that uses the snd_hda_intel kernel module, rare bugs can cause the sound card to not be detected.
 # If you're having this issue, try running these commands to force the usage of a specific audio driver (system76 article)
@@ -85,9 +85,7 @@ systemctl --user status pipewire
 
 #alsactl init # read here: https://www.maketecheasier.com/install-configure-pipewire-linux/
 
-#TODO: meow
-
-echo "Configuration completed for JBL Quantum 100"
+# echo "Configuration completed for JBL Quantum 100"
 
 
 #sudo apt-get install --reinstall pipewire pipewire-pulse

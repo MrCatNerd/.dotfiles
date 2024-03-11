@@ -315,11 +315,19 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-	awful.key({ "Shift" }, "Alt_L", function()
+	awful.key({ "Shift" }, "Alt_L", function() -- idk why but it doesn't work so i made my own switcher
 		mykeyboardlayout.next_layout()
 	end),
 	awful.key({ "Mod1" }, "Shift_L", function()
 		mykeyboardlayout.next_layout()
+	end),
+
+	awful.key({ "Mod4" }, "space", function() -- my own layout switcher
+		require("keyboard_layout_switcher").switch_layouts()
+	end),
+
+	awful.key({ "Mod1" }, "Shift_L", function() -- scroll through layouts (if you have 3 or more)
+		require("keyboard_layout_switcher").scroll_layouts()
 	end),
 
 	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
