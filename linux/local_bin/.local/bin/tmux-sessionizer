@@ -26,9 +26,6 @@ selected_name=$(basename "$selected" | tr . _)
 # Check if tmux is running
 tmux_running=$(pgrep tmux)
 
-echo "Selected directory: $selected_name"
-echo "Tmux running: $tmux_running"
-
 # Check if a tmux session with the same name already exists
 if ! tmux has-session -t="$selected_name" 2>/dev/null; then
     echo "Creating new session: $selected_name"

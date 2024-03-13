@@ -19,6 +19,12 @@ programs=( # all of the programs that are here will not be installed by a differ
     "openvpn"
     "nodejs"
     "npm"
+
+    # manual pages
+    "man-db"
+    "manpages-posix"
+    "manpages-dev"
+    "manpages-posix-dev"
 )
 
 

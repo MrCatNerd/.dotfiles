@@ -205,8 +205,8 @@ local function set_wallpaper(s)
 		if type(wallpaper) == "function" then
 			wallpaper = wallpaper(s)
 		end
-		gears.wallpaper.maximized(wallpaper, s, true)
-		-- gears.wallpaper.maximized(wallpaper, s, false)
+		-- gears.wallpaper.maximized(wallpaper, s, true)
+		gears.wallpaper.maximized(wallpaper, s, false)
 		-- gears.wallpaper.centered(wallpaper, s, 1)
 	end
 end
@@ -322,13 +322,13 @@ globalkeys = gears.table.join(
 		mykeyboardlayout.next_layout()
 	end),
 
-	awful.key({ "Mod4" }, "space", function() -- my own layout switcher
+	awful.key({ "Mod4" }, "space", function() -- my own keyboard layout switcher
 		require("keyboard_layout_switcher").switch_layouts()
-	end),
+	end, { description = "Switch between last and current keyboard layouts" }),
 
-	awful.key({ "Mod1" }, "Shift_L", function() -- scroll through layouts (if you have 3 or more)
+	awful.key({ "Mod1" }, "space", function()
 		require("keyboard_layout_switcher").scroll_layouts()
-	end),
+	end, { description = "Scroll through keyboard layouts" }),
 
 	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
@@ -507,14 +507,19 @@ for i = 1, 9 do
 			end
 		end, { description = "toggle tag #" .. i, group = "tag" }),
 		-- Move client to tag.
-		awful.key({ modkey, "Shift" }, "#" .. i + 9, function()
-			if client.focus then
-				local tag = client.focus.screen.tags[i]
-				if tag then
-					client.focus:move_to_tag(tag)
+		awful.key(
+			{ modkey, "Shift" },
+			"#" .. i + 9,
+			function() -- TODO: better remap for this (or maybe ill just get used to this remap)
+				if client.focus then
+					local tag = client.focus.screen.tags[i]
+					if tag then
+						client.focus:ove_to_tag(tag)
+					end
 				end
-			end
-		end, { description = "move focused client to tag #" .. i, group = "tag" }),
+			end,
+			{ description = "move focused client to tag #" .. i, group = "tag" }
+		),
 		-- Toggle tag on focused client.
 		awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9, function()
 			if client.focus then

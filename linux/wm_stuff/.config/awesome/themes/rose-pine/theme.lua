@@ -1,6 +1,6 @@
 -------------------------------
 --  Rose Pine awesome theme  --
---  Made By MrCatNerd         --
+--  Made By MrCatNerd        --
 -------------------------------
 --
 -- RIP 30 minutes of my life :(
@@ -28,7 +28,9 @@ local highlighthigh = "#524f67"
 local theme = {}
 -- theme.wallpaper = themes_path .. "zenburn/zenburn-background.png"
 theme.wallpaper = require("gears").surface.load_uncached(
-	require("gears").surface.load_uncached(string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "ground.png"))
+	require("gears").surface.load_uncached(
+		string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "background.png")
+	)
 )
 theme.hotkeys_modifiers_fg = "#FFFFFF"
 -- }}}

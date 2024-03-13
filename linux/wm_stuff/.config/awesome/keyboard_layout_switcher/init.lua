@@ -1,4 +1,4 @@
-local M = {} -- TODO: finish this and stuff
+local M = {}
 
 local awful = require("awful")
 
@@ -7,7 +7,7 @@ local cache = { -- why tf lua is 1 based indexed
 	last_layout_index = 2,
 }
 
-local layouts = { "dvorak", "il" }
+local layouts = { "dvorak", "il", "us" }
 
 function M.switch_layouts() -- switch through current and last layout thingy
 	cache.current_layout_index, cache.last_layout_index = cache.last_layout_index, cache.current_layout_index
@@ -25,8 +25,7 @@ function M.scroll_layouts(scroll_direction)
 	end
 
 	cache.last_layout_index = cache.current_layout_index
-	cache.current_layout_index = (cache.current_layout_index % #layouts) + scroll_direction
-
+	cache.current_layout_index = (cache.current_layout_index + scroll_direction - 1) % #layouts + 1
 	awful.spawn.with_shell("setxkbmap " .. layouts[cache.current_layout_index])
 end
 

@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# I am too lazy to add a plugin for switching sessions so i just refactored the tmux-sessionizer script to switch between sessions
+
+# Function to gracefully handle errors
+handle_error() {
+    echo "An error occurred: $1" >&2
+    exit 1
+}
+
+# Check if a session was provided as an argument
+if [[ $# -eq 1 ]]; then
+    selected="$1"
+else
+    # Select a session interactively using fzf
+    selected=$(tmux list-sessions | awk -F ': ' '{print $1}' | fzf) || handle_error "No session selected"
+fi
+
+# Check if tmux is running
+tmux_running=$(pgrep tmux)
+
+# Check if a tmux session with the same name already exists
+if ! tmux has-session -t="$selected" 2>/dev/null; then
+    echo "Creating new session: $selected"
+    # Start a new tmux session
+    tmux new-session -ds "$selected" -c "$selected" || handle_error "Failed to create session"
+fi
+
+# If not already in tmux, switch to the new session ( I got no idea how is this possible but i am still keeping it in just to be safe)
+if [[ -z $TMUX ]]; then
+    tmux new-session -A -s "$selected" -c "$selected" || handle_error "Failed to switch to session"
+    exit 0
+fi
+
+# Switch to the existing tmux session
+tmux switch-client -t "$selected" || handle_error "Failed to switch to session"
+
+exit 0
+
