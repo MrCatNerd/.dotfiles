@@ -1,29 +1,32 @@
 #!/bin/env bash
 
-sudo apt install -y "build-essential"
+programs=(
+    # outdated cuz stable release model
+    # "nodejs"
+    # "npm"
 
-programs=( # all of the programs that are here will not be installed by a different script
-    # pop os may not have it by default
-    # "vim-gtk3" # supports clipboard
-    "python3-pip"
-    "python3-venv"
-    "nmap"
-    "hydra"
-    "valgrind"
-    "cloc"
-    "wine"
     "bear"
-    "screenkey"
+    "build-essential"
+    "cloc"
+    "gimp"
     "git"
     "git-lfs"
+    "hydra"
+    "nmap"
     "openvpn"
-    "nodejs"
-    "npm"
+    "python3-pip"
+    "python3-venv"
+    "screenkey"
+    "valgrind"
+    "wine"
+
+    # pop os may not have it by default
+    # "vim-gtk3" # supports clipboard
 
     # manual pages
     "man-db"
-    "manpages-posix"
     "manpages-dev"
+    "manpages-posix"
     "manpages-posix-dev"
 )
 

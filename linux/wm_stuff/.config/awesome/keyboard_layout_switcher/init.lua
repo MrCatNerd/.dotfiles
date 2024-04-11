@@ -24,8 +24,8 @@ function M.scroll_layouts(scroll_direction)
 		scroll_direction = 1
 	end
 
-	cache.last_layout_index = cache.current_layout_index
 	cache.current_layout_index = (cache.current_layout_index + scroll_direction - 1) % #layouts + 1
+
 	awful.spawn.with_shell("setxkbmap " .. layouts[cache.current_layout_index])
 end
 
