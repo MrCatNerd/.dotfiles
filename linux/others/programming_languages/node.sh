@@ -11,3 +11,6 @@ node -v # should print `v20.12.2`
 
 # verifies the right NPM version is in the environment
 npm -v # should print `10.5.0`
+
+# magic stuff
+nvm alias default node
