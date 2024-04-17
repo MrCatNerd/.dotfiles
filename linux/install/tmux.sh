@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-sudo apt install tmux -y
+sudo apt-get install -y tmux
 
 echo "Installing TPM"
 git clone https://github.com/tmux-plugins/tpm.git $HOME/.tmux/plugins/tpm

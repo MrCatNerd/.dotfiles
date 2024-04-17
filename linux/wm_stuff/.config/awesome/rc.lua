@@ -211,19 +211,21 @@ local function set_wallpaper(s)
 	end
 end
 
---[[ gears.timer({
-	timeout = 10 * 60, -- in seconds
-	autostart = true,
-	callback = function()
-		for s in screen do
-			-- I got no idea what to do here
-			-- maybe run a bash script to switch wallpapers or smh
-		end
-	end,
-}) ]]
+-- gears.timer({
+-- 	timeout = 1, -- in seconds
+-- 	autostart = true,
+-- 	callback = function()
+-- 		-- for s in screen do
+-- 		-- 	-- I got no idea what to do here
+-- 		-- 	-- maybe run a bash script to switch wallpapers or smh
+-- 		-- end
+-- 	end,
+-- })
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
+
+beautiful.tasklist_plain_task_name = true -- disable the extra tasklist client property notification icons
 
 awful.screen.connect_for_each_screen(function(s)
 	-- Wallpaper
@@ -269,6 +271,39 @@ awful.screen.connect_for_each_screen(function(s)
 		screen = s,
 		filter = awful.widget.taglist.filter.all,
 		buttons = taglist_buttons,
+		style = {
+			shape_border_width = 1,
+			shape_border_color = "#6e6a86", -- TODO: find a way to put the color in the themes (rose-pine)
+			shape = function(cr, width, height)
+				gears.shape.rounded_rect(cr, width, height, 8)
+			end,
+		},
+		-- Notice that there is *NO* wibox.wibox prefix, it is a template,
+		-- not a widget instance.
+		widget_template = {
+			{
+				{
+					{
+						{
+							id = "icon_role",
+							widget = wibox.widget.imagebox,
+						},
+						margins = 2,
+						widget = wibox.container.margin,
+					},
+					{
+						id = "text_role",
+						widget = wibox.widget.textbox,
+					},
+					layout = wibox.layout.fixed.horizontal,
+				},
+				left = 10,
+				right = 10,
+				widget = wibox.container.margin,
+			},
+			id = "background_role",
+			widget = wibox.container.background,
+		},
 	})
 
 	-- Create a tasklist widget
@@ -276,6 +311,51 @@ awful.screen.connect_for_each_screen(function(s)
 		screen = s,
 		filter = awful.widget.tasklist.filter.currenttags,
 		buttons = tasklist_buttons,
+		style = {
+			shape_border_width = 1,
+			shape_border_color = "#6e6a86",
+			shape = gears.shape.rounded_bar,
+		},
+		layout = {
+			spacing = 10,
+			spacing_widget = {
+				{
+					forced_width = 5,
+					shape = gears.shape.circle,
+					widget = wibox.widget.separator,
+				},
+				valign = "center",
+				halign = "center",
+				widget = wibox.container.place,
+			},
+			layout = wibox.layout.flex.horizontal,
+		},
+		-- Notice that there is *NO* wibox.wibox prefix, it is a template,
+		-- not a widget instance.
+		widget_template = {
+			{
+				{
+					{
+						{
+							id = "icon_role",
+							widget = wibox.widget.imagebox,
+						},
+						margins = 2,
+						widget = wibox.container.margin,
+					},
+					{
+						id = "text_role",
+						widget = wibox.widget.textbox,
+					},
+					layout = wibox.layout.fixed.horizontal,
+				},
+				left = 10,
+				right = 10,
+				widget = wibox.container.margin,
+			},
+			id = "background_role",
+			widget = wibox.container.background,
+		},
 	})
 
 	-- Create the wibox
@@ -418,6 +498,19 @@ globalkeys = gears.table.join(
 			c:emit_signal("request::activate", "key.unminimize", { raise = true })
 		end
 	end, { description = "restore minimized", group = "client" }),
+
+	-- TODO: KeyBoard Volume control (https://github.com/streetturtle/awesome-wm-widgets/tree/master/volume-widget)
+	--  - volume up
+	--  volume down
+	-- awful.key({}, "", function()
+	-- 	volume_widget:inc(5)
+	-- end, { description = "change volume (SteelSeries apex3 keyboard remap)", group = "volume" }),
+	-- awful.key({}, "", function()
+	-- 	volume_widget:dec(5)
+	-- end, { description = "change volume (SteelSeries apex3 keyboard remap)", group = "volume" }),
+	-- awful.key({ modkey }, "\\", function()
+	-- 	volume_widget:toggle()
+	-- end, { description = "change volume (SteelSeries apex3 keyboard remap)", group = "volume" }),
 
 	-- Prompt
 	-- Uses rofi
@@ -679,6 +772,7 @@ client.connect_signal("unfocus", function(c)
 end)
 -- }}}
 
+-- Set gaps
 beautiful.useless_gaps = 30
 beautiful.gap_single_client = true
 
