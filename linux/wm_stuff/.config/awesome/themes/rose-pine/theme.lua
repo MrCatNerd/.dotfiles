@@ -36,7 +36,7 @@ theme.hotkeys_modifiers_fg = "#FFFFFF"
 -- }}}
 
 -- {{{ Styles
-theme.font = "Hack Nerd Font 10"
+theme.font = "Hack Nerd Font 12"
 
 -- {{{ Colors
 theme.fg_focus = text
