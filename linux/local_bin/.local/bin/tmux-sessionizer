@@ -12,7 +12,8 @@ if [[ $# -eq 1 ]]; then
     selected="$1"
 else
     # Select a directory interactively using fzf
-    selected=$(find -O2 ~ -mindepth 0 -maxdepth 8 -type d 2>/dev/null | fzf) || handle_error "No directory selected"
+    # selected=$(find -O2 ~ -mindepth 0 -maxdepth 8 2>/dev/null | fzf) || handle_error "No directory selected"
+    selected=$(find -O3 ~ -mindepth 0 -maxdepth 8 -type d -not -path '*/.git/*' -not -path '*/node_modules/*' -not -path '*/*cache/*' -not -path '*/.local/share/*' -not -path '*/.local/lib/*' 2>/dev/null | fzf) || handle_error "No directory selected"
 fi
 
 # Exit if no directory was selected
