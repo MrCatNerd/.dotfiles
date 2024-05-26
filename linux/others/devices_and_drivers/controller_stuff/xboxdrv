@@ -1,0 +1,32 @@
+[xboxdrv]
+silent = true
+
+# controller settings:
+
+# controller 1
+trigger-as-button = true
+dpad-as-button = true
+deadzone = 4000
+
+# controller 2
+next-controller = true
+trigger-as-button = true
+dpad-as-button = true
+deadzone = 4000
+
+# controller 3
+next-controller = true
+trigger-as-button = true
+dpad-as-button = true
+deadzone = 4000
+
+# controller 4
+next-controller = true
+trigger-as-button = true
+dpad-as-button = true
+deadzone = 4000
+
+[xboxdrv-daemon]
+dbus = disabled
+
+

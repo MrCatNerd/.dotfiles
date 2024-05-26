@@ -1,5 +1,4 @@
 local awful = require("awful")
--- Theme handling library
 local beautiful = require("beautiful")
 
 -- Default modkey.

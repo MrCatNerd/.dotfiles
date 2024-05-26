@@ -1,6 +1,7 @@
---25 If LuaRocks is installed, make sure that packages installed through it are
--- found (e.g. lgi). If LuaRocks is not installed, do nothing.
-pcall(require, "luarocks.loader")
+-- startup
+require("core.startup")
+
+-- Libs and stuff
 
 -- Standard awesome library
 local gears = require("gears")
@@ -14,9 +15,6 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
--- Enable hotkeys help widget for VIM and other apps
--- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
 
 -- Load Debian menu entries
 local debian = require("debian.menu")
@@ -28,7 +26,7 @@ local has_fdo, freedesktop = pcall(require, "freedesktop")
 if awesome.startup_errors then
 	naughty.notify({
 		preset = naughty.config.presets.critical,
-		title = "Oops, there were errors during startup!",
+		title = "Oops, there were errors during startup! (ya basically doomed)",
 		text = awesome.startup_errors,
 	})
 end
@@ -53,6 +51,7 @@ do
 end
 -- }}}
 
+-- load basic stuff
 require("core")
 
 -- {{{ Menu
@@ -403,11 +402,11 @@ globalkeys = gears.table.join(
 	end),
 
 	awful.key({ "Mod4" }, "space", function() -- my own keyboard layout switcher
-		require("keyboard_layout_switcher").switch_layouts()
+		require("core.keyboard_layout_switcher").switch_layouts()
 	end, { description = "Switch between last and current keyboard layouts" }),
 
 	awful.key({ "Mod1" }, "space", function()
-		require("keyboard_layout_switcher").scroll_layouts()
+		require("core.keyboard_layout_switcher").scroll_layouts()
 	end, { description = "Scroll through keyboard layouts" }),
 
 	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
@@ -600,19 +599,14 @@ for i = 1, 9 do
 			end
 		end, { description = "toggle tag #" .. i, group = "tag" }),
 		-- Move client to tag.
-		awful.key(
-			{ modkey, "Shift" },
-			"#" .. i + 9,
-			function() -- TODO: better remap for this (or maybe ill just get used to this remap)
-				if client.focus then
-					local tag = client.focus.screen.tags[i]
-					if tag then
-						client.focus:move_to_tag(tag)
-					end
+		awful.key({ modkey, "Shift" }, "#" .. i + 9, function()
+			if client.focus then
+				local tag = client.focus.screen.tags[i]
+				if tag then
+					client.focus:move_to_tag(tag)
 				end
-			end,
-			{ description = "move focused client to tag #" .. i, group = "tag" }
-		),
+			end
+		end, { description = "move focused client to tag #" .. i, group = "tag" }),
 		-- Toggle tag on focused client.
 		awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9, function()
 			if client.focus then

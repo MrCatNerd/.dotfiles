@@ -29,5 +29,6 @@ THEME="https://raw.githubusercontent.com/dexpota/kitty-themes/master/themes/gruv
 curl -sSfl -o "$THEMES_DIR/gruvbox_dark.conf" "$THEME"
 
 ### Link the one you want to choose
-CHOSEN_THEME="gruvbox_dark"
+# CHOSEN_THEME="gruvbox_dark"
+CHOSEN_THEME="rose_pine"
 ln -sf "$THEMES_DIR/$CHOSEN_THEME.conf" "$KITTY_CONFIG_DIR/theme.conf"

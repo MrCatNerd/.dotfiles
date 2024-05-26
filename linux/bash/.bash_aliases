@@ -3,10 +3,12 @@
 
 # jokes:
 alias dog='cat'
+alias god='tac'
 alias meow='echo meow # $*'
 alias bake='make'
 
 alias explorer='xdg-open'
+alias files='xdg-open'
 alias vim='nvim'
 alias gitree='git log --graph --pretty=oneline --abbrev-commit'
 alias gits='git status'
