@@ -95,9 +95,9 @@ theme.mouse_finder_color = rose
 theme.taglist_squares_sel = themes_path .. "taglist/squarefz.png"
 theme.taglist_squares_unsel = themes_path .. "taglist/squarez.png"
 --theme.taglist_squares_resize = "false"
-theme.taglist_shape_focus = function(cr, width, height)
-	gears.shape.rounded_rect(cr, width, height, 6)
-end
+-- theme.taglist_shape_focus = function(cr, width, height)
+-- 	gears.shape.rounded_rect(cr, width, height, 6)
+-- end
 -- }}}
 
 -- {{{ Misc

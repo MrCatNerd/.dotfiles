@@ -226,6 +226,10 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 beautiful.tasklist_plain_task_name = true -- disable the extra tasklist client property notification icons
 
+local static_vars = { -- i suck at lua lol
+	sent_notification = false, -- don't worry about it this config is a mess
+}
+
 awful.screen.connect_for_each_screen(function(s)
 	-- Wallpaper
 	set_wallpaper(s)
@@ -271,11 +275,16 @@ awful.screen.connect_for_each_screen(function(s)
 		filter = awful.widget.taglist.filter.all,
 		buttons = taglist_buttons,
 		style = {
-			shape_border_width = 1,
-			shape_border_color = "#6e6a86", -- TODO: find a way to put the color in the themes (rose-pine)
-			shape = function(cr, width, height)
-				gears.shape.rounded_rect(cr, width, height, 8)
-			end,
+			shape_border_width = 4,
+			shape_border_color = beautiful.get().border_normal,
+			-- shape = function(cr, width, height)
+			-- 	gears.shape.rounded_rect(cr, width, height, 8)
+			-- end,
+			shape = gears.shape.circle,
+		},
+		layout = {
+			spacing = 0,
+			layout = wibox.layout.fixed.horizontal,
 		},
 		-- Notice that there is *NO* wibox.wibox prefix, it is a template,
 		-- not a widget instance.
@@ -290,10 +299,10 @@ awful.screen.connect_for_each_screen(function(s)
 						margins = 2,
 						widget = wibox.container.margin,
 					},
-					{
-						id = "text_role",
-						widget = wibox.widget.textbox,
-					},
+					-- {
+					-- 	id = "text_role",
+					-- 	widget = wibox.widget.textbox,
+					-- },
 					layout = wibox.layout.fixed.horizontal,
 				},
 				left = 10,
@@ -302,6 +311,35 @@ awful.screen.connect_for_each_screen(function(s)
 			},
 			id = "background_role",
 			widget = wibox.container.background,
+			-- Add support for hover colors and an index label
+			create_callback = function(self, c3, index, objects) --luacheck: no unused args
+				local hover_color = beautiful.get().border_marked
+				self:connect_signal("mouse::enter", function()
+					if self.bg ~= hover_color then
+						self.backup = self.bg
+						self.has_backup = true
+					end
+					self.bg = hover_color
+
+					if static_vars.sent_notification then
+						return
+					end
+					static_vars.sent_notification = true
+					naughty.notify({
+						title = "Message from: Vim user",
+						text = "Bro just used his mouse 💀",
+						timeout = 5,
+						destroy = function()
+							static_vars.sent_notification = false -- so it won't spam u every singe time
+						end,
+					})
+				end)
+				self:connect_signal("mouse::leave", function()
+					if self.has_backup then
+						self.bg = self.backup
+					end
+				end)
+			end,
 		},
 	})
 
@@ -312,11 +350,11 @@ awful.screen.connect_for_each_screen(function(s)
 		buttons = tasklist_buttons,
 		style = {
 			shape_border_width = 1,
-			shape_border_color = "#6e6a86",
+			shape_border_color = beautiful.get().border_normal,
 			shape = gears.shape.rounded_bar,
 		},
 		layout = {
-			spacing = 10,
+			spacing = 0,
 			spacing_widget = {
 				{
 					forced_width = 5,
