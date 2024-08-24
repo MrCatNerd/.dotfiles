@@ -75,9 +75,6 @@ window:
   # The value `0.0` is completely transparent and `1.0` is opaque.
   opacity: 0.91
 
-  background_image: /home/mrcat/Pictures/background.png # idk why this ain't working
-
-
   # Startup Mode (changes require restart)
   #
   # Values for `startup_mode`:
@@ -90,7 +87,7 @@ window:
   startup_mode: Windowed
 
   # Window title
-  title: MrCatNerd's Alacritty Terminal
+  title: MrCat's Alacritty Terminal
 
   # Allow terminal applications to change Alacritty's window title.
   dynamic_title: false

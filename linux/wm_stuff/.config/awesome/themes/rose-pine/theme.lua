@@ -4,6 +4,7 @@
 -------------------------------
 --
 -- RIP 30 minutes of my life :(
+-- WARNING: this is not an official rose pine theme, use at your own risk lmao
 
 local gears = require("gears")
 -- local themes_path = require("gears.filesystem").get_themes_dir()
@@ -29,9 +30,30 @@ local highlighthigh = "#524f67"
 -- {{{ Main
 local theme = {}
 -- theme.wallpaper = themes_path .. "zenburn/zenburn-background.png"
-theme.wallpaper = require("gears").surface.load_uncached(require("gears").surface.load_uncached(
-	string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "background.png") -- NOTE: put your own background path here if you want to
-))
+-- TODO: see if there is a way to switch the wallpaper from rc
+theme.wallpaper = function(s)
+	local wallpapers = {
+		-- NOTE: put your own background path here if you want to
+		string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "rick_and_morty_wolpopor.png"),
+		string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "ground.png"),
+		string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "abstract_wallpaperz.jpeg"),
+		string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "cat_wallpopor.jpeg"),
+		string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "gruv-sushi-streets.jpg"),
+		string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "background.png"),
+	}
+
+	local wallpaper_option_list = {
+		6,
+		5,
+		2,
+	}
+
+	local wallpaper = require("gears").surface.load_uncached(
+		wallpapers[wallpaper_option_list[math.max(1, (s.index % (#wallpaper_option_list + 1)))]]
+	)
+
+	return wallpaper
+end
 theme.hotkeys_modifiers_fg = "#FFFFFF"
 -- }}}
 
@@ -43,6 +65,7 @@ theme.fg_focus = text
 theme.fg_normal = text
 theme.fg_urgent = text
 
+theme.bg_muted = muted
 theme.bg_focus = pine
 theme.bg_normal = base
 theme.bg_urgent = iris

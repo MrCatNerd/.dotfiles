@@ -5,4 +5,10 @@ PointerAlignment: Right
 SortIncludes: false
 AccessModifierOffset: 0
 IndentAccessModifiers: true
+UseTab: Never # spaces ftw
+BraceWrapping:
+  AfterEnum: false
+  AfterStruct: false
+  AfterClass: false
+  BeforeLambdaBody: false
 

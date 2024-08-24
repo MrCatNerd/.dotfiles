@@ -6,16 +6,20 @@ local beautiful = require("beautiful")
 -- If you do not like this or do not have such a key,
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1 (Alt), but it may interact with others.
+-- NEVER EVER EVER USE SHIFT_L
 modkey = "Mod1"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
+terminal = "kitty"
 
 -- Themes define colours, icons, font and wallpapers.
 local theme_name = "rose-pine"
 beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), theme_name))
+
+-- require("core.wallpaper")
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {

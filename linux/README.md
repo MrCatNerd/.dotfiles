@@ -2,6 +2,19 @@
 
 This directory contains the dotfiles for my linux system
 
+
+Here are some details about my setup:
+
++ **WM**: [AwesomeWM](https://github.com/awesomeWM/awesome/) 🗔 config included!
++ **OS**: [Pop!_OS](https://pop.system76.com/)
++ **Shell**: [zsh](https://wiki.archlinux.org/index.php/Zsh/)
++ **Terminal**: [kitty](https://github.com/kovidgoyal/kitty/) 🐱 config included!
++ **Editor**: [Neovim](https://github.com/neovim/neovim/) 🖹 config included!
+<!-- + **File Manager**: [Thunar](https://git.xfce.org/xfce/thunar/) -->
++ **Launcher**: [rofi](https://github.com/davatorium/rofi/) 🚀 config included!
++ **Browser**: [Firefox](https://www.mozilla.org/en-US/firefox/) <!-- TODO: add config (maybe) -->
++ **Main Theme**: [Rose Pine](https://rosepinetheme.com/)
+
 ---
 
 **Attention: Uninstalling Nix is a substantial operation. Refer to the official documentation [here](https://nixos.org/manual/nix/stable/installation/uninstall) for guidance. Additionally, use the removal script `linux/others/remove_multiusernix.sh` at your own risk.** <!-- totally not ChatGPT -->

@@ -20,6 +20,9 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
+-- dpi function thingy
+local dpi = require("beautiful.xresources").apply_dpi
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -53,6 +56,9 @@ end
 
 -- load basic stuff
 require("core")
+
+-- set my screens to the correct layout
+awful.spawn.with_shell("./$HOME/.screenlayout/homelayout.sh")
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
@@ -151,51 +157,6 @@ local tasklist_buttons = gears.table.join(
 
 -- {{{ Wallpaper
 
--- Wallpaper slideshow
--- in stable version  fhttps://github.com/awesomeWM/awesome/issues/3528
---[[ local function get_random_file_from_dir(path, exts, absolute_path)
-	local files, valid_exts = {}, {}
-	local Gio = require("lgi")
-
-	-- Transforms { "jpg", ... } into { [jpg] = #, ... }
-	if exts then
-		for i, j in ipairs(exts) do
-			valid_exts[j:lower():gsub("^[.]", "")] = i
-		end
-	end
-
-	-- Build a table of files from the path with the required extensions
-	local file_list = Gio.File.new_for_path(path):enumerate_children("standard::*", 0)
-
-	-- This will happen when the directory doesn't exist.
-	if not file_list then
-		return nil
-	end
-
-	for file in
-		function()
-			return file_list:next_file()
-		end
-	do
-		if file:get_file_type() == "REGULAR" then
-			local file_name = file:get_display_name()
-
-			if not exts or valid_exts[file_name:lower():match(".+%.(.*)$") or ""] then
-				table.insert(files, file_name)
-			end
-		end
-	end
-
-	if #files == 0 then
-		return nil
-	end
-
-	-- Return a randomly selected filename from the file table
-	local file = files[math.random(#files)]
-
-	return absolute_path and (path:gsub("[/]*$", "") .. "/" .. file) or file
-end ]]
-
 local function set_wallpaper(s)
 	-- Wallpaper
 	if beautiful.wallpaper then
@@ -227,12 +188,16 @@ screen.connect_signal("property::geometry", set_wallpaper)
 beautiful.tasklist_plain_task_name = true -- disable the extra tasklist client property notification icons
 
 local static_vars = { -- i suck at lua lol
-	sent_notification = false, -- don't worry about it this config is a mess
+	-- don't worry about it this config is a mess lol
+	sent_tasklist_mouse_notification = false,
+	sent_mute_volume_notification = false,
+	wallpaper_index = 1,
 }
 
 awful.screen.connect_for_each_screen(function(s)
 	-- Wallpaper
 	set_wallpaper(s)
+	static_vars.wallpaper_index = static_vars.wallpaper_index + 1
 
 	-- Each screen has its own tag table.
 	-- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
@@ -275,15 +240,32 @@ awful.screen.connect_for_each_screen(function(s)
 		filter = awful.widget.taglist.filter.all,
 		buttons = taglist_buttons,
 		style = {
-			shape_border_width = 4,
-			shape_border_color = beautiful.get().border_normal,
-			-- shape = function(cr, width, height)
-			-- 	gears.shape.rounded_rect(cr, width, height, 8)
-			-- end,
 			shape = gears.shape.circle,
+
+			shape_border_width = 4,
+			shape_border_color = beautiful.bg_muted,
+			shape_border_color_focus = beautiful.bg_focus,
+			shape_border_color_urgent = beautiful.bg_urgent,
+			bg_focus = beautiful.bg_focus,
+			bg_empty = beautiful.bg_normal,
+			bg_occupied = beautiful.bg_normal,
+			bg_urgent = beautiful.bg_urgent,
 		},
 		layout = {
-			spacing = 0,
+			spacing = 3,
+
+			--[[ spacing = 20,
+			spacing_widget = {
+				{
+					color = beautiful.border_normal,
+					-- forced_width = 5,
+					shape = gears.shape.powerline,
+					widget = wibox.widget.separator,
+				},
+				valign = "center",
+				halign = "center",
+				widget = wibox.container.place,
+			}, ]]
 			layout = wibox.layout.fixed.horizontal,
 		},
 		-- Notice that there is *NO* wibox.wibox prefix, it is a template,
@@ -321,16 +303,16 @@ awful.screen.connect_for_each_screen(function(s)
 					end
 					self.bg = hover_color
 
-					if static_vars.sent_notification then
+					if static_vars.sent_tasklist_mouse_notification then
 						return
 					end
-					static_vars.sent_notification = true
+					static_vars.sent_tasklist_mouse_notification = true
 					naughty.notify({
 						title = "Message from: Vim user",
 						text = "Bro just used his mouse 💀",
 						timeout = 5,
 						destroy = function()
-							static_vars.sent_notification = false -- so it won't spam u every singe time
+							static_vars.sent_tasklist_mouse_notification = false -- so it won't spam u every singe time
 						end,
 					})
 				end)
@@ -348,74 +330,111 @@ awful.screen.connect_for_each_screen(function(s)
 		screen = s,
 		filter = awful.widget.tasklist.filter.currenttags,
 		buttons = tasklist_buttons,
-		style = {
-			shape_border_width = 1,
-			shape_border_color = beautiful.get().border_normal,
-			shape = gears.shape.rounded_bar,
-		},
 		layout = {
-			spacing = 0,
-			spacing_widget = {
-				{
-					forced_width = 5,
-					shape = gears.shape.circle,
-					widget = wibox.widget.separator,
-				},
-				valign = "center",
-				halign = "center",
-				widget = wibox.container.place,
-			},
 			layout = wibox.layout.flex.horizontal,
 		},
-		-- Notice that there is *NO* wibox.wibox prefix, it is a template,
-		-- not a widget instance.
+		style = {
+			font = "Hack Nerd Font 13.0",
+			shape_border_width = 5,
+			shape_border_color = beautiful.fg_normal,
+			-- shape = gears.shape.rounded_bar,
+			shape = gears.shape.circle,
+			align = "center",
+		},
 		widget_template = {
 			{
 				{
-					{
-						{
-							id = "icon_role",
-							widget = wibox.widget.imagebox,
-						},
-						margins = 2,
-						widget = wibox.container.margin,
-					},
-					{
-						id = "text_role",
-						widget = wibox.widget.textbox,
-					},
-					layout = wibox.layout.fixed.horizontal,
+					id = "clienticon",
+					widget = awful.widget.clienticon,
 				},
-				left = 10,
-				right = 10,
+				margins = 3,
 				widget = wibox.container.margin,
 			},
-			id = "background_role",
-			widget = wibox.container.background,
+			-- {
+			-- 	{
+			-- 		id = "text_role",
+			-- 		widget = wibox.widget.textbox,
+			-- 	},
+			-- 	layout = wibox.layout.fixed.horizontal,
+			-- },
+			nil,
+			create_callback = function(self, c, index, objects) --luacheck: no unused args
+				self:get_children_by_id("clienticon")[1].client = c
+			end,
+			layout = wibox.layout.align.horizontal,
 		},
 	})
 
+	-- THIS TOOK TOO MUCH TIME
 	-- Create the wibox
-	local dpi = require("beautiful.xresources").apply_dpi
-	s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(40) })
+	-- Create the transparent wibox with margins
+	s.mywibox = awful.wibar({
+		position = "top",
+		margins = { bottom = dpi(25) },
+		bg = "#00000000", -- Transparent background
+		height = dpi(35),
+		screen = s,
+		opacity = 1.0,
+	})
 
-	-- Add widgets to the wibox
+	-- Create background containers for left, middle, and right sections
+	local left_container = wibox.container.background()
+	local middle_container = wibox.container.background()
+	local right_container = wibox.container.background()
+
+	-- Set background and shape properties
+	local container_shape = function(cr, width, height)
+		gears.shape.rounded_bar(cr, width, height)
+	end
+
+	left_container.bg = beautiful.bg_normal
+	left_container.shape = container_shape
+
+	middle_container.bg = beautiful.bg_normal
+	middle_container.shape = container_shape
+
+	right_container.bg = beautiful.bg_normal
+	right_container.shape = container_shape
+
+	-- Set up the widgets inside the background containers
+	local left_widgets = wibox.widget({
+		spacing = dpi(5),
+		layout = wibox.layout.fixed.horizontal,
+		s.mytaglist,
+		s.mypromptbox,
+	})
+
+	local middle_widgets = wibox.widget({
+		spacing = dpi(10),
+		layout = wibox.layout.fixed.horizontal,
+		s.mytasklist,
+	})
+
+	local right_widgets = wibox.widget({
+		layout = wibox.layout.fixed.horizontal,
+		mykeyboardlayout,
+		wibox.widget.systray(),
+		mytextclock,
+		s.mylayoutbox,
+		mylauncher,
+	})
+
+	left_container.widget = left_widgets
+	middle_container.widget = middle_widgets
+	right_container.widget = right_widgets
+
+	-- Create margin containers with spacing
+	local margin = dpi(5)
+	local left_margin_container = wibox.container.margin(left_container, margin, margin, dpi(0), dpi(0))
+	local middle_margin_container = wibox.container.margin(middle_container, margin, margin, dpi(0), dpi(0))
+	local right_margin_container = wibox.container.margin(right_container, margin, margin, dpi(0), dpi(0))
+
+	-- Set up the wibox with the background containers
 	s.mywibox:setup({
 		layout = wibox.layout.align.horizontal,
-		{ -- Left widgets
-			layout = wibox.layout.fixed.horizontal,
-			mylauncher,
-			s.mytaglist,
-			s.mypromptbox,
-		},
-		s.mytasklist, -- Middle widget
-		{ -- Right widgets
-			layout = wibox.layout.fixed.horizontal,
-			mykeyboardlayout,
-			wibox.widget.systray(),
-			mytextclock,
-			s.mylayoutbox,
-		},
+		left_margin_container,
+		middle_margin_container,
+		right_margin_container,
 	})
 end)
 -- }}}
@@ -439,7 +458,7 @@ globalkeys = gears.table.join(
 		mykeyboardlayout.next_layout()
 	end),
 
-	awful.key({ "Mod4" }, "space", function() -- my own keyboard layout switcher
+	awful.key({ "Mod4" }, "space", function()
 		require("core.keyboard_layout_switcher").switch_layouts()
 	end, { description = "Switch between last and current keyboard layouts" }),
 
@@ -466,10 +485,6 @@ globalkeys = gears.table.join(
 		awful.spawn("flameshot gui")
 	end, { description = "Spawn Flameshot", group = "xx" }),
 
-	awful.key({ modkey }, "space", function()
-		print("meow")
-	end, { description = "Switch Layout", group = "Keyboard" }),
-
 	-- Layout manipulation
 	awful.key({ modkey, "Shift" }, "j", function()
 		awful.client.swap.byidx(1)
@@ -479,11 +494,11 @@ globalkeys = gears.table.join(
 		awful.client.swap.byidx(-1)
 	end, { description = "swap with previous client by index", group = "client" }),
 
-	awful.key({ modkey, "Control" }, "j", function()
+	awful.key({ modkey, "Shift" }, "l", function()
 		awful.screen.focus_relative(1)
 	end, { description = "focus the next screen", group = "screen" }),
 
-	awful.key({ modkey, "Control" }, "k", function()
+	awful.key({ modkey, "Shift" }, "h", function()
 		awful.screen.focus_relative(-1)
 	end, { description = "focus the previous screen", group = "screen" }),
 
@@ -506,25 +521,32 @@ globalkeys = gears.table.join(
 	awful.key({ modkey }, "l", function()
 		awful.tag.incmwfact(0.05)
 	end, { description = "increase master width factor", group = "layout" }),
+
 	awful.key({ modkey }, "h", function()
 		awful.tag.incmwfact(-0.05)
 	end, { description = "decrease master width factor", group = "layout" }),
+
 	awful.key({ modkey, "Shift" }, "h", function()
 		awful.tag.incnmaster(1, nil, true)
 	end, { description = "increase the number of master clients", group = "layout" }),
+
 	awful.key({ modkey, "Shift" }, "l", function()
 		awful.tag.incnmaster(-1, nil, true)
 	end, { description = "decrease the number of master clients", group = "layout" }),
+
 	awful.key({ modkey, "Control" }, "h", function()
 		awful.tag.incncol(1, nil, true)
 	end, { description = "increase the number of columns", group = "layout" }),
+
 	awful.key({ modkey, "Control" }, "l", function()
 		awful.tag.incncol(-1, nil, true)
 	end, { description = "decrease the number of columns", group = "layout" }),
-	awful.key({ modkey }, "space", function()
+
+	awful.key({ modkey }, "i", function()
 		awful.layout.inc(1)
 	end, { description = "select next", group = "layout" }),
-	awful.key({ modkey, "Shift" }, "space", function()
+
+	awful.key({ modkey, "Shift" }, "i", function()
 		awful.layout.inc(-1)
 	end, { description = "select previous", group = "layout" }),
 
@@ -549,10 +571,43 @@ globalkeys = gears.table.join(
 	-- 	volume_widget:toggle()
 	-- end, { description = "change volume (SteelSeries apex3 keyboard remap)", group = "volume" }),
 
+	-- Volume Up
+	-- WARNING: I am using frontright because my sound balancing is forked up lol (and the realtek drivers are outdated AF)
+	awful.key({}, "XF86AudioRaiseVolume", function()
+		awful.spawn("amixer set Master frontleft 5%+")
+		-- naughty.notify({ text = "Volume Up" })
+	end, { description = "increase volume", group = "media" }),
+
+	-- Volume Down
+	awful.key({}, "XF86AudioLowerVolume", function()
+		awful.spawn("amixer set Master frontleft 5%-")
+		-- naughty.notify({ text = "Volume Down" })
+	end, { description = "decrease volume", group = "media" }),
+
+	-- Volume Mute
+	awful.key({}, "XF86AudioMute", function()
+		awful.spawn("amixer set Master toggle")
+		if not static_vars.sent_mute_volume_notification then
+			naughty.notify({
+				text = "Mute Toggle",
+				timeout = 1,
+				destroy = function()
+					static_vars.sent_tasklist_mouse_notification = false -- so it won't spam u every singe time
+				end,
+			})
+		end
+	end, { description = "mute volume", group = "media" }),
+
+	-- Media Play/Pause
+	awful.key({}, "XF86AudioPlay", function()
+		awful.spawn("playerctl play-pause")
+		naughty.notify({ text = "Play/Pause" })
+	end, { description = "play/pause media", group = "media" }),
+
 	-- Prompt
 	-- Uses rofi
 	-- awful.key({ modkey }, "r", function()
-	--     awful.screen.focused().mypromptbox:run()
+	--	 awful.screen.focused().mypromptbox:run()
 	-- end, { description = "run prompt", group = "launcher" }),
 	awful.key({ modkey }, "r", function()
 		awful.spawn("rofi -show drun")
@@ -811,4 +866,5 @@ beautiful.gap_single_client = true
 -- Autostart Application
 -- awful.spawn.with_shell("$HOME/.config/awesome/autostart.sh")
 awful.spawn.with_shell("setxkbmap dvorak") -- dvorak btw
-awful.spawn.with_shell("picom --experimental-backends -b --config=$HOME/.config/picom/picom.ini") -- picom
+-- awful.spawn.with_shell("picom --experimental-backends -b --config=$HOME/.config/picom/picom.ini") -- picom
+awful.spawn.with_shell("picom -b --config=$HOME/.config/picom/picom.ini") -- picom git
