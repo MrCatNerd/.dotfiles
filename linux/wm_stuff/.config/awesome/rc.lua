@@ -57,8 +57,8 @@ end
 -- load basic stuff
 require("core")
 
--- set my screens to the correct layout
-awful.spawn.with_shell("./$HOME/.screenlayout/homelayout.sh")
+-- set my screens to the correct layout (before doing any screen stuff)
+awful.spawn.with_shell("source $HOME/.screenlayout/homelayout.sh")
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu

@@ -1,0 +1,55 @@
+#!/bin/env bash
+
+# requirements:
+# wget
+# curl
+# sed
+# grep
+# cut
+# tr
+
+# how to use:
+# source git_release_puller (if its in the PATH)
+# PULL_RELEASE_GH <DEST> <URI> <QUERY> <FILTER>
+
+# examples:
+# PULL_RELEASE_GH "/tmp/fonts/" "https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest" "browser_download_url" "FiraCode.zip FiraMono.zip Hack.zip"
+# for multiple filters use space, if you need space for your filter too bad time to refactor lol
+
+# echo $(ECHO_RELEASE_GH "https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest" "browser_download_url") | sed "s/ /\n/g" | grep "Hack.zip"
+# no filters in this one get rekt
+
+function PULL_RELEASE_GH() {
+    DEST="$1"
+    URI="$2"
+    QUERY="$3"
+    FILTERS=$(echo "$4" | sed "s/ /\n/g")
+
+    local listcurl=$(curl -sL "$URI" \
+        | grep "$QUERY" \
+        | cut -d : -f 2,3 \
+        | tr -d \" \
+        | tr -d ' ')
+
+    # i can wget a list instead of each item but i won't cuz im too lazy
+    for filter in "$FILTERS"
+    do
+
+        echo $(echo "$listcurl" | grep "${filter}")
+        echo "$listcurl" | grep "${filter}"| wget -qi - -P "$DEST"
+    done
+}
+
+# filter this yourself i aint gonna do that
+function ECHO_RELEASE_GH() {
+    URI="$1"
+    QUERY="$2"
+
+    local val=$(curl -sL "$URI" \
+        | grep "$QUERY" \
+        | cut -d : -f 2,3 \
+        | tr -d \" \
+        | tr -d ' ')
+
+    echo "$val"
+}
