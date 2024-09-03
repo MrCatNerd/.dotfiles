@@ -19,6 +19,8 @@
 # echo $(ECHO_RELEASE_GH "https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest" "browser_download_url") | sed "s/ /\n/g" | grep "Hack.zip"
 # no filters in this one get rekt
 
+# todo in the future maybe: a HELP_GH function or smh
+
 function PULL_RELEASE_GH() {
     DEST="$1"
     URI="$2"
