@@ -1,13 +1,23 @@
+# TODO: optional segments
+# for example, if im not in a git repo the gold segment would be hidden
+
 format = """
-[](#9A348E)\
+[](fg:rose)\
 $os\
 $username\
-[](bg:#DA627D fg:#9A348E)\
+[](bg:pine fg:rose)\
 $directory\
-[](fg:#DA627D bg:#FCA17D)\
+[](fg:pine bg:gold)\
 $git_branch\
 $git_status\
-[](fg:#FCA17D bg:#86BBD8)\
+[ ](fg:gold)\
+"""
+
+right_format = """
+[](fg:overlay)\
+$status\
+$time\
+[ ](bg:highlight_med fg:overlay)\
 $c\
 $elixir\
 $elm\
@@ -19,23 +29,70 @@ $julia\
 $nodejs\
 $nim\
 $rust\
+$python\
 $scala\
-[](fg:#86BBD8 bg:#06969A)\
 $docker_context\
-[](fg:#06969A bg:#33658A)\
-[ ](fg:#33658A)\
+[ ](fg:highlight_med)\
 """
 
-right_format = """[](#33658A)\
-$status\
-$time[ ]\
-(fg:#33658A)\
-"""
 
-# ~/.config/starship.toml
+### THEMES
+palette = 'rose-pine-moon'
+
+[palettes.rose-pine]
+base = '#191724'
+surface = '#1f1d2e'
+overlay = '#26233a'
+muted = '#6e6a86'
+subtle = '#908caa'
+text = '#e0def4'
+love = '#eb6f92'
+gold = '#f6c177'
+rose = '#ebbcba'
+pine = '#31748f'
+foam = '#9ccfd8'
+iris = '#c4a7e7'
+highlight_low = '#21202e'
+highlight_med = '#403d52'
+highlight_high = '#524f67'
+
+[palettes.rose-pine-moon]
+base = '#232136'
+surface = '#2a273f'
+overlay = '#393552'
+muted = '#6e6a86'
+subtle = '#908caa'
+text = '#e0def4'
+love = '#eb6f92'
+gold = '#f6c177'
+rose = '#ea9a97'
+pine = '#3e8fb0'
+foam = '#9ccfd8'
+iris = '#c4a7e7'
+highlight_low = '#2a283e'
+highlight_med = '#44415a'
+highlight_high = '#56526e'
+
+[palettes.rose-pine-dawn]
+base = '#faf4ed'
+surface = '#fffaf3'
+overlay = '#f2e9e1'
+muted = '#9893a5'
+subtle = '#797593'
+text = '#575279'
+love = '#b4637a'
+gold = '#ea9d34'
+rose = '#d7827e'
+pine = '#286983'
+foam = '#56949f'
+iris = '#907aa9'
+highlight_low = '#f4ede8'
+highlight_med = '#dfdad9'
+highlight_high = '#cecacd'
+### /THEMES
 
 [status]
-style = 'bg:#33658A'
+style = 'bg:overlay fg:iris'
 symbol = '🔴 $int '
 not_found_symbol = '🔴'
 success_symbol = '🟢'
@@ -50,89 +107,61 @@ disabled = false
 # and use the os module below
 [username]
 show_always = true
-style_user = "bg:#9A348E"
-style_root = "bg:#9A348E"
+style_user = "bg:rose fg:overlay"
+style_root = "bg:rose fg:overlay"
 format = '[ $user ]($style)'
 disabled = false
 
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
 [os]
-style = "bg:#9A348E"
+style = "bg:rose fg:overlay"
+format='[$symbol ]($style)'
 disabled = false # Disabled by default
 
 [os.symbols] # too lazy to fill it all
-Arch = " "
-Artix = " "
-Debian = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Gentoo = " "
-Kali = " "
-Linux = " "
-Manjaro = " "
-Mint = "󰣭 "
-NixOS = " "
-OpenBSD = " "
-Pop = " "
-Raspbian = " "
-Ubuntu = " "
-Unknown = " "
-Windows = " 󰚌 "
-openSUSE = " "
-Macos = "$$$ "
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = ""
+Artix = ""
+CentOS = ""
+Debian = ""
+EndeavourOS = ""
+Fedora = ""
+FreeBSD = ""
+Gentoo = "󰣨"
+Kali = ""
+Linux = ""
+Manjaro = ""
+Mint = "󰣭"
+NixOS = ""
+OpenBSD = ""
+Pop = ""
+Raspbian = "󰐿"
+RedHatEnterprise = "󱄛"
+Redhat = "󱄛"
+SUSE = ""
+Ubuntu = ""
+Unknown = ""
+Windows = " 󰚌"
+openSUSE = ""
+Macos = "$$$"
 
 [directory]
-style = "bg:#DA627D"
+style = "fg:text bg:pine"
 format = "[  $path ]($style)"
 truncation_length = 10
 truncation_symbol = "…/"
 truncate_to_repo=false
 
-# Here is how you can shorten some long paths by text replacement
-# similar to mapped_locations in Oh My Posh:
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
-# Keep in mind that the order matters. For example:
-# "Important Documents" = " 󰈙 "
-# will not be replaced, because "Documents" was already substituted before.
-# So either put "Important Documents" before "Documents" or use the substituted version:
-# "Important 󰈙 " = " 󰈙 "
-
-# ~/.config/starship.toml
-
-[c]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[docker_context]
-symbol = " "
-style = "bg:#06969A"
-format = '[ $symbol $context ]($style)'
-
-[elixir]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[elm]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
 [git_branch]
 symbol = ' '
-# symbol = ""
-style = "fg:#000000 bg:#FCA17D"
+style = "bg:gold fg:overlay"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "fg:#000000 bg:#FCA17D"
+style = "bg:gold fg:overlay"
 format = '[$all_status$ahead_behind ]($style)'
 
 ahead = '⇡${count}'
@@ -148,52 +177,78 @@ staged = '+${count}'
 renamed = '»${count}'
 deleted = '✘${count}'
 
-[golang]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[gradle]
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[haskell]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[java]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[julia]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[nodejs]
-symbol = ""
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[nim]
-symbol = "󰆥 "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[rust]
-symbol = ""
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[scala]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#33658A"
+style = "fg:iris bg:overlay"
 format = '[  $time ]($style)'
+
+[golang]
+symbol = " "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[python]
+symbol = ""
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+
+[gradle]
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[haskell]
+symbol = " "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[java]
+symbol = " "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[julia]
+symbol = " "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[nim]
+symbol = "󰆥 "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[scala]
+symbol = " "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[c]
+symbol = " "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:iris"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[elixir]
+symbol = " "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[elm]
+symbol = " "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
