@@ -14,21 +14,13 @@ if [[ $# -eq 1 ]]; then
     selected="$1"
 else
     # Select a directory interactively using fzf
-    paths_prioritize_documents=$(find -O3 "${HOME}/Documents" -mindepth 0 -maxdepth 8 -type d 2>/dev/null)
-    paths=$(find -O3 "${HOME}" -mindepth 0 -maxdepth 8 -type d \
-        -not -path "${HOME}/Documents*" \
+    selected=$(find -O3 "${HOME}" -mindepth 0 -maxdepth 8 -type d \
         -not -path '*/.git/*' -not -path '*/node_modules/*' -not -path '*/*cache/*' \
         -not -path '*/.local/share/*' -not -path '*/.local/lib/*' -not -path '*/.cargo/*' \
         -not -path '*/.nvm/*' -not -path '*/.oh-my-zsh/*' \
         -not -path '*/.steam/*' -not -path '*/.m2/*' -not -path '*/.var/*' \
         -not -path '*/.lunarclient/*' -not -path '*/.minecraft/*' \
-        2>/dev/null)
-
-    # Combine both paths, prioritize Documents first
-    paths_final=$(printf "%s\n%s" "${paths_prioritize_documents}" "${paths}")
-
-    # Use fzf to select from the combined paths
-    selected=$(echo "$paths_final" | fzf) || handle_error "No directory selected"
+        | fzf) || handle_error "No directory selected"
 fi
 
 # Exit if no directory was selected

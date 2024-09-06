@@ -170,3 +170,5 @@ eval "$(starship init zsh)"
 #     ~/Documents/Code/C/xab    main !13 ?3                                                                                     INT ✘ 
 
 
+
+. "$HOME/.cargo/env"
