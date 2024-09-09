@@ -868,3 +868,6 @@ beautiful.gap_single_client = true
 awful.spawn.with_shell("setxkbmap dvorak") -- dvorak btw
 -- awful.spawn.with_shell("picom --experimental-backends -b --config=$HOME/.config/picom/picom.ini") -- picom
 awful.spawn.with_shell("picom -b --config=$HOME/.config/picom/picom.ini") -- picom git
+-- todo: see why tf doesn't it run only once
+awful.spawn.once("otd-daemon")
+awful.spawn.once("caffeine-indicator")
