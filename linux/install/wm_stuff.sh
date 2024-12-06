@@ -1,7 +1,7 @@
 #!/bin/env bash
 
 
-sudo apt-get -y install awesome rofi flameshot x11-xkb-utils alsa-utils playerctl
+sudo apt-get -y install awesome rofi flameshot x11-xkb-utils alsa-utils playerctl i3lock
 
 
 # Rofi themes stuff
@@ -31,4 +31,11 @@ git clone "https://github.com/yshui/picom.git" "/tmp/picom" --depth=1
 pushd "/tmp/picom"
 meson setup --buildtype=release build
 sudo ninja -C build install
+popd
+
+# i3lock-color (a fork)
+sudo apt-get install autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev -y
+git clone https://github.com/Raymo111/i3lock-color.git /tmp/i3lock-color --depth=1
+pushd /tmp/i3lock-color
+./install-i3lock-color.sh
 popd

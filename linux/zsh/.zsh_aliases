@@ -1,7 +1,7 @@
 # jokes:
 alias dog='cat'
 alias god='tac'
-alias meow='echo meow # $*'
+alias meow='echo meow'
 alias bake='make'
 
 alias explorer='xdg-open'
@@ -14,7 +14,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias say='spd-say -p 10 -r -10 -R 50 $*'
-alias show_screenkeys="screenkey -s large --scr 1 -p bottom --geometry 510x300+1412+850"
+alias show_screenkeys="screenkey -s large --scr 2 -p bottom --geometry 510x300+2990+850" # 3012 cuz dual monitor (was 1412 before)
 alias tls='tmux ls'
 alias vg='valgrind --leak-check=full --show-reachable=yes --track-origins=yes'
 

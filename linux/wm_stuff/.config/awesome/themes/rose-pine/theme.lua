@@ -40,12 +40,14 @@ theme.wallpaper = function(s)
 		string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "cat_wallpopor.jpeg"),
 		string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "gruv-sushi-streets.jpg"),
 		string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "background.png"),
+		string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "penguin.png"),
 	}
 
 	local wallpaper_option_list = {
-		6,
-		5,
 		2,
+		7,
+		5,
+		6,
 	}
 
 	local wallpaper = require("gears").surface.load_uncached(
