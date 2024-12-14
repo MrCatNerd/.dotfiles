@@ -5,15 +5,13 @@ This directory contains the dotfiles for my linux system
 
 Here are some details about my setup:
 
-+ **WM**: [AwesomeWM](https://github.com/awesomeWM/awesome/) 🗔 config included!
 + **OS**: [Pop!_OS](https://pop.system76.com/)
-+ **Shell**: [zsh](https://wiki.archlinux.org/index.php/Zsh/)
++ **WM**: [AwesomeWM](https://github.com/awesomeWM/awesome/) ⌨️ config included!
++ **Shell**: [zsh](https://wiki.archlinux.org/index.php/Zsh/) 🗔 config included
 + **Terminal**: [kitty](https://github.com/kovidgoyal/kitty/) 🐱 config included!
-+ **Editor**: [Neovim](https://github.com/neovim/neovim/) 🖹 config included!
-<!-- + **File Manager**: [Thunar](https://git.xfce.org/xfce/thunar/) -->
++ **Editor**: [Neovim](https://github.com/neovim/neovim/) btw 🖹 config included!
 + **Launcher**: [rofi](https://github.com/davatorium/rofi/) 🚀 config included!
-+ **Browser**: [Firefox](https://www.mozilla.org/en-US/firefox/) <!-- TODO: add config (maybe) -->
-+ **Main Theme**: [Rose Pine](https://rosepinetheme.com/)
++ **Main Theme**: [Rose Pine](https://rosepinetheme.com/) 🌷
 
 ---
 
@@ -50,10 +48,9 @@ if there are any errors, just remember that i am a bad programmer
 
 ---
 
-## TODO
+## NOT TODO
 
-- Arch script
-- Fix my nix package manager mess
+- Fix my nix package manager mess / remove nix
 - Test this mess and fix small bugs
 - Create a stable branch ^
 
