@@ -8,7 +8,7 @@ yes | sudo add-apt-repository multiverse
 sudo apt-get install -y stow
 
 if [[ -z $STOW_FOLDERS ]]; then
-    STOW_FOLDERS="clangd,zsh,bash,vim,git,local_bin,kitty,wm_stuff,wallpapers,neovim,kanata" # nix is automatically added
+    STOW_FOLDERS="clangd,zsh,bash,vim,git,local_bin,kitty,wm_stuff,wallpapers,neovim,kanata,audio" # nix is automatically added
 fi
 
 if [[ -z $DOTFILES ]]; then
