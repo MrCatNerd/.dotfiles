@@ -1,1 +1,13 @@
 cache
+persistent_config.json
+
+# Ignore fonts/ directory
+fonts/
+
+# Ignore scripts-modules/ directory
+scripts-modules/
+
+# Ignore shaders/ directory
+shaders/
+
+# Ignore for scripts directory is in ./scripts/.gitignore

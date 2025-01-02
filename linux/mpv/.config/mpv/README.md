@@ -2,21 +2,24 @@
 
 this is my custom mpv config
 
-if your username isnt 'mrcat' than you need to repalce /home/mrcat with /home/yourusername
-idk why mpv doesn't support ~
-
 ## Scripts and features
+Scripts and Shader manager: [mpv-manager](https://github.com/po5/mpv_manager)
 OSC: [ModernZ](https://github.com/Samillion/ModernZ.git)
 Thumbnailer: [Thumbfast](https://github.com/po5/thumbfast)
 Pause Indicator: [pause-indicator-lite](https://github.com/Samillion/ModernZ/tree/main/extras/pause-indicator-lite)
-Automatic Subtitles: [mpv-autosub](https://github.com/davidde/mpv-autosub)
+Track Selector: [trackselect](https://github.com/po5/trackselect)
 Shaders & Upscalers:
-    [Anime4k](https://github.com/bloc97/Anime4K) (fast variant)
+    [Anime4k](https://github.com/bloc97/Anime4K)
+    [Adaptive Sharpen](https://gist.github.com/igv/8a77e4eb8276753b54bb94c1c50c317e)
+    [KrigBilateral](https://gist.github.com/igv/a015fc885d5c22e6891820ad89555637)
 
-Subtitles font: Clear Sans Bold
+More scripts:
+    [autosubsync-mpv](https://github.com/joaquintorres/autosubsync-mpv)
 
 ## Requirements
 
 * mpv (obviously)
-* python (pip install subliminal)
+* python
+* subliminal (pip install subliminal)
+* git (sudo apt install git) - for the package manager
 
