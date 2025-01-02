@@ -7,7 +7,7 @@
 	{
 		"git": "https://github.com/joaquintorres/autosubsync-mpv.git",
 		"whitelist": "%.lua$",
-		"dest": "~~/scripts/autosubsync"
+		"dest": "~~/scripts"
 	},
 	{
 		"git": "https://github.com/Samillion/ModernZ.git",
@@ -28,7 +28,7 @@
 		"whitelist": "%.lua",
 		"blacklist": "^[^/]+%.lua$",
 		"dest": "~~/scripts",
-		"nobase": true
+		"flatten_folders": true
 	},
 	{
 		"git": "https://github.com/CounterPillow/mpv-quack.git",
