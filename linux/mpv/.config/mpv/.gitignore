@@ -1,6 +1,10 @@
 cache
 persistent_config.json
 
+# I got no idea how these showed up
+conf.json
+cred.json
+
 # Ignore fonts/ directory
 fonts/
 
@@ -11,3 +15,4 @@ scripts-modules/
 shaders/
 
 # Ignore for scripts directory is in ./scripts/.gitignore
+
