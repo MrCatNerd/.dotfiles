@@ -1,0 +1,7 @@
+pihole:
+run:
+sudo docker logs pihole | grep random
+to find your random pass,
+than go to the machine's ip:
+http://ip/admin/login.php
+and log in

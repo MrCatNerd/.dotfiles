@@ -1,9 +1,10 @@
 #!/bin/env bash
 
-echo "Updating system..."
+echo "Updating system"
 sudo apt-get update && sudo apt-get full-upgrade -y
+echo "Updating system - done"
 
-echo "Installing docker..."
+echo "Installing docker"
 # Install docker for rpi: https://docs.docker.com/engine/install/raspberry-pi-os/
 
 # uninstall unofficial packages
@@ -32,8 +33,29 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 
 sudo apt-get autoremove -y
 
-echo "Running sanity checks"
+echo "Enabling docker on systemctl"
+sudo systemctl enable docker
+echo "Enabling docker on systemctl - done"
 
-which docker && docker --version
+echo "Running docker sanity checks"
+which docker 
+docker --version
+docker compose version
 
 sudo docker run hello-world
+echo "Running docker sanity checks - done"
+
+echo "Installing docker - done"
+
+echo "Enabling NetworkManager"
+sudo systemctl enable NetworkManager
+echo "Enabling NetworkManager - done"
+
+echo "Installing neofetch"
+./too_lazy_to_check_disk_usage_like_a_normal_person_lol.sh
+echo "Installing neofetch - done"
+
+# i forgor why i need this lol
+echo "Installing dnsutils"
+sudo apt-get install dnsutls dnsutils -y
+echo "Installing dnsutils - done"

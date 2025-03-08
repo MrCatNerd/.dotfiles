@@ -1,0 +1,5 @@
+you need to run the next scripts with `sudo` permission for them to work properly:
+ - deploy.sh
+ - stop.sh
+
+i can add sudo to the right commands to make it ask you for permission when running this, but i won't
