@@ -16,7 +16,7 @@ printf "start on filesystem\nexec xboxdrv -D\nexpect fork\n" | sudo tee -a /etc/
 echo "Changed files in /etc/init/xboxdrv.conf /etc/modprobe.d/blacklist.conf /etc/default/xboxdrv and probably in other places"
 
 
-echo "You can test the controller using tools like jstest-gtk: jstest-gtk (yes I this script already installed jstest-gtk)"
+echo "You can test the controller using tools like jstest-gtk: jstest-gtk (yes this script already installed jstest-gtk)"
 
 printf "Go look at: https://github.com/gotbletu/shownotes/blob/master/xboxdrv.md\nOr watch this video: https://youtu.be/JfcSMRooHLU\n\n\n to understand what the hell you are doing"
 echo "You should also look at: https://askubuntu.com/questions/165210/how-do-i-get-an-xbox-360-controller-working#180044"

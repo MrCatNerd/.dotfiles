@@ -3,6 +3,9 @@
 	name = MrCatNerd
 [credential]
 	helper = store
+	helper = 
+	helper = /usr/local/bin/git-credential-manager
+	credentialStore = gpg
 [core]
     editor = $EDITOR
 	untrackedcache = true
@@ -23,3 +26,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[alias]
+	gud = commit --amend
+[credential "https://dev.azure.com"]
+	useHttpPath = true
