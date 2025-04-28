@@ -8,6 +8,7 @@ if [ -f "$script_path" ]; then
 fi
 
 bash "./install/apt.sh"
+bash "./install/git.sh"
 
 bash "./install/general.sh"
 

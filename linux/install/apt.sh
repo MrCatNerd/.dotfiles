@@ -9,8 +9,6 @@ programs=(
     "build-essential"
     "cloc"
     "gimp"
-    "git"
-    "git-lfs"
     "hydra"
     "nmap"
     "openvpn"
@@ -19,6 +17,7 @@ programs=(
     "screenkey"
     "valgrind"
     "wine"
+    "curl"
 
     # pop os may not have it by default
     # "vim-gtk3" # supports clipboard
