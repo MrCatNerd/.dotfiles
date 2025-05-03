@@ -9,7 +9,7 @@ local data = { -- why tf lua is 1 based indexed
 	last_layout_index = 2,
 }
 
-local layouts = { "dvorak", "il", "us" }
+local layouts = { "us dvorak", "il", "us" }
 
 local function switch_layout(layout)
 	awful.spawn.with_shell("setxkbmap " .. layout)
