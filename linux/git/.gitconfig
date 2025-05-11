@@ -8,7 +8,7 @@
 ; [user]
 ;   signingkey = VERYSECRETKEY
 [commit]
-    gpgSign = true
+	gpgsign = true
 
 
 [core]
