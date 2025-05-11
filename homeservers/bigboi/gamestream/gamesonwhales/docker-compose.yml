@@ -21,9 +21,6 @@ services:
       - /dev/dri:/dev/dri
       - /dev/uinput:/dev/uinput
       - /dev/uhid:/dev/uhid
-      - /dev/video10:/dev/video10
-      - /dev/video11:/dev/video11
-      - /dev/video12:/dev/video12
     runtime: nvidia
     deploy:
       resources:

@@ -1,0 +1,96 @@
+name: gamesonwhales
+services:
+  wolf:
+    cpu_shares: 90
+    command: []
+    deploy:
+      resources:
+        limits:
+          memory: 3823M
+        reservations:
+          devices:
+            - capabilities:
+                - gpu
+    device_cgroup_rules:
+      - c 13:* rmw
+    devices:
+      - /dev/dri:/dev/dri
+      - /dev/uinput:/dev/uinput
+      - /dev/uhid:/dev/uhid
+    environment:
+      - HOST_APPS_STATE_FOLDER=/etc/wolf
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - NVIDIA_VISIBLE_DEVICES=all
+      - XDG_RUNTIME_DIR=/tmp/sockets
+    image: ghcr.io/games-on-whales/wolf:latest
+    labels:
+      icon: https://images.opencollective.com/games-on-whales/33a2797/logo/128.png?height=128
+    ports:
+      - mode: ingress
+        target: 47984
+        published: "47984"
+        protocol: tcp
+      - mode: ingress
+        target: 47989
+        published: "47989"
+        protocol: tcp
+      - mode: ingress
+        target: 47999
+        published: "47999"
+        protocol: udp
+      - mode: ingress
+        target: 48010
+        published: "48010"
+        protocol: tcp
+      - mode: ingress
+        target: 48100
+        published: "48100"
+        protocol: udp
+      - mode: ingress
+        target: 48200
+        published: "48200"
+        protocol: udp
+    restart: unless-stopped
+    runtime: nvidia
+    volumes:
+      - type: bind
+        source: /etc/wolf/
+        target: /etc/wolf
+        bind:
+          create_host_path: true
+      - type: bind
+        source: /tmp/sockets
+        target: /tmp/sockets
+        bind:
+          create_host_path: true
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+        bind:
+          create_host_path: true
+      - type: bind
+        source: /dev/
+        target: /dev
+        bind:
+          create_host_path: true
+      - type: bind
+        source: /run/udev
+        target: /run/udev
+        bind:
+          create_host_path: true
+    cap_add: []
+    network_mode: host
+    privileged: false
+    container_name: ""
+    hostname: ""
+x-casaos:
+  author: self
+  category: self
+  hostname: ""
+  icon: https://images.opencollective.com/games-on-whales/33a2797/logo/128.png?height=128
+  index: /
+  is_uncontrolled: false
+  port_map: ""
+  scheme: http
+  title:
+    custom: Games On Whales
