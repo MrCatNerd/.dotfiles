@@ -22,7 +22,7 @@ services:
       - NVIDIA_DRIVER_CAPABILITIES=all
       - NVIDIA_VISIBLE_DEVICES=all
       - XDG_RUNTIME_DIR=/tmp/sockets
-    image: ghcr.io/games-on-whales/wolf:latest
+    image: ghcr.io/games-on-whales/wolf:stable
     labels:
       icon: https://images.opencollective.com/games-on-whales/33a2797/logo/128.png?height=128
     ports:
