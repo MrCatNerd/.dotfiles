@@ -48,9 +48,6 @@ if there are any errors, just remember that i am a bad programmer
 
 ---
 
-## NOT TODO
+## TODO
 
-- Fix my nix package manager mess / remove nix
-- Test this mess and fix small bugs
-- Create a stable branch ^
-
+- Complete rewrite
