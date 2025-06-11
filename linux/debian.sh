@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-sudo apt-get -y update
-sudo apt-get -y upgrade
+sudo apt-get update
+sudo apt-get -y full-upgrade
 yes | sudo add-apt-repository universe
 yes | sudo add-apt-repository multiverse
 
