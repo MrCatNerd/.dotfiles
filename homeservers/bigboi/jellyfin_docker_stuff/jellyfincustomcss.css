@@ -1,0 +1,11 @@
+@import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css");
+
+.headerHomeButton { display: block; }
+
+#castCollapsible {
+    display: none;
+}
+
+#guestCastCollapsible{
+    display: none;
+}
