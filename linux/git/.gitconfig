@@ -111,8 +111,6 @@
 
 # git credential manager stuff
 [credential]
-	helper = store
-	helper =
 	helper = /usr/local/bin/git-credential-manager
 	credentialStore = gpg
 [credential "https://dev.azure.com"]
