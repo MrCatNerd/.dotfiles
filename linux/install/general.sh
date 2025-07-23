@@ -23,9 +23,9 @@ programs=( # all of the programs that are here will not be installed by a differ
 
 
 for program in "${programs[@]}"; do
-    # sudo apt install -y "$program"
+    sudo apt install -y "$program"
     # install packges
-    nix-env -iA nixpkgs."$program"
+    # nix-env -iA nixpkgs."$program"
 done
 
 sudo locale-gen en_US.UTF-8
