@@ -14,4 +14,3 @@ sudo apt-get install -y \
     mingw-w64-x86-64-cmake \
     mingw-w64-i686-make \
     mingw-w64-x86-64-make
-

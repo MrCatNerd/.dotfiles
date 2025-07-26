@@ -2,19 +2,11 @@
 
 pushd "$DOTFILES"
 
-if [ -f "$script_path" ]; then
-    echo "Executing ./install/nix.sh"
-    bash "./install/nix.sh"
-fi
-
-bash "./install/apt.sh"
-bash "./install/git.sh"
-
 bash "./install/general.sh"
+bash "./install/git.sh"
 
 for folder in $(echo "$STOW_FOLDERS" | sed "s/,/ /g")
 do
-    # TODO: find out why stow is erroring but it still works and i got no idea why
     echo "stow $folder"
     stow -D "$folder"
     stow "$folder"
@@ -24,6 +16,8 @@ do
     if [ -f "$script_path" ]; then
         echo "Executing $script_path"
         bash "$script_path"
+    else
+        echo "$script_path doesn't exist"
     fi
 done
 

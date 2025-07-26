@@ -1,11 +1,7 @@
-sudo apt-get update -y
+sudo apt-get update
 
-# to install the MySQL Workbench:
-sudo apt-get install mysql-workbench-community -y
-# To install the shared client libraries:
-sudo apt-get install libmysqlclient21 -y
-
-sudo apt-get install mysql-server -y
+# Install MySQL Workbench, client libs, and server
+sudo apt-get install -y mysql-workbench-community libmysqlclient21 mysql-server
 
 # If you want to know where all the installed MySQL files are located
 dpkg -L mysql-server
@@ -33,5 +29,5 @@ printf "TO SET PASSWORD FOR ROOT USER:\nCREATE USER \"mrcat\"@\"localhost\" IDEN
 echo "type \"exit\" to quit MySQL shell"
 sudo mysql -u root -p
 
-echo "for more informatio see: https://likegeeks.com/mysql-on-linux-beginners-tutorial/#Install_MySQL_on_Linux_Ubuntu_and_CentOS"
+echo "for more information see: https://likegeeks.com/mysql-on-linux-beginners-tutorial/#Install_MySQL_on_Linux_Ubuntu_and_CentOS"
 

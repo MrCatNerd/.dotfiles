@@ -1,32 +1,57 @@
 #!/bin/env bash
 
-programs=( # all of the programs that are here will not be installed by a different script
-        # work env
-        # "fzy"
-        "fzf"
-        "ripgrep"
+# will be executed first
 
-        # coding extras
-        "sqlite"
+programs=(
+    # python stuff
+    "python3-pip"
+    "python3-venv"
+    "pipx"
 
-        # others
-        "stow"
+    # general stuff
+    "gimp"
+    "curl"
+    "openvpn"
+    "wine"
 
-        # maliciousness
-        # "lolcat"
-        # "tree"
-        # "cmatrix"
-        # "cava"
-        "neofetch"
-        "htop"
-    )
+    # work env
+    "bear"
+    "build-essential"
+    "cloc"
+    "fzf"
+    #"fzy"
+    "hydra"
+    "nmap"
+    "ripgrep"
+    "sqlite"
+    "valgrind"
+
+    # pop os may not have it by default
+    # "vim-gtk3" # supports clipboard
+
+    # manual pages
+    "man-db"
+    "manpages-dev"
+    "manpages-posix"
+    "manpages-posix-dev"
+
+    # misc
+    # "lolcat"
+    "screenkey"
+    "tree"
+    "cmatrix"
+    "cava"
+    "neofetch"
+    "htop"
+)
 
 
 for program in "${programs[@]}"; do
-    sudo apt install -y "$program"
+    # sudo apt install -y "$program"
     # install packges
-    # nix-env -iA nixpkgs."$program"
+    sudo apt-get install -y "$program"
 done
 
 sudo locale-gen en_US.UTF-8
 
+sudo pipx ensurepath

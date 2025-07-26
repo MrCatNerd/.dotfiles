@@ -11,6 +11,5 @@ chmod 777 $HISTFILE
 # starship
 curl -sS https://starship.rs/install.sh | sh -s -- -y
 
-# set starship theme
-starship preset pastel-powerline -o ~/.config/starship.toml
-
+echo "Changing default shell to zsh"
+chsh -s $(which zsh)

@@ -2,7 +2,7 @@
 
 if ! which git_release_puller > /dev/null 2>&1; then
     echo "git_release_puller not found, skipping nerd fonts!"
-    echo "make sure you stowed the .local/bin folder!" # stow ordering?, idk, ill worry 'bout it later
+    echo "make sure you stowed the .local/bin folder!"
     exit 1
 fi
 
@@ -16,7 +16,6 @@ FONTS="FiraCode FiraMono Hack"
 # time to (ab)use sed to overcomplicate my script
 FONTS=$(echo "$FONTS " | sed "s/ /.zip /g")
 
-# version="3.2.1"
 fonts_dir="${HOME}/.local/share/fonts"
 
 if [[ ! -d "$fonts_dir" ]]; then

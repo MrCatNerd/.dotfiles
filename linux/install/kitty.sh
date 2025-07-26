@@ -19,9 +19,6 @@ sed -i "s|Exec=kitty|Exec=$(readlink -f ~)/.local/kitty.app/bin/kitty|g" ~/.loca
 # Make xdg-terminal-exec (and hence desktop environments that support it use kitty)
 echo 'kitty.desktop' > ~/.config/xdg-terminals.list
 
-# nix-env -iA \
-#     nixpkgs.kitty \
-#     nixpkgs.imagemagick # kitten +icat <image-path.png>
 sudo apt-get install -y imagemagick
 
 ### Declare variables

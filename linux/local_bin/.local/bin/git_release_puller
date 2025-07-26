@@ -34,7 +34,7 @@ function PULL_RELEASE_GH() {
         | tr -d ' ')
 
     # i can wget a list instead of each item but i won't cuz im too lazy
-    for filter in "$FILTERS"
+    for filter in $FILTERS
     do
 
         echo $(echo "$listcurl" | grep "${filter}")
