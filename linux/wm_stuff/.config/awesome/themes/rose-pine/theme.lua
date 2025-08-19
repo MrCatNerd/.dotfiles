@@ -41,10 +41,11 @@ theme.wallpaper = function(s)
 		string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "gruv-sushi-streets.jpg"),
 		string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "background.png"),
 		string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "penguin.png"),
+		string.format("%s/Pictures/Wallpapers/%s", os.getenv("HOME"), "Manga-Portal.png"),
 	}
 
 	local wallpaper_option_list = {
-		2,
+		8,
 		7,
 		5,
 		6,
