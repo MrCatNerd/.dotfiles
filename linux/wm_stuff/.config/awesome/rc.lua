@@ -575,13 +575,13 @@ globalkeys = gears.table.join(
 	-- Volume Up
 	-- WARNING: I am using frontright because my sound balancing is forked up lol (and the realtek drivers are outdated AF)
 	awful.key({}, "XF86AudioRaiseVolume", function()
-		awful.spawn("amixer set Master frontleft 5%+")
+		awful.spawn("amixer set Master 1%+")
 		-- naughty.notify({ text = "Volume Up" })
 	end, { description = "increase volume", group = "media" }),
 
 	-- Volume Down
 	awful.key({}, "XF86AudioLowerVolume", function()
-		awful.spawn("amixer set Master frontleft 5%-")
+		awful.spawn("amixer set Master 1%-")
 		-- naughty.notify({ text = "Volume Down" })
 	end, { description = "decrease volume", group = "media" }),
 
