@@ -1,0 +1,4 @@
+{
+    "deps": [],
+    "ordered_scripts": ["apt.sh"]
+}

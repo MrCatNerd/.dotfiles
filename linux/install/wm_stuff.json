@@ -1,0 +1,4 @@
+{
+    "deps": ["apt", "meson", "git"],
+    "ordered_scripts": ["wm_stuff.sh"]
+}

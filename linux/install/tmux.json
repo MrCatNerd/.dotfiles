@@ -1,0 +1,4 @@
+{
+    "deps": ["apt", "git"],
+    "ordered_scripts": ["tmux.sh"]
+}

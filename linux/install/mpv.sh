@@ -1,9 +1,5 @@
 #!/bin/env bash
 
-sudo apt-get -y install pipx ninja-build
-pipx install meson
-sudo pipx install meson
-
 mkdir -p "$HOME/Documents/Code/Gitting"
 pushd "$HOME/Documents/Code/Gitting"
 git clone --depth 1 "https://github.com/mpv-player/mpv-build.git" "mpv-build"

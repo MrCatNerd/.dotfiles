@@ -3,11 +3,6 @@
 # will be executed first
 
 programs=(
-    # python stuff
-    "python3-pip"
-    "python3-venv"
-    "pipx"
-
     # general stuff
     "gimp"
     "curl"

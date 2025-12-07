@@ -3,10 +3,6 @@
 
 sudo apt-get -y install awesome rofi flameshot x11-xkb-utils alsa-utils playerctl i3lock pipx ninja-build
 
-# ensure meson is installed through pipx
-pipx install meson
-sudo pipx install meson
-
 # Rofi themes stuff
 mkdir -p "/usr/share/rofi/themes"
 
@@ -34,7 +30,7 @@ sudo apt-get install -y libconfig-dev libdbus-1-dev libegl-dev libev-dev libgl-d
 pushd "/tmp/picom"
 meson setup --buildtype=release build
 meson compile -C build
-sudo meson install -C build
+sudo ninja install -C build
 popd
 
 

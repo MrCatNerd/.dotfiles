@@ -1,0 +1,4 @@
+{
+    "deps": ["git", "zip"],
+    "ordered_scripts": ["wallpapers.sh"]
+}

@@ -1,0 +1,4 @@
+{
+    "deps": ["apt"],
+    "ordered_scripts": ["neovim.sh"]
+}

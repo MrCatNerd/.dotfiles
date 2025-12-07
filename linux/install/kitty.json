@@ -1,0 +1,4 @@
+{
+    "deps": ["apt", "curl", "sed"],
+    "ordered_scripts": ["kitty.sh"]
+}

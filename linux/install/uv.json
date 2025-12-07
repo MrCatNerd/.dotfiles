@@ -1,0 +1,4 @@
+{
+    "deps": ["python3"],
+    "ordered_scripts": ["uv.sh"]
+}

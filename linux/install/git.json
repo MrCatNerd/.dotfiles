@@ -1,0 +1,4 @@
+{
+    "deps": ["apt", "curl"],
+    "ordered_scripts": ["git.sh"]
+}

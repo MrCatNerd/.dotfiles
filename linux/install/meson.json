@@ -1,0 +1,4 @@
+{
+    "deps": ["uv", "ninja-build"],
+    "ordered_scripts": ["meson.sh"]
+}
