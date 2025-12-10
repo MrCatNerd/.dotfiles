@@ -1,35 +1,36 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
-echo "WARNING: this script may not work on your system (PopOS btw)"
+echo "WARNING: this script may not work for all GTK4/libadwaita apps"
 
-# Install themes
+# === Variables ===
+GTK_THEME="Yaru-dark"
+ICON_THEME="Yaru"
 
-THEME_URL=""
-THEME="candy-icons"
+# === Create folders ===
+mkdir -p $HOME/.config/gtk-3.0
+mkdir -p $HOME/.config/gtk-4.0
 
-ICON_THEME_URL=""
-ICON_THEME="candy-icons"
+# === GTK 3 Settings ===
+cat > $HOME/.config/gtk-3.0/settings.ini << EOF
+[Settings]
+gtk-theme-name = $GTK_THEME
+gtk-icon-theme-name = $ICON_THEME
+gtk-application-prefer-dark-theme = 1
+EOF
 
-mkdir -p themes
+# === GTK 4 Settings ===
+cat > $HOME/.config/gtk-4.0/settings.ini << EOF
+[Settings]
+gtk-theme-name = $GTK_THEME
+gtk-icon-theme-name = $ICON_THEME
+gtk-application-prefer-dark-theme = 1
+EOF
 
-# /usr/share/icons/
-# /usr/share/themes/
+# === Gnome Settings ===
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
-curl -fsSL -o themes/$THEME.tar.xz
-tar -xf themes/$THEME.tar.xz -C themes
-# tar -xf themes/$THEME.tar.xz /usr/share/icons/
+# === Environment variable for apps launched from this session ===
+export GTK_THEME="$GTK_THEME:dark"
 
-
-mkdir -p $HOME/.themes
-# pushd $HOME/.themes
-# popd
-gsettings set org.gnome.desktop.interface gtk-theme "pop-dark"
-gsettings set org.gnome.desktop.wm.preferences theme "pop-dark"
-
-mkdir -p $HOME/.icons
-# pushd $HOME/.icons
-# popd
-gsettings set org.gnome.desktop.interface icon-theme "$ICON_THEME"
-
-gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-
+echo "GTK3 & GTK4 dark theme applied for your session."
+echo "Some libadwaita apps may still show light mode."
