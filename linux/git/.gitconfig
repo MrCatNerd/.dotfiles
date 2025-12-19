@@ -105,14 +105,12 @@
     plain = blue
 
 # url stuff
-#[url "git@github.com"] # TODO: use ssh instead of gcm
-[url "https://github.com/"]
+[url "git@github.com:"]
+    insteadOf = "https://github.com/"
     insteadOf = "gh:"
 
 # git credential manager stuff
 [credential]
-	helper = /usr/local/bin/git-credential-manager
-	credentialStore = gpg
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 [gpg]
