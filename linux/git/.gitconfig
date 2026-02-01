@@ -117,3 +117,6 @@
 	useHttpPath = true
 [gpg]
 	program = gpg
+
+[includeIf "gitdir:lazy/"]
+    path = ~/.gitconfig.lazy

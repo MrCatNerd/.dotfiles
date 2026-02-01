@@ -161,7 +161,9 @@ function acp() {
   git push
 }
 
-export PATH=$PATH:/home/mrcat/.spicetify
+export PATH="$PATH:/home/mrcat/.spicetify"
+export PATH="$HOME/.dotfiles/linux/local_bin/.local/bin:$PATH"
+
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!

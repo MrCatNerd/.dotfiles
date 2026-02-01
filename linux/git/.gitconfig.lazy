@@ -1,0 +1,3 @@
+# lazy.nvim git fix: https://github.com/folke/lazy.nvim/issues/1204#issuecomment-1903577139
+[fetch]
+    writeCommitGraph = false
