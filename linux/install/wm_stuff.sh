@@ -1,11 +1,7 @@
 #!/bin/env bash
 
 
-sudo apt-get -y install awesome rofi flameshot x11-xkb-utils alsa-utils playerctl i3lock pipx ninja-build
-
-# ensure meson is installed through pipx
-pipx install meson
-sudo pipx install meson
+sudo apt-get -y install awesome rofi flameshot x11-xkb-utils alsa-utils playerctl i3lock ninja-build
 
 # Rofi themes stuff
 mkdir -p "/usr/share/rofi/themes"
@@ -34,18 +30,5 @@ sudo apt-get install -y libconfig-dev libdbus-1-dev libegl-dev libev-dev libgl-d
 pushd "/tmp/picom"
 meson setup --buildtype=release build
 meson compile -C build
-sudo meson install -C build
-popd
-
-
-# i3lock-color (a fork)
-git clone https://github.com/Raymo111/i3lock-color.git /tmp/i3lock-color --depth=1
-
-# install the build deps
-sudo apt-get install -y autoconf gcc make pkg-config libpam0g-dev libcairo2-dev libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev libxcb-util-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev libjpeg-dev libgif-dev
-
-# compile and install
-pushd "/tmp/i3lock-color"
-chmod +x ./install-i3lock-color.sh
-./install-i3lock-color.sh
+sudo ninja install -C build
 popd

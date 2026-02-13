@@ -106,7 +106,7 @@
 
 # url stuff
 [url "git@github.com:"]
-    insteadOf = "https://github.com/"
+    #insteadOf = "https://github.com/"
     insteadOf = "gh:"
 
 # git credential manager stuff

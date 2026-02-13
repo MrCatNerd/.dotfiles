@@ -4,6 +4,7 @@
 
 programs=(
     # python stuff
+    "python3-full"
     "python3-pip"
     "python3-venv"
     "pipx"
@@ -17,6 +18,9 @@ programs=(
     # work env
     "bear"
     "build-essential"
+    "autoconf"
+    "automake"
+    "libtool"
     "cloc"
     "fzf"
     #"fzy"

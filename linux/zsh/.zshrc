@@ -170,13 +170,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 eval "$(starship init zsh)"
 
-#     ~/.dotfiles/linux/zsh    main +1 !3                                                                                           ✔ 
-#     ~/Documents/Code/C/xab    main !13 ?3                                                                                     INT ✘ 
-
-
-
 . "$HOME/.cargo/env"
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
