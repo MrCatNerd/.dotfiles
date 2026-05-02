@@ -17,8 +17,6 @@ Here are some details about my setup:
 
 ## Requirements
 
-GIT
-
 ```sh
 sudo apt-get install -y git
 ```
