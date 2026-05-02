@@ -1,7 +1,10 @@
 #!/bin/env bash
 
+# A bunch of x11 shit because ubuntu dropped x11 support >:(
+sudo apt-get -y install xorg libegl1 libegl-mesa0 libgl1-mesa-dri libglx-mesa0 mesa-utils \
+    libx11-6 libxext6 libxrandr2 libxrender1 libxi6
 
-sudo apt-get -y install awesome rofi flameshot x11-xkb-utils alsa-utils playerctl i3lock ninja-build
+sudo apt-get -y install awesome rofi flameshot x11-xkb-utils alsa-utils playerctl i3lock ninja-build meson
 
 # Rofi themes stuff
 mkdir -p "/usr/share/rofi/themes"
@@ -28,7 +31,7 @@ sudo apt-get install -y libconfig-dev libdbus-1-dev libegl-dev libev-dev libgl-d
 
 # compile and install
 pushd "/tmp/picom"
-meson setup --buildtype=release build
+meson setup build --buildtype=release
 meson compile -C build
 sudo ninja install -C build
 popd

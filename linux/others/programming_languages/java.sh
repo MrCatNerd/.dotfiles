@@ -2,8 +2,6 @@
 
 # TODO: java 21 for minecraft
 
-# minecraft on linux btw
-
 # java lsp thingy (neovim btw)
 sudo apt install \
     openjdk-11-jdk \

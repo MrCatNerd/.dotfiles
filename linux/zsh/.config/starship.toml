@@ -1,7 +1,3 @@
-# TODO: optional segments
-# for example, if im not in a git repo the gold segment would be hidden
-# (conditional format strings?)
-
 format = """
 [](fg:rose)\
 $os\

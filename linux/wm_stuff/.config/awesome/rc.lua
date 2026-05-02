@@ -865,11 +865,9 @@ beautiful.useless_gaps = 30
 beautiful.gap_single_client = true
 
 -- Autostart Application
--- awful.spawn.with_shell("$HOME/.config/awesome/autostart.sh")
 awful.spawn.with_shell("setxkbmap dvorak") -- dvorak btw
--- awful.spawn.with_shell("picom --experimental-backends -b --config=$HOME/.config/picom/picom.ini") -- picom
 awful.spawn.with_shell("picom -b --config=$HOME/.config/picom/picom.ini") -- picom git
+awful.spawn.with_shell("~/.screenlayout/homelayout.sh")
 awful.spawn.once("otd-daemon")
 -- awful.spawn.with_shell("pgrep -x caffeine-indica || caffeine-indicator") -- idk why caffeine-indica is caffeine-indicator
 -- awful.spawn.once("xss-lock --transfer-sleep-lock -- screenlock_customized --nofork")
--- awful.spawn.once("sudo kanata -c ~/.config/kanata/kanata.kbd")

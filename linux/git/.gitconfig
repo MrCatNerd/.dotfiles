@@ -111,6 +111,9 @@
 
 # git credential manager stuff
 [credential]
+	helper = 
+	helper = /usr/local/bin/git-credential-manager
+	credentialStore = secretservice
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 [gpg]

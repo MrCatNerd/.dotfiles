@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-echo "WARNING: this script may not work on your system (PopOS btw)"
+echo "WARNING: might not work"
 
 # Install themes
 

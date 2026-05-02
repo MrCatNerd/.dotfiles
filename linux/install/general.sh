@@ -3,20 +3,12 @@
 # will be executed first
 
 programs=(
-    # python stuff
-    "python3-full"
-    "python3-pip"
-    "python3-venv"
-    "pipx"
-
     # general stuff
     "gimp"
     "curl"
-    "openvpn"
     "wine"
 
     # work env
-    "bear"
     "build-essential"
     "autoconf"
     "automake"
@@ -24,14 +16,9 @@ programs=(
     "cloc"
     "fzf"
     #"fzy"
-    "hydra"
-    "nmap"
     "ripgrep"
     "sqlite"
     "valgrind"
-
-    # pop os may not have it by default
-    # "vim-gtk3" # supports clipboard
 
     # manual pages
     "man-db"
@@ -41,21 +28,19 @@ programs=(
 
     # misc
     # "lolcat"
-    "screenkey"
+    # "screenkey"
     "tree"
     "cmatrix"
     "cava"
-    "neofetch"
+    "fastfetch"
     "htop"
 )
 
 
 for program in "${programs[@]}"; do
-    # sudo apt install -y "$program"
     # install packges
     sudo apt-get install -y "$program"
 done
 
+# I don't know why I put that here lol
 sudo locale-gen en_US.UTF-8
-
-sudo pipx ensurepath

@@ -1,42 +1,35 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
-if ! which git_release_puller > /dev/null 2>&1; then
-    echo "git_release_puller not found, skipping nerd fonts!"
-    echo "make sure you stowed the .local/bin folder!"
-    exit 1
-fi
+echo "Setting up Nerd Fonts"
 
-source git_release_puller
+sudo apt-get install -y curl unzip fontconfig
 
-echo "Setting up nerd fonts"
-
-# space to seperate
+# space seperated list of fonts lol:
 FONTS="FiraCode FiraMono Hack"
 
-# time to (ab)use sed to overcomplicate my script
-FONTS=$(echo "$FONTS " | sed "s/ /.zip /g")
+FONT_DIR="$HOME/.local/share/fonts"
+mkdir -p "$FONT_DIR"
 
-fonts_dir="${HOME}/.local/share/fonts"
+for font_name in $FONTS; do
+    echo "Downloading $font_name Nerd Font..."
 
-if [[ ! -d "$fonts_dir" ]]; then
-    mkdir -p "$fonts_dir"
-fi
+    URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/${font_name}.zip"
+    ZIP_FILE="/tmp/${font_name}.zip"
 
-if [[ ! -d "/tmp/nerd-fonts" ]]; then
-    mkdir -p "/tmp/nerd-fonts"
-else
-    rm -f "/tmp/nerd-fonts/*"
-fi
+    echo "$URL"
 
-PULL_RELEASE_GH "/tmp/fonts/" "https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest" "browser_download_url" "$FONTS"
-for font in $("$FONTS" | sed "s/ /\n/g"); do
-    zip_file="/tmp/nerd-fonts/${font}.zip"
-    unzip "$zip_file" -d "$fonts_dir" -x "*.txt/*" -x "*.md/*"
+    curl -fLo "$ZIP_FILE" "$URL" || {
+        echo "Failed to download $font_name"
+        continue
+    }
+
+    echo "Unzipping $font_name..."
+    unzip -o "$ZIP_FILE" -d "$FONT_DIR/$font_name/"
+
+    rm -f "$ZIP_FILE"
 done
 
-find "$fonts_dir" -name "*Windows Compatible*" -delete
-
+echo "Refreshing font cache..."
 fc-cache -fv
 
-echo Finished setting up nerd fonts
-
+echo "Finished setting up Nerd Fonts"

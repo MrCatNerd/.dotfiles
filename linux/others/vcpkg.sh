@@ -1,6 +1,5 @@
 #!/bin/env bash
 
-echo "WARNING: i just copied stuff from the internet lol"
 sudo apt-get install -y pkg-config
 
 wget -qO "/tmp/vcpkg.tar.gz" "https://github.com/microsoft/vcpkg/archive/master.tar.gz"

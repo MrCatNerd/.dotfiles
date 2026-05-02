@@ -1,6 +1,3 @@
-# I dont really care that the zip and the gitignore files are being stowed
-# btw the linux/install/wallpapers.sh is doing the all unzipping stuff
-
 *.bmp
 *.gif
 *.jpeg
