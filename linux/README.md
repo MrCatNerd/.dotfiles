@@ -7,7 +7,7 @@ Here are some details about my setup:
 
 + **OS**: [Ubuntu](https://ubuntu.com/)
 + **WM**: [AwesomeWM](https://github.com/awesomeWM/awesome/)
-+ **Shell**: [zsh](https://wiki.archlinux.org/index.php/Zsh/)
++ **Shell**: [zsh](https://www.zsh.org/)
 + **Terminal**: [kitty](https://github.com/kovidgoyal/kitty/)
 + **Editor**: [Neovim](https://github.com/neovim/neovim/) btw
 + **Launcher**: [rofi](https://github.com/davatorium/rofi/)
