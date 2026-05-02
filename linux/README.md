@@ -23,7 +23,7 @@ sudo apt-get install -y git
 
 ## Installation
 
-clone and run script
+clone and run the script
 
 ```sh
 git clone "https://github.com/MrCatNerd/.dotfiles.git" "$HOME/.dotfiles/"
