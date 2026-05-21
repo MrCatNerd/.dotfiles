@@ -1,0 +1,15 @@
+- name: Bootstrap environment
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  roles:
+    - base
+    - git
+    - buildtools
+    - fonts
+    - zsh
+    - tmux
+    - kitty
+    - neovim
+    - awesome-desktop

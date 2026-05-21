@@ -1,0 +1,55 @@
+---
+# yaml-language-server: $schema=https://www.schemastore.org/github-workflow.json
+name: readme
+
+"on":
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+jobs:
+  readme:
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'rolehippie'
+
+    steps:
+      - name: Generate token
+        id: token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.TOKEN_EXCHANGE_APP }}
+          installation_retrieval_mode: id
+          installation_retrieval_payload: ${{ secrets.TOKEN_EXCHANGE_INSTALL }}
+          private_key: ${{ secrets.TOKEN_EXCHANGE_KEY }}
+          permissions: >-
+            {"contents": "write"}
+
+      - name: Checkout source
+        uses: actions/checkout@v6
+        with:
+          token: ${{ steps.token.outputs.token }}
+
+      - name: Generate readme
+        uses: actionhippie/ansible-doctor@v6
+        with:
+          force: true
+          verbose: true
+
+      - name: Source rebase
+        run: git pull --autostash --rebase
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v10
+        with:
+          author_name: GitHub Actions
+          author_email: github@webhippie.de
+          add: README.md
+          message: "docs: automated readme update [skip ci]"
+          push: true
+          commit: --signoff
+
+...

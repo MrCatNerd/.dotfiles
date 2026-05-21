@@ -1,0 +1,7 @@
+fonts:
+  - Hack
+  - FiraCode
+  - FiraMono
+
+font_base_dir: /usr/local/share/fonts/NerdFonts
+nerd_fonts_url: "https://github.com/ryanoasis/nerd-fonts/releases/latest/download"

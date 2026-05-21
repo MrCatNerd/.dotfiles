@@ -1,0 +1,13 @@
+# ---> Ansible
+*.retry
+.ansible/
+
+# ---> Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ---> Flake
+.direnv/
+.devenv/
+.pre-commit-config.yaml

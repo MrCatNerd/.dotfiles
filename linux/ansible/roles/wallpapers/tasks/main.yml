@@ -1,0 +1,29 @@
+- name: Ensure git-lfs is installed
+  ansible.builtin.package:
+    name: git-lfs
+    state: present
+  become: yes
+
+- name: Initialize git-lfs
+  ansible.builtin.command: git lfs install
+  args:
+    creates: ~/.gitconfig
+  changed_when: false
+
+- name: Pull git-lfs files
+  ansible.builtin.command: git lfs pull
+  args:
+    chdir: "{{ repo_path }}"
+  changed_when: true
+
+- name: Ensure unzip is installed
+  ansible.builtin.package:
+    name: unzip
+    state: present
+  become: yes
+
+- name: Unzip wallpapers archive
+  ansible.builtin.unarchive:
+    src: "{{ repo_path }}/wallpapers/Pictures/Wallpapers/wallpapers.zip"
+    dest: "{{ repo_path }}/wallpapers/Pictures/Wallpapers/"
+    remote_src: yes

@@ -1,0 +1,38 @@
+- name: Install kitty and friends
+  become: true
+  ansible.builtin.package:
+    name:
+      - kitty
+      - ImageMagick
+    state: present
+
+- name: Ensure kitty config directory exists
+  ansible.builtin.file:
+    path: "{{ kitty_config_dir }}"
+    state: directory
+    mode: "0755"
+
+- name: Ensure themes directory exists
+  ansible.builtin.file:
+    path: "{{ kitty_themes_dir }}"
+    state: directory
+    mode: "0755"
+
+- name: Download Rose Pine theme
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/rose-pine/kitty/main/dist/rose-pine.conf"
+    dest: "{{ kitty_themes_dir }}/rose_pine.conf"
+    mode: "0644"
+
+- name: Link Rose Pine as active theme
+  ansible.builtin.file:
+    src: "{{ kitty_themes_dir }}/rose_pine.conf"
+    dest: "{{ kitty_config_dir }}/theme.conf"
+    state: link
+    force: true
+
+- name: Ensure kitty.conf includes theme
+  ansible.builtin.lineinfile:
+    path: "{{ kitty_config_dir }}/kitty.conf"
+    line: "include theme.conf"
+    create: true

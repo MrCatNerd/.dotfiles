@@ -1,0 +1,9 @@
+collections:
+  - name: community.general
+    version: "12.6.0"
+
+roles:
+  - src: https://github.com/rolehippie/starship
+    scm: git
+    version: "v2.9.1"
+    name: rolehippie.starship

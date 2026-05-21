@@ -1,0 +1,33 @@
+- name: Check if {{ font }} is already installed
+  become: true
+  ansible.builtin.stat:
+    path: "{{ font_base_dir }}/{{ font }}"
+  register: font_installed
+
+- name: Download Nerd Font archive for {{ font }}
+  get_url:
+    url: "{{ nerd_fonts_url }}/{{ font }}.zip"
+    dest: "/tmp/{{ font }}.zip"
+    mode: "0644"
+  when: not font_installed.stat.exists
+
+- name: Create font directory for {{ font }}
+  become: true
+  file:
+    path: "{{ font_base_dir }}/{{ font }}"
+    state: directory
+    mode: "0755"
+
+- name: Extract {{ font }} font
+  become: true
+  unarchive:
+    src: "/tmp/{{ font }}.zip"
+    dest: "{{ font_base_dir }}/{{ font }}"
+    remote_src: true
+  when: not font_installed.stat.exists
+
+- name: Remove downloaded archive for {{ font }}
+  file:
+    path: "/tmp/{{ font }}.zip"
+    state: absent
+  when: not font_installed.stat.exists

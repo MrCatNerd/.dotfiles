@@ -1,0 +1,30 @@
+- name: Install packages
+  become: true
+  ansible.builtin.package:
+    name:
+      - awesome
+      - picom
+      - flameshot
+      - rofi
+    state: present
+
+- name: Ensure rofi themes directory exists
+  become: true
+  ansible.builtin.file:
+    path: /usr/share/rofi/themes
+    state: directory
+    mode: '0755'
+
+- name: Clone rose-pine rofi theme repo
+  ansible.builtin.git:
+    repo: https://github.com/rose-pine/rofi.git
+    dest: /tmp/rose-pine
+    depth: 1
+    update: yes
+
+- name: Install rose-pine theme
+  become: true
+  ansible.builtin.copy:
+    src: /tmp/rose-pine/rose-pine-moon.rasi
+    dest: /usr/share/rofi/themes/rose-pine-moon.rasi
+    remote_src: yes

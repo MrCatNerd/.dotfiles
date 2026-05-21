@@ -1,0 +1,26 @@
+- name: Install font dependencies
+  become: true
+  package:
+    name:
+      - fontconfig
+      - curl
+      - unzip
+    state: present
+
+- name: Ensure base font directory exists
+  become: true
+  file:
+    path: "{{ font_base_dir }}"
+    state: directory
+    mode: "0755"
+
+- name: Install each Nerd Font
+  include_tasks: install-font.yml
+  loop: "{{ fonts }}"
+  loop_control:
+    loop_var: font
+
+- name: Refresh font cache
+  become: true
+  command: fc-cache -fv
+  changed_when: false

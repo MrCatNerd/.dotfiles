@@ -1,0 +1,120 @@
+[user]
+	email = 106884124+MrCatNerd@users.noreply.github.com
+	name = MrCatNerd
+
+[include]
+    path = ~/.gitconfig.local ; for gpg signing
+; in ~/.gitconfig.local do:
+; [user]
+;   signingkey = VERYSECRETKEY
+[commit]
+	gpgsign = true
+
+
+[core]
+    compression= 9
+    whatspace = error
+    preloadindex = true
+    editor = $EDITOR
+	untrackedcache = true
+	fsmonitor = true
+	excludesFile = ~/.gitignore
+
+[init]
+	defaultBranch = main
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[alias]
+	gud = commit --amend
+
+[rerere]
+	enable = true
+
+[branch]
+	sort = -committerdate
+
+[tag]
+    sort = -taggerdate
+
+[fetch]
+	writeCommitGraph = true
+
+[status]
+    branch = true
+    stowStash = true
+    showUntrackedFiles = all
+
+[diff]
+    renames = copies
+    interHunkContext = 10
+
+[pager]
+    # TODO: $PAGER env var
+    diff = diff-so-fancy | less
+    branch = false
+    tag = false
+
+[diff-so-fancy]
+    markEmptyLines = false
+
+[interactive]
+    diffFilter = diff-so-fancy --patch
+    singlekey = true
+
+[push]
+    autoSetupRemote = true
+    default = current
+    followTags = true
+
+[pull]
+    default = current
+    rebase = true
+
+[rebase]
+    autoStash = true
+    missingCommitsCheck = warn
+
+[log]
+    abbrevCommit = true
+    graphColors = blue,yellow,cyan,magenta,green,red
+
+[column]
+	ui = auto
+
+[color "diff"]
+    meta = cyan bold
+    frag = magenta
+    context = white
+    whitespace = yellow reverse
+    old = red
+[color "decorate"]
+    HEAD = red
+    branch = blue
+    tag = yellow
+    remoteBranch = magenta
+[color "branch"]
+    current = magenta
+    local = default
+    remote = yellow
+    upstream = green
+    plain = blue
+
+# url stuff
+[url "git@github.com:"]
+    #insteadOf = "https://github.com/"
+    insteadOf = "gh:"
+
+# git credential manager stuff
+[credential]
+	credentialStore = secretservice
+	helper = 
+	helper = /home/linuxbrew/.linuxbrew/bin/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[gpg]
+	program = gpg

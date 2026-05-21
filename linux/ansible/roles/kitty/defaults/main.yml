@@ -1,0 +1,2 @@
+kitty_config_dir: "{{ ansible_facts['env']['HOME'] }}/.config/kitty"
+kitty_themes_dir: "{{ kitty_config_dir }}/kitty-themes"

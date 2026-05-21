@@ -1,0 +1,63 @@
+---
+# yaml-language-server: $schema=https://www.schemastore.org/github-workflow.json
+name: general
+
+"on":
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'rolehippie'
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v6
+
+      - name: Role linting
+        uses: ansible/ansible-lint@main
+        with:
+          requirements_file: requirements.yml
+
+  testing:
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'rolehippie'
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        scenario:
+          - default
+
+    steps:
+      - name: Drop hosted
+        run: rm -rf /opt/hostedtoolcache/Python
+
+      - name: Checkout source
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: 3.13
+
+      - name: Install dependencies
+        run: pip3 install docker pytest-testinfra ansible molecule molecule-plugins[docker]
+
+      - name: Molecule tests
+        run: molecule test --scenario-name ${{ matrix.scenario }}
+        env:
+          PY_COLORS: "1"
+          ANSIBLE_FORCE_COLOR: "1"
+
+...

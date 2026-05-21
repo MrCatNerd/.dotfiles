@@ -1,0 +1,19 @@
+- name: Install git tools
+  become: true
+  package:
+    name:
+      - git
+      - git-lfs
+      - tig
+    state: present
+
+- name: Install diff-so-fancy
+  become: true
+  get_url:
+    url: https://github.com/so-fancy/diff-so-fancy/releases/download/v1.4.4/diff-so-fancy
+    dest: /usr/local/bin/diff-so-fancy
+    mode: "0755"
+
+- name: Install GCM
+  import_tasks: gcm.yml
+

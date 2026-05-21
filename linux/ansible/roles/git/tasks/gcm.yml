@@ -1,0 +1,28 @@
+- name: Set GCM architecture
+  set_fact:
+    gcm_arch: "{{ 'arm64' if ansible_facts['architecture'] in ['aarch64', 'arm64'] else 'x64' }}"
+
+- name: Download latest GCM tarball
+  become: true
+  get_url:
+    url: "https://github.com/git-ecosystem/git-credential-manager/releases/latest/download/gcm-linux-{{ gcm_arch }}.tar.gz"
+    dest: /tmp/gcm.tar.gz
+
+- name: Extract GCM
+  become: true
+  unarchive:
+    src: /tmp/gcm.tar.gz
+    dest: /usr/local/bin
+    remote_src: yes
+
+- name: Ensure GCM is executable
+  become: true
+  file:
+    path: /usr/local/bin/git-credential-manager
+    mode: "0755"
+
+- name: Configure Git to use GCM
+  command: git-credential-manager configure
+  become: true
+  become_user: "{{ ansible_env.USER }}"
+  changed_when: false

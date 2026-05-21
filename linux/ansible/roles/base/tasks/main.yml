@@ -1,0 +1,24 @@
+- name: Install base packages
+  become: true
+  package:
+    name:
+      - curl
+      - fastfetch
+      - fzf
+      - htop
+      - ripgrep
+      - stow
+      - tree
+    state: present
+
+- name: Ensure en_US.UTF-8 locale (Debian)
+  become: true
+  community.general.locale_gen:
+    name: en_US.UTF-8
+    state: present
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Set system locale (Fedora)
+  become: true
+  command: localectl set-locale LANG=en_US.UTF-8
+  when: ansible_facts['os_family'] == "RedHat"

@@ -1,0 +1,14 @@
+- name: Install tmux
+  become: true
+  package:
+    name:
+      - tmux
+      - xclip
+    state: present
+
+- name: Install TPM
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: "{{ ansible_facts['env']['HOME'] }}/.tmux/plugins/tpm"
+    depth: 1
+    update: yes
