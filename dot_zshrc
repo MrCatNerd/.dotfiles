@@ -144,23 +144,6 @@ export ARCHFLAGS="-arch x86_64"
 SAVEHIST=100000  # Save most-recent 100000 lines
 HISTFILE=~/.zsh_history
 
-###############################33
-# function pdf(){
-# 	zathura "$1" &disown
-# } function pdfe(){
-# 	zathura "$1" &disown;exit
-# }
-#
-# function copy(){
-# 	rsync -P $@
-# }
-
-function acp() {
-  git add .
-  git commit -m "$1"
-  git push
-}
-
 export PATH=$PATH:/home/mrcat/.spicetify
 
 
