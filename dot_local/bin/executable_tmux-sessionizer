@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+# Shamelessly stolen from ThePrimeagen (https://raw.githubusercontent.com/ThePrimeagen/.dotfiles/master/bin/.local/scripts/tmux-sessionizer)
+# I need a better script but it is what it is - good luck HDD :w
+
+# Function to gracefully handle errors
+handle_error() {
+    echo "An error occurred: $1" >&2
+    exit 1
+}
+
+# Check if a directory was provided as an argument
+if [[ $# -eq 1 ]]; then
+    selected="$1"
+else
+    # Select a directory interactively using fzf
+    selected=$(find -O3 "${HOME}" -mindepth 0 -maxdepth 8 -type d \
+        -not -path '*/.git/*' -not -path '*/node_modules/*' -not -path '*/*cache/*' \
+        -not -path '*/.local/share/*' -not -path '*/.local/lib/*' -not -path '*/.cargo/*' \
+        -not -path '*/.nvm/*' -not -path '*/.oh-my-zsh/*' \
+        -not -path '*/.steam/*' -not -path '*/.m2/*' -not -path '*/.var/*' \
+        -not -path '*/.lunarclient/*' -not -path '*/.minecraft/*' \
+        | fzf) || handle_error "No directory selected"
+fi
+
+# Exit if no directory was selected
+if [[ -z "$selected" ]]; then
+    exit 0
+fi
+
+# Extract the name of the selected directory
+selected_name=$(basename "$selected" | tr . _)
+
+# Check if tmux is running
+tmux_running=$(pgrep tmux)
+
+# Check if a tmux session with the same name already exists
+if ! tmux has-session -t="$selected_name" 2>/dev/null; then
+    echo "Creating new session: $selected_name"
+    # Start a new tmux session
+    tmux new-session -ds "$selected_name" -c "$selected" || handle_error "Failed to create session"
+fi
+
+# If not already in tmux, switch to the new session
+if [[ -z $TMUX ]]; then
+    tmux new-session -A -s "$selected_name" -c "$selected" || handle_error "Failed to switch to session"
+    exit 0
+fi
+
+# Switch to the existing tmux session
+tmux switch-client -t "$selected_name" || handle_error "Failed to switch to session"
+
+exit 0
+
