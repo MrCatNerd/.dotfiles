@@ -1,0 +1,37 @@
+# jokes:
+alias dog='cat'
+alias god='tac'
+alias meow='echo meow'
+alias bake='make'
+
+alias explorer='xdg-open'
+alias files='xdg-open'
+alias vim='nvim'
+alias gitree='git log --graph --pretty=oneline --abbrev-commit'
+alias gits='git status'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias say='spd-say -p 10 -r -10 -R 50 $*'
+alias show_screenkeys="screenkey -s large --scr 2 -p bottom --geometry 510x300+2990+850" # 3012 cuz dual monitor (was 1412 before)
+alias tls='tmux ls'
+alias vg='valgrind --leak-check=full --show-reachable=yes --track-origins=yes'
+
+# alias search_path='echo $PATH | sed "s/:/\\n/g" | fzf' # to cd into it do cd "$(search_path)"
+# alias tt='tmux a -t main||tmux new -s main'
+# alias bt=bluetoothctl
+# alias update='yaourt -Syyu --aur --noconfirm'
+
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    # alias ls='ls --color=auto'
+    alias ls='ls --color=auto -h --group-directories-first'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
