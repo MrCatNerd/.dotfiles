@@ -1,0 +1,251 @@
+format = """
+[](fg:rose)\
+$os\
+$username\
+[](bg:pine fg:rose)\
+$directory\
+[](fg:pine bg:gold)\
+$git_branch\
+$git_status\
+[ ](fg:gold)\
+"""
+
+right_format = """
+[](fg:overlay)\
+$status\
+$time\
+[ ](bg:highlight_med fg:overlay)\
+$c\
+$elixir\
+$elm\
+$golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$python\
+$scala\
+$docker_context\
+[ ](fg:highlight_med)\
+"""
+
+
+### THEMES
+palette = 'rose-pine-moon'
+
+[palettes.rose-pine]
+base = '#191724'
+surface = '#1f1d2e'
+overlay = '#26233a'
+muted = '#6e6a86'
+subtle = '#908caa'
+text = '#e0def4'
+love = '#eb6f92'
+gold = '#f6c177'
+rose = '#ebbcba'
+pine = '#31748f'
+foam = '#9ccfd8'
+iris = '#c4a7e7'
+highlight_low = '#21202e'
+highlight_med = '#403d52'
+highlight_high = '#524f67'
+
+[palettes.rose-pine-moon]
+base = '#232136'
+surface = '#2a273f'
+overlay = '#393552'
+muted = '#6e6a86'
+subtle = '#908caa'
+text = '#e0def4'
+love = '#eb6f92'
+gold = '#f6c177'
+rose = '#ea9a97'
+pine = '#3e8fb0'
+foam = '#9ccfd8'
+iris = '#c4a7e7'
+highlight_low = '#2a283e'
+highlight_med = '#44415a'
+highlight_high = '#56526e'
+
+[palettes.rose-pine-dawn]
+base = '#faf4ed'
+surface = '#fffaf3'
+overlay = '#f2e9e1'
+muted = '#9893a5'
+subtle = '#797593'
+text = '#575279'
+love = '#b4637a'
+gold = '#ea9d34'
+rose = '#d7827e'
+pine = '#286983'
+foam = '#56949f'
+iris = '#907aa9'
+highlight_low = '#f4ede8'
+highlight_med = '#dfdad9'
+highlight_high = '#cecacd'
+### /THEMES
+
+[status]
+style = 'bg:overlay fg:iris'
+symbol = '🔴 $int '
+not_found_symbol = '🔴'
+success_symbol = '🟢'
+format = '[$symbol$common_meaning$signal_name$maybe_int]($style)'
+map_symbol = true
+disabled = false
+
+# Disable the blank line at the start of the prompt
+# add_newline = false
+
+# You can also replace your username with a neat symbol like   or disable this
+# and use the os module below
+[username]
+show_always = true
+style_user = "bg:rose fg:overlay"
+style_root = "bg:rose fg:overlay"
+format = '[ $user ]($style)'
+disabled = false
+
+# An alternative to the username module which displays a symbol that
+# represents the current operating system
+[os]
+style = "bg:rose fg:overlay"
+format='[$symbol ]($style)'
+disabled = false # Disabled by default
+
+[os.symbols] # too lazy to fill it all
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = ""
+Artix = ""
+CentOS = ""
+Debian = ""
+EndeavourOS = ""
+Fedora = ""
+FreeBSD = ""
+Gentoo = "󰣨"
+Kali = ""
+Linux = ""
+Manjaro = ""
+Mint = "󰣭"
+NixOS = ""
+OpenBSD = ""
+Pop = ""
+Raspbian = "󰐿"
+RedHatEnterprise = "󱄛"
+Redhat = "󱄛"
+SUSE = ""
+Ubuntu = ""
+Unknown = ""
+Windows = " 󰚌"
+openSUSE = ""
+Macos = "$$$"
+
+[directory]
+style = "fg:text bg:pine"
+format = "[  $path ]($style)"
+truncation_length = 10
+truncation_symbol = "…/"
+truncate_to_repo=false
+
+[git_branch]
+symbol = ' '
+style = "bg:gold fg:overlay"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:gold fg:overlay"
+format = '[$all_status$ahead_behind ]($style)'
+
+ahead = '⇡${count}'
+behind = '⇣${count}'
+# diverged    = '⇕${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+up_to_date = '${count}'
+untracked = '?${count}'
+stashed = '$${count}'
+# staged = '[+$count](bg:#FCA17D fg:$style)'
+modified = '!${count}'
+staged = '+${count}'
+renamed = '»${count}'
+deleted = '✘${count}'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "fg:iris bg:overlay"
+format = '[  $time ]($style)'
+
+[golang]
+symbol = " "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[python]
+symbol = ""
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+
+[gradle]
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[haskell]
+symbol = " "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[java]
+symbol = " "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[julia]
+symbol = " "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[nim]
+symbol = "󰆥 "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[scala]
+symbol = " "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[c]
+symbol = " "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:iris"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[elixir]
+symbol = " "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'
+
+[elm]
+symbol = " "
+style = "bg:highlight_med"
+format = '[[ $symbol( $version) ](fg:rose bg:highlight_med)]($style)'

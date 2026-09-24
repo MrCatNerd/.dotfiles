@@ -1,0 +1,189 @@
+@import "default"
+
+// this modified version is just the rose pine implementation for rofi but
+// with only color modifications
+
+* {
+	bg: #232136;
+	cur: #2a273f;
+	fgd: #e0def4;
+	cmt: #6e6a86;
+	cya: #9ccfd8;
+	grn: #3e8fb0;
+	ora: #ea9a97;
+	pur: #c4a7e7;
+	red: #eb6f92;
+	yel: #f6c177;
+
+	foreground: @fgd;
+	background: @bg;
+	active-background: @grn;
+	urgent-background: @red;
+
+	selected-background: @active-background;
+	selected-urgent-background: @urgent-background;
+	selected-active-background: @active-background;
+	separatorcolor: @active-background;
+	bordercolor: @ora;
+
+    rad: 6px;
+}
+
+mainbox {
+    spacing: 3%;
+    children: [ inputbar, view-container];
+    background-color: #0000;
+}
+
+view-container{
+    children: [listview, mode-switcher];
+    orientation: horizontal;
+    border-radius: @rad;
+    border: 1px;
+}
+
+listview {
+    cycle: false;
+    dynamic: true;
+    scrollbar: false;
+    border-radius: @rad;
+    layout: vertical;
+    lines: 4;
+    padding: 0.2em;
+}
+
+element-icon {
+    size: 28px;
+    border: 0;
+}
+
+element-text{
+    expand: true;
+    horizontal-align: 0;
+    margin: 0 4px;
+}
+
+listview, element, element-selected, element-text { cursor: pointer; }
+entry { cursor: text; }
+
+mode-switcher {
+    orientation: vertical;
+    padding:  0 1em;
+}
+
+#window {
+    location: center;
+    width: 36%;
+    border-radius: @rad;
+
+	background-color: @background;
+	border-color:     @bordercolor;
+}
+#message {
+	border-color: @separatorcolor;
+}
+#textbox {
+	text-color: @foreground;
+}
+#listview {
+    cycle: false;
+    dynamic: true;
+    border-radius: @rad;
+    layout: vertical;
+    lines: 4;
+    padding: 0.2em;
+
+	border-color: @bordercolor;
+}
+
+element {
+    padding: 1.6%;
+    orientation: horizontal;
+    border-radius: @rad;
+}
+
+element-text, element-icon , mode-switcher {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+#element.normal.normal {
+	background-color: @background;
+	text-color:       @foreground;
+}
+#element.normal.urgent {
+	background-color: @urgent-background;
+	text-color:       @urgent-foreground;
+}
+#element.normal.active {
+	background-color: @active-background;
+	text-color:       @background;
+}
+#element.selected.normal {
+	background-color: @selected-background;
+	text-color:       @foreground;
+}
+#element.selected.urgent {
+	background-color: @selected-urgent-background;
+	text-color:       @foreground;
+}
+#element.selected.active {
+	background-color: @selected-active-background;
+	text-color:       @background;
+}
+#element.alternate.normal {
+	background-color: @background;
+	text-color:       @foreground;
+}
+#element.alternate.urgent {
+	background-color: @urgent-background;
+	text-color:       @foreground;
+}
+#element.alternate.active {
+	background-color: @active-background;
+	text-color:       @foreground;
+}
+#sidebar {
+	border-color: @separatorcolor;
+}
+
+button {
+    border-radius: @rad;
+}
+
+#button.selected {
+	background-color: @selected-background;
+	text-color:       @foreground;
+}
+#inputbar {
+    children: [ entry ];
+    orientation: horizontal;
+    padding: 0.2em;
+    border-radius: @rad;
+    border: 1px;
+
+	text-color: @foreground;
+}
+#case-indicator {
+	text-color: @foreground;
+}
+#entry {
+    padding: 1.6%;
+    // placeholder: "  ";
+    border-radius: @rad;
+
+	text-color: @cya;
+}
+#prompt {
+    padding: 4px;
+    border-radius: 4px;
+
+	text-color: @grn;
+}
+#textbox-prompt-colon {
+    expand: false;
+    str: ":";
+
+	text-color: @grn;
+}
+
